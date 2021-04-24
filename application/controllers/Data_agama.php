@@ -69,25 +69,8 @@ class Data_agama extends CI_Controller {
         }
   }
 
-  public function update_data() {
-    $id_agama   = $this->input->post('id_agama');
-    $nama_agama = $this->input->post('nama_agama');
-    $data = [
-      'nama_agama' => $nama_agama
-    ];
-    $where = array('id_agama' => $id_agama);
-    $this->agama_model->update($where,$data,'tbl_agama');
-    $this->session->set_flashdata('message','
-      <div class="alert alert-success" role="alert">
-        <i class="fas fa-check-circle fa-fw"></i> Congrats! religious data updated successfully!
-        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>');
-    redirect('data_agama');
-  }
-
-  public function delete_data($id) {
+  public function delete_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_agama' => $id);
   	$this->agama_model->delete($where,'tbl_agama');
     $this->session->set_flashdata('message','

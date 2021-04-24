@@ -41,7 +41,8 @@ class Data_unit_kerja extends CI_Controller {
     }
   }
 
-  public function edit_data($id) {
+  public function edit_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_unit_kerja' => $id);
     $this->form_validation->set_rules('nama_unit_kerja', 'Nama Unit Kerja', 'required|trim');
     if ($this->form_validation->run() == false) {
@@ -50,29 +51,26 @@ class Data_unit_kerja extends CI_Controller {
       $data['data_unit_kerja'] = $this->unitkerja_model->edit($where,'tbl_unit_kerja')->row_array();
       $this->template->load('templates/template','administrator/data_unit_kerja/edit_data', $data);
     } else {
+      $id_unit_kerja   = $this->input->post('id_unit_kerja');
+      $nama_unit_kerja = $this->input->post('nama_unit_kerja');
+      $data = [
+        'nama_unit_kerja' => $nama_unit_kerja,
+      ];
+      $where = array('id_unit_kerja' => $id_unit_kerja );
+      $this->unitkerja_model->update($where,$data, 'tbl_unit_kerja');
+      $this->session->set_flashdata('message', '
+        <div class="alert alert-success" role="alert">
+          <i class="fas fa-check-circle fa-fw"></i> Congrats! work unit data has been successfully updated!
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>');
       redirect('data_unit_kerja');
     }
   }
 
-  public function update_data() {
-    $id_unit_kerja   = $this->input->post('id_unit_kerja');
-    $nama_unit_kerja = $this->input->post('nama_unit_kerja');
-    $data = [
-      'nama_unit_kerja' => $nama_unit_kerja,
-    ];
-    $where = array('id_unit_kerja' => $id_unit_kerja );
-    $this->unitkerja_model->update($where,$data, 'tbl_unit_kerja');
-    $this->session->set_flashdata('message', '
-      <div class="alert alert-success" role="alert">
-        <i class="fas fa-check-circle fa-fw"></i> Congrats! work unit data has been successfully updated!
-        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>');
-    redirect('data_unit_kerja');
-  }
-
-  public function delete_data($id) {
+  public function delete_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_unit_kerja' => $id);
   	$this->unitkerja_model->delete($where,'tbl_unit_kerja');
     $this->session->set_flashdata('message', '

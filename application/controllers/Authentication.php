@@ -62,7 +62,8 @@ class Authentication extends CI_Controller {
 											<i class="fas fa-exclamation-triangle fa-fw"></i> Wrong password!
 											<button class="close" type="button" data-dismiss="alert" aria-label="Close">
 												<span aria-hidden="true">×</span>
-											</button></div>');
+											</button>
+										</div>');
 					redirect('authentication');
 				}
 			} else {
@@ -194,7 +195,7 @@ class Authentication extends CI_Controller {
                 $user_token = [
                     'email' => $email,
                     'token' => $token,
-					'date_created' => time()
+										'date_created' => time()
                 ];
 
                 $this->db->insert('tbl_user_token', $user_token);
@@ -306,5 +307,5 @@ class Authentication extends CI_Controller {
 			</div>');
 		redirect('authentication');
 	}
-	
+
 }

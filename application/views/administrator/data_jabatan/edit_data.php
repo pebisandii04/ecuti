@@ -29,7 +29,7 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div class="active tab-pane">
-                      <form action="<?php echo base_url().'data_jabatan/update_data'; ?>" method="post" enctype="multipart/form-data">
+                      <form action="<?php echo base_url().'data_jabatan/edit_data'; ?>" method="post" enctype="multipart/form-data">
                           <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label class="small mb-1">Nama Jabatan</label>

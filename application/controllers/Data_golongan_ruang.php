@@ -41,7 +41,8 @@ class Data_golongan_ruang extends CI_Controller {
     }
   }
 
-  public function edit_data($id) {
+  public function edit_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_gol_ruang' => $id);
     $this->form_validation->set_rules('nama_golongan', 'Nama Golongan', 'required|trim');
     if ($this->form_validation->run() == false) {
@@ -50,29 +51,26 @@ class Data_golongan_ruang extends CI_Controller {
       $data['data_golongan_ruang'] = $this->golruang_model->edit($where,'tbl_golongan_ruang')->row_array();
   		$this->template->load('templates/template','administrator/data_golongan_ruang/edit_data', $data);
     } else {
+      $id_gol_ruang  = $this->input->post('id_gol_ruang');
+      $nama_golongan = $this->input->post('nama_golongan');
+      $data = [
+        'nama_golongan' => $nama_golongan,
+      ];
+      $where = array('id_gol_ruang' => $id_gol_ruang );
+      $this->golruang_model->update($where,$data, 'tbl_golongan_ruang');
+      $this->session->set_flashdata('message','
+        <div class="alert alert-success" role="alert">
+          <i class="fas fa-check-circle fa-fw"></i> Congrats! the room class data was successfully updated!
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>');
       redirect('data_golongan_ruang');
     }
   }
 
-  public function update_data() {
-    $id_gol_ruang  = $this->input->post('id_gol_ruang');
-    $nama_golongan = $this->input->post('nama_golongan');
-    $data = [
-      'nama_golongan' => $nama_golongan,
-    ];
-    $where = array('id_gol_ruang' => $id_gol_ruang );
-    $this->golruang_model->update($where,$data, 'tbl_golongan_ruang');
-    $this->session->set_flashdata('message','
-      <div class="alert alert-success" role="alert">
-        <i class="fas fa-check-circle fa-fw"></i> Congrats! the room class data was successfully updated!
-        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>');
-    redirect('data_golongan_ruang');
-  }
-
-  public function delete_data($id) {
+  public function delete_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_gol_ruang' => $id);
   	$this->golruang_model->delete($where,'tbl_golongan_ruang');
     $this->session->set_flashdata('message', '

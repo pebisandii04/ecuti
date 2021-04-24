@@ -29,25 +29,25 @@
                 <div class="card-body">
                   <div class="tab-content">
                     <div class="active tab-pane">
-                        <form action="<?php echo base_url().'data_user/update_data'; ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo base_url().'data_user/edit_data'; ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                   <label class="small mb-1">Nomor Identitas Pegawai (NIP)</label>
-                                  <input type="hidden" name="id_user" value="<?php echo $data_user['id_user']; ?>">
+                                  <input type="hidden" name="id_user" value="<?php echo $data_user['id_user']; ?>"/>
                                   <input class="form-control" name="nip" type="text" value="<?php echo $data_user['nip']; ?>"/>
-                                  <?php echo form_error('nip', '<small class="text-danger pl-3">', '</small>'); ?>
+                                  <?php echo form_error('nip', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                               </div>
                               <div class="form-group col-md-6">
                                   <label class="small mb-1">Nama Lengkap</label>
                                   <input class="form-control" name="nama_lengkap" type="text" value="<?php echo $data_user['nama_lengkap']; ?>"/>
-                                  <?php echo form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
+                                  <?php echo form_error('nama_lengkap', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                               </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1">Tempat Lahir</label>
                                     <input class="form-control" name="tempat_lahir" type="text" value="<?php echo $data_user['tempat_lahir']; ?>"/>
-                                    <?php echo form_error('tempat_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('tempat_lahir', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1">Tanggal Lahir</label>
@@ -57,7 +57,7 @@
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
-                                    <?php echo form_error('tanggal_lahir', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('tanggal_lahir', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -69,7 +69,7 @@
                                           <option value="<?php echo $djp['id_jenis_pegawai']; ?>"><?php echo $djp['nama_jenis_pegawai']; ?></option>
                                         <?php } ?>
                                     </select>
-                                    <?php echo form_error('jenis_pegawai_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('jenis_pegawai_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1">Agama</label>
@@ -79,7 +79,7 @@
                                           <option value="<?php echo $da['id_agama']; ?>"><?php echo $da['nama_agama']; ?></option>
                                         <?php } ?>
                                     </select>
-                                    <?php echo form_error('agama_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('agama_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -91,7 +91,7 @@
                                         <option value="<?php echo $dgr['id_gol_ruang']; ?>"><?php echo $dgr['nama_golongan']; ?></option>
                                       <?php } ?>
                                     </select>
-                                    <?php echo form_error('gol_ruang_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('gol_ruang_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1">Jenis Kelamin</label>
@@ -101,19 +101,19 @@
                                         <option value="<?php echo $djk['id_jenis_kelamin']; ?>"><?php echo $djk['nama_jenis_kelamin']; ?></option>
                                       <?php } ?>
                                     </select>
-                                    <?php echo form_error('jenis_kelamin_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('jenis_kelamin_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1">Email address</label>
                                     <input class="form-control" type="text" name="email" value="<?php echo $data_user['email']; ?>"/>
-                                    <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('email', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1">Phone Number</label>
                                     <input class="form-control" type="tel" name="no_telp" value="<?php echo $data_user['no_telp']; ?>"/>
-                                    <?php echo form_error('no_telp', '<small class="text-danger pl-3">', '</small>'); ?>
+                                    <?php echo form_error('no_telp', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -125,7 +125,7 @@
                                       <option value="<?php echo $duk['id_unit_kerja']; ?>"><?php echo $duk['nama_unit_kerja']; ?></option>
                                     <?php } ?>
                                   </select>
-                                  <?php echo form_error('unit_kerja_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                  <?php echo form_error('unit_kerja_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                               </div>
                               <div class="form-group col-md-6">
                                   <label class="small mb-1">Jabatan</label>
@@ -135,7 +135,7 @@
                                       <option value="<?php echo $dj['id_jabatan']; ?>"><?php echo $dj['nama_jabatan']; ?></option>
                                     <?php } ?>
                                   </select>
-                                  <?php echo form_error('jabatan_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                  <?php echo form_error('jabatan_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                               </div>
                             </div>
                             <div class="form-row">
@@ -157,7 +157,7 @@
                                       <option value="<?php echo $dr['id_role']; ?>"><?php echo $dr['role']; ?></option>
                                     <?php } ?>
                                   </select>
-                                  <?php echo form_error('role_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                  <?php echo form_error('role_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                               </div>
                             </div>
                             <div class="form-row">
@@ -171,7 +171,7 @@
                                     <option value="<?php echo $status['id_status']; ?>"><?php echo $status['status']; ?></option>
                                   <?php } ?>
                                 </select>
-                                <?php echo form_error('status_id', '<small class="text-danger pl-3">', '</small>'); ?>
+                                <?php echo form_error('status_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                               </div>
                             </div>
                             <div class="form-group">

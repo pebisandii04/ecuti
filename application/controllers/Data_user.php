@@ -19,7 +19,8 @@ class Data_user extends CI_Controller {
     $this->template->load('templates/template', 'administrator/data_user/view_data', $data);
   }
 
-  public function detail_data($id) {
+  public function detail_data() {
+    $id = $this->uri->segment(3);
     $data['title']     = "E-Cuti | Detail Data User";
     $data['user']      = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
     $data['data_user'] = $this->datauser_model->detail($id)->result_array();
@@ -103,7 +104,8 @@ class Data_user extends CI_Controller {
     }
   }
 
-  public function edit_data($id) {
+  public function edit_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_user' => $id);
     $this->form_validation->set_rules('nip', 'NIP', 'required|trim');
     $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
@@ -138,54 +140,45 @@ class Data_user extends CI_Controller {
       $data['data_status']         = $this->db->get('tbl_status')->result_array();
       $this->template->load('templates/template', 'administrator/data_user/edit_data', $data);
     } else {
+      if ($this->upload->do_upload('photo')) {
+        $image = $this->upload->data();
+        unlink(FCPATH . 'uploads/profiles/' . $this->input->post('photo_lama', TRUE));
+        $photo = $image['file_name'];
+      } else {
+        $photo = $this->input->post('photo_lama', TRUE);
+      }
+      $data = [
+        'nip' => $this->input->post('nip', true),
+        'nama_lengkap' => $this->input->post('nama_lengkap', true),
+        'tempat_lahir' => $this->input->post('tempat_lahir', true),
+        'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
+        'jenis_pegawai_id' => $this->input->post('jenis_pegawai_id', true),
+        'agama_id' => $this->input->post('agama_id', true),
+        'gol_ruang_id' => $this->input->post('gol_ruang_id', true),
+        'jenis_kelamin_id' => $this->input->post('jenis_kelamin_id', true),
+        'email' => $this->input->post('email', true),
+        'no_telp' => $this->input->post('no_telp', true),
+        'unit_kerja_id' => $this->input->post('unit_kerja_id', true),
+        'jabatan_id' => $this->input->post('jabatan_id', true),
+        'role_id' => $this->input->post('role_id', true),
+        'status_id' => $this->input->post('status_id', true),
+        'photo' => $photo
+      ];
+      $where = array('id_user' => $id_user);
+      $this->datauser_model->update($where, $data, 'tbl_user');
+      $this->session->set_flashdata('message', '
+        <div class="alert alert-success" role="alert">
+          <i class="fas fa-check-circle fa-fw"></i> Data user has been updated!
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>');
       redirect('data_user');
     }
   }
 
-  public function update_data() {
-    $id_user   = $this->input->post('id_user');
-    $config['upload_path'] = './uploads/profiles/';
-    $config['allowed_types'] = 'gif|jpg|jepg|png';
-    $config['max_size']      = '5048';
-    $config['file_name'] = 'pnju-' . time();
-    $this->load->library('upload', $config);
-    if ($this->upload->do_upload('photo')) {
-      $image = $this->upload->data();
-      unlink(FCPATH . 'uploads/profiles/' . $this->input->post('photo_lama', TRUE));
-      $photo = $image['file_name'];
-    } else {
-      $photo = $this->input->post('photo_lama', TRUE);
-    }
-    $data = [
-      'nip' => $this->input->post('nip', true),
-      'nama_lengkap' => $this->input->post('nama_lengkap', true),
-      'tempat_lahir' => $this->input->post('tempat_lahir', true),
-      'tanggal_lahir' => $this->input->post('tanggal_lahir', true),
-      'jenis_pegawai_id' => $this->input->post('jenis_pegawai_id', true),
-      'agama_id' => $this->input->post('agama_id', true),
-      'gol_ruang_id' => $this->input->post('gol_ruang_id', true),
-      'jenis_kelamin_id' => $this->input->post('jenis_kelamin_id', true),
-      'email' => $this->input->post('email', true),
-      'no_telp' => $this->input->post('no_telp', true),
-      'unit_kerja_id' => $this->input->post('unit_kerja_id', true),
-      'jabatan_id' => $this->input->post('jabatan_id', true),
-      'role_id' => $this->input->post('role_id', true),
-      'status_id' => $this->input->post('status_id', true),
-      'photo' => $photo
-    ];
-    $where = array('id_user' => $id_user);
-    $this->datauser_model->update($where, $data, 'tbl_user');
-    $this->session->set_flashdata('message', '
-      <div class="alert alert-success" role="alert">
-        <i class="fas fa-check-circle fa-fw"></i> Data user has been updated!
-        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>');
-    redirect('data_user');
-  }
-
-  public function delete_data($id) {
+  public function delete_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_user' => $id);
     $data = $this->datauser_model->get_data($where, 'tbl_user')->row();
     if (file_exists("uploads/profiles/$data->photo")) {

@@ -30,7 +30,7 @@
               <div class="card-body">
                 <div class="tab-content">
                   <div class="active tab-pane">
-                      <form action="<?php echo base_url().'data_unit_kerja/update_data'; ?>" method="post" enctype="multipart/form-data">
+                      <form action="<?php echo base_url().'data_unit_kerja/edit_data'; ?>" method="post" enctype="multipart/form-data">
                         <div class="form-row">
                           <!-- Form Group (username)-->
                           <div class="form-group col-md-12">

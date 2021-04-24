@@ -41,7 +41,8 @@ class Data_jabatan extends CI_Controller {
     }
   }
 
-  public function edit_data($id) {
+  public function edit_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_jabatan' => $id);
     $this->form_validation->set_rules('nama_jabatan', 'Nama Jabatan', 'required|trim');
     if ($this->form_validation->run() == false) {
@@ -50,30 +51,26 @@ class Data_jabatan extends CI_Controller {
       $data['data_jabatan'] = $this->jabatan_model->edit($where,'tbl_jabatan')->row_array();
   		$this->template->load('templates/template','administrator/data_jabatan/edit_data', $data);
     } else {
+      $id_jabatan   = $this->input->post('id_jabatan');
+      $nama_jabatan = $this->input->post('nama_jabatan');
+      $data = [
+        'nama_jabatan' => $nama_jabatan,
+      ];
+      $where = array('id_jabatan' => $id_jabatan );
+      $this->jabatan_model->update($where,$data, 'tbl_jabatan');
+      $this->session->set_flashdata('message', '
+        <div class="alert alert-success" role="alert">
+          <i class="fas fa-check-circle fa-fw"></i> Congrats! job data has been successfully updated!
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>');
       redirect('data_jabatan');
     }
   }
 
-  public function update_data() {
-    $id_jabatan   = $this->input->post('id_jabatan');
-    $nama_jabatan = $this->input->post('nama_jabatan');
-    $data = [
-      'id_jabatan' => $id_jabatan,
-      'nama_jabatan' => $nama_jabatan,
-    ];
-    $where = array('id_jabatan' => $id_jabatan );
-    $this->jabatan_model->update($where,$data, 'tbl_jabatan');
-    $this->session->set_flashdata('message', '
-      <div class="alert alert-success" role="alert">
-        <i class="fas fa-check-circle fa-fw"></i> Congrats! job data has been successfully updated!
-        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>');
-    redirect('data_jabatan');
-  }
-
-  public function delete_data($id) {
+  public function delete_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_jabatan' => $id);
   	$this->jabatan_model->delete($where,'tbl_jabatan');
     $this->session->set_flashdata('message', '
