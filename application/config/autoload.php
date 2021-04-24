@@ -139,5 +139,7 @@ $autoload['model'] = array(
     'jabatan_model',
     'jenispegawai_model',
     'unitkerja_model',
-    'datauser_model'
+    'datauser_model',
+    'user_model',
+    'datahakcuti_model'
 );

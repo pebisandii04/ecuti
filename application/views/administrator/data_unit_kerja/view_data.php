@@ -56,7 +56,7 @@
                     <tfoot>
                       <tr>
                         <th width="8" class="text-center">#</th>
-                        <th>Nama Golongan Ruang</th>
+                        <th>Data Unit Kerja</th>
                         <th>Action</th>
                       </tr>
                     </tfoot>

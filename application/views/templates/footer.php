@@ -124,6 +124,16 @@
         format: 'YYYY-MM-DD'
     });
 
+    //Date picker
+    $('#mulai').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
+    //Date picker
+    $('#selesai').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
     //Date and time picker
     $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 
