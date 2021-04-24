@@ -1,11 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Public_model extends CI_Model
-{
+class Public_model extends CI_Model {
 
-  public function session()
-  {
+  public function session() {
     $nip = $this->session->userdata('nip');
     $this->db->select('*');
     $this->db->from('tbl_user');

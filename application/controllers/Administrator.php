@@ -17,4 +17,5 @@ class Administrator extends CI_Controller {
 			$data['user']   = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
 			$this->template->load('templates/template','administrator/index', $data);
 	}
+	
 }

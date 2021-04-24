@@ -133,5 +133,11 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array(
-    'public_model'
+    'public_model',
+    'agama_model',
+    'golruang_model',
+    'jabatan_model',
+    'jenispegawai_model',
+    'unitkerja_model',
+    'datauser_model'
 );

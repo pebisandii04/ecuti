@@ -1,16 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Authentication extends CI_Controller
-{
-	public function __construct()
-	{
+class Authentication extends CI_Controller {
+
+	public function __construct()	{
 		parent::__construct();
 		$this->load->library('form_validation');
 	}
 
-	public function index()
-	{
+	public function index()	{
 		$role = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
 		if ($role) {
 			if ($role['role_id'] == 1) {
@@ -30,13 +28,11 @@ class Authentication extends CI_Controller
 			$data['title'] = "E-Cuti | Login";
 			$this->template->load('templates/template_authentication', 'authentication/login', $data);
 		} else {
-			// validasinya success
 			$this->_login();
 		}
 	}
 
-	private function _login()
-	{
+	private function _login()	{
 		$nip = $this->input->post('nip');
 		$password = $this->input->post('password');
 		$user = $this->db->get_where('tbl_user', ['nip' => $nip])->row_array();
@@ -64,35 +60,34 @@ class Authentication extends CI_Controller
 					$this->session->set_flashdata('message', '
 										<div class="alert alert-danger" role="alert">
 											<i class="fas fa-exclamation-triangle fa-fw"></i> Wrong password!
-										<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-											<span aria-hidden="true">×</span>
-										</button></div>');
+											<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">×</span>
+											</button></div>');
 					redirect('authentication');
 				}
 			} else {
 				$this->session->set_flashdata('message', '
 								<div class="alert alert-danger" role="alert">
-								<i class="fas fa-exclamation-triangle fa-fw"></i> This NIP has not been activated!
-								<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
+									<i class="fas fa-exclamation-triangle fa-fw"></i> This NIP has not been activated!
+									<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
 								</div>');
 				redirect('authentication');
 			}
 		} else {
 			$this->session->set_flashdata('message', '
 						<div class="alert alert-danger" role="alert">
-            			<i class="fas fa-exclamation-triangle fa-fw"></i> NIP is not registered!
-						<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
+	      			<i class="fas fa-exclamation-triangle fa-fw"></i> NIP is not registered!
+							<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
 						</div>');
 			redirect('authentication');
 		}
 	}
 
-	private function _sendEmail($token, $type)
-    {
+	private function _sendEmail($token, $type) {
         $config = [
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -123,10 +118,9 @@ class Authentication extends CI_Controller
             echo $this->email->print_debugger();
             die;
         }
-    }
+  }
 
-	public function verify()
-    {
+	public function verify(){
         $email = $this->input->get('email');
         $token = $this->input->get('token');
 
@@ -157,7 +151,7 @@ class Authentication extends CI_Controller
 
                     $this->session->set_flashdata('message', '
 													<div class="alert alert-danger" role="alert">
-													<i class="fas fa-exclamation-triangle fa-fw"></i> Account activation failed! Token expired.
+														<i class="fas fa-exclamation-triangle fa-fw"></i> Account activation failed! Token expired.
 														<button class="close" type="button" data-dismiss="alert" aria-label="Close">
 															<span aria-hidden="true">×</span>
 														</button>
@@ -167,7 +161,7 @@ class Authentication extends CI_Controller
             } else {
                 $this->session->set_flashdata('message', '
 													<div class="alert alert-danger" role="alert">
-													<i class="fas fa-exclamation-triangle fa-fw"></i> Account activation failed! Wrong token.
+														<i class="fas fa-exclamation-triangle fa-fw"></i> Account activation failed! Wrong token.
 														<button class="close" type="button" data-dismiss="alert" aria-label="Close">
 															<span aria-hidden="true">×</span>
 														</button>
@@ -177,17 +171,16 @@ class Authentication extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '
 												<div class="alert alert-danger" role="alert">
-												<i class="fas fa-exclamation-triangle fa-fw"></i> Account activation failed! Wrong email.
+														<i class="fas fa-exclamation-triangle fa-fw"></i> Account activation failed! Wrong email.
 														<button class="close" type="button" data-dismiss="alert" aria-label="Close">
 															<span aria-hidden="true">×</span>
 														</button>
 												</div>');
             redirect('authentication');
         }
-    }
+  }
 
-	public function forgot_password()
-	{
+	public function forgot_password()	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		if ($this->form_validation->run() == false) {
 			$data['title'] = "E-Cuti | Forgot Password";
@@ -209,112 +202,109 @@ class Authentication extends CI_Controller
 
                 $this->session->set_flashdata('message', '
 												<div class="alert alert-success" role="alert">
-												<i class="fas fa-check-circle fa-fw"></i> Please check your email to reset your password!
-												<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
+													<i class="fas fa-check-circle fa-fw"></i> Please check your email to reset your password!
+													<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
 												</div>');
                 redirect('authentication/forgot_password');
             } else {
                 $this->session->set_flashdata('message', '
 												<div class="alert alert-danger" role="alert">
-												<i class="fas fa-exclamation-triangle fa-fw"></i> Email is not registered or activated!
-												<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
+													<i class="fas fa-exclamation-triangle fa-fw"></i> Email is not registered or activated!
+													<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
 												</div>');
                 redirect('authentication/forgot_password');
             }
         }
 	}
-    
-    public function reset_password()
-    {
-        $email = $this->input->get('email');
-        $token = $this->input->get('token');
 
-        $user = $this->db->get_where('tbl_user', ['email' => $email])->row_array();
+  public function reset_password() {
+    $email = $this->input->get('email');
+    $token = $this->input->get('token');
 
-        if ($user) {
-            $user_token = $this->db->get_where('tbl_user_token', ['token' => $token])->row_array();
+    $user = $this->db->get_where('tbl_user', ['email' => $email])->row_array();
 
-            if ($user_token) {
-                $this->session->set_userdata('reset_email', $email);
-                $this->change_password();
-            } else {
-                $this->session->set_flashdata('message', '
+    if ($user) {
+        $user_token = $this->db->get_where('tbl_user_token', ['token' => $token])->row_array();
+
+        if ($user_token) {
+            $this->session->set_userdata('reset_email', $email);
+            $this->change_password();
+        } else {
+		            $this->session->set_flashdata('message', '
 												<div class="alert alert-danger" role="alert">
-												<i class="fas fa-exclamation-triangle fa-fw"></i> Reset password failed! Wrong token.
-												<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
+													<i class="fas fa-exclamation-triangle fa-fw"></i> Reset password failed! Wrong token.
+													<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
 												</div>');
-                redirect('authentication');
-            }
-        } else {
-            $this->session->set_flashdata('message', '
+		            redirect('authentication');
+		    }
+		    } else {
+		        $this->session->set_flashdata('message', '
 											<div class="alert alert-danger" role="alert">
-											<i class="fas fa-exclamation-triangle fa-fw"></i> Reset password failed! Wrong email.
-											<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">×</span>
+												<i class="fas fa-exclamation-triangle fa-fw"></i> Reset password failed! Wrong email.
+												<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">×</span>
 												</button>
 											</div>');
-            redirect('authentication');
-        }
+		        redirect('authentication');
+		    }
+	}
+
+  public function change_password() {
+    if (!$this->session->userdata('reset_email')) {
+        redirect('authentication');
     }
 
-    public function change_password()
-    {
-        if (!$this->session->userdata('reset_email')) {
-            redirect('authentication');
-        }
+    $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[3]|matches[password2]');
+    $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
 
-        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[3]|matches[password2]');
-        $this->form_validation->set_rules('password2', 'Repeat Password', 'trim|required|min_length[3]|matches[password1]');
+    if ($this->form_validation->run() == false) {
+        $data['title'] = "E-Cuti | Change Password";
+				$this->template->load('templates/template_authentication', 'authentication/change_password', $data);
+    } else {
+        $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+        $email = $this->session->userdata('reset_email');
 
-        if ($this->form_validation->run() == false) {
-            $data['title'] = "E-Cuti | Change Password";
-			$this->template->load('templates/template_authentication', 'authentication/change_password', $data);
-        } else {
-            $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
-            $email = $this->session->userdata('reset_email');
+        $this->db->set('password', $password);
+        $this->db->where('email', $email);
+        $this->db->update('tbl_user');
 
-            $this->db->set('password', $password);
-            $this->db->where('email', $email);
-            $this->db->update('tbl_user');
+        $this->session->unset_userdata('reset_email');
 
-            $this->session->unset_userdata('reset_email');
+        $this->db->delete('tbl_user_token', ['email' => $email]);
 
-            $this->db->delete('tbl_user_token', ['email' => $email]);
-
-            $this->session->set_flashdata('message', '
-											<div class="alert alert-success" role="alert">
-											<i class="fas fa-exclamation-triangle fa-fw"></i> Password has been changed! Please login.
-											<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-													<span aria-hidden="true">×</span>
-												</button>
-											</div>');
-            redirect('authentication');
-        }
+        $this->session->set_flashdata('message', '
+									<div class="alert alert-success" role="alert">
+										<i class="fas fa-exclamation-triangle fa-fw"></i> Password has been changed! Please login.
+										<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+									</div>');
+        redirect('authentication');
     }
+	}
 
-	public function blocked()
-	{
+	public function blocked() {
 		$data['title'] = "E-Cuti | Blocked";
 		$this->template->load('templates/template_authentication', 'authentication/blocked', $data);
 	}
 
-	public function logout()
-	{
+	public function logout() {
 		$this->session->unset_userdata('nip');
 		$this->session->unset_userdata('role_id');
 		$this->session->set_flashdata('message', '
 			<div class="alert alert-success" role="alert">
-			<i class="fas fa-check-circle fa-fw"></i> You have been logged out!
-			<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">×</span>
-			</button>
+				<i class="fas fa-check-circle fa-fw"></i> You have been logged out!
+				<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
 			</div>');
 		redirect('authentication');
 	}
+	
 }

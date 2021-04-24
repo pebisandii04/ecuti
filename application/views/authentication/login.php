@@ -43,9 +43,9 @@
             <button type="submit" class="btn btn-primary btn-block"> <i class="fas fa-sign-in-alt fa-fw"></i> Login</button>
           </div>
         </div>
+        <p class="mb-1">
+          <a href="<?php echo base_url() . 'authentication/forgot_password'; ?>">I forgot my password</a>
+        </p>
       </form>
-      <p class="mb-1">
-        <a href="<?php echo base_url() . 'authentication/forgot_password'; ?>">I forgot my password</a>
-      </p>
     </div>
   </div>

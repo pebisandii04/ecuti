@@ -1,25 +1,21 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile extends CI_Controller
-{
+class Profile extends CI_Controller {
 
-	public function __construct()
-	{
+	public function __construct()	{
 		parent::__construct();
 		is_logged_in();
 		$this->load->library('form_validation');
 	}
 
-	public function index()
-	{
+	public function index()	{
 		$data['title'] = "E-Cuti | Profile";
 		$data['user']   = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
 		$this->template->load('templates/template', 'profile/profile', $data);
 	}
 
-	public function edit_profile()
-	{
+	public function edit_profile() {
 		$data['title'] = "E-Cuti | Edit Profile";
 		$data['user']   = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
 
@@ -60,7 +56,7 @@ class Profile extends CI_Controller
 			$upload_image = $_FILES['photo']['name'];
 			if ($upload_image) {
 				$config['allowed_types'] = 'gif|jpg|jepg|png';
-				$config['max_size']      = '5000';
+				$config['max_size']      = '5048';
 				$config['file_name']     = 'pnju-' . time();
 				$config['upload_path']   = './uploads/profiles/';
 
@@ -91,24 +87,20 @@ class Profile extends CI_Controller
 			$this->db->set('email', $email);
 			$this->db->where('nip', $nip);
 			$this->db->update('tbl_user');
-			$this->session->set_flashdata(
-				'message',
-				'<div class="alert alert-success" role="alert">
-			  <i class="fas fa-check-circle fa-fw"></i> Your profile has been updated!
-			<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">×</span>
-			</button>
-			</div>'
-			);
+			$this->session->set_flashdata('message', '
+				<div class="alert alert-success" role="alert">
+				  <i class="fas fa-check-circle fa-fw"></i> Your profile has been updated!
+					<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>');
 			redirect('profile');
 		}
 	}
 
-	public function change_password()
-	{
+	public function change_password()	{
 		$data['title'] = "E-Cuti | Change Password";
 		$data['user']   = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
-
 		$this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
 		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
 		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
@@ -118,45 +110,42 @@ class Profile extends CI_Controller
 			$current_password = $this->input->post('current_password');
 			$new_password = $this->input->post('new_password1');
 			if (!password_verify($current_password, $data['user']['password'])) {
-				$this->session->set_flashdata(
-					'message',
-					'<div class="alert alert-danger" role="alert"> <i class="fas fa-exclamation-triangle fa-fw"></i> Wrong current password!
-							<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-							</div>'
-				);
+				$this->session->set_flashdata('message', '
+					<div class="alert alert-danger" role="alert">
+						<i class="fas fa-exclamation-triangle fa-fw"></i> Wrong current password!
+						<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>');
 				redirect('profile/change_password');
 			} else {
 				if ($current_password == $new_password) {
-					$this->session->set_flashdata(
-						'message',
-						'<div class="alert alert-danger" role="alert"> <i class="fas fa-exclamation-triangle fa-fw"></i> New password cannot be the same as current password!
-									<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">×</span>
-									</button>
-									</div>'
-					);
+					$this->session->set_flashdata('message', '
+						<div class="alert alert-danger" role="alert">
+							<i class="fas fa-exclamation-triangle fa-fw"></i> New password cannot be the same as current password!
+							<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>');
 					redirect('profile/change_password');
 				} else {
 					// password sudah ok
 					$password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-
 					$this->db->set('password', $password_hash);
 					$this->db->where('nip', $this->session->userdata('nip'));
 					$this->db->update('tbl_user');
 
-					$this->session->set_flashdata(
-						'message',
-						'<div class="alert alert-success" role="alert"> <i class="fas fa-check-circle fa-fw"></i> Password changed!
-									<button class="close" type="button" data-dismiss="alert" aria-label="Close">
-										<span aria-hidden="true">×</span>
-									</button>
-									</div>'
-					);
+					$this->session->set_flashdata('message', '
+						<div class="alert alert-success" role="alert">
+							<i class="fas fa-check-circle fa-fw"></i> Password changed!
+							<button class="close" type="button" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>');
 					redirect('profile');
 				}
 			}
 		}
 	}
+
 }

@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/fontawesome-free/css/all.min.css'; ?>">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'; ?>">
+  <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'; ?>">
+  <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css'; ?>">
   <!-- daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/daterangepicker/daterangepicker.css'; ?>">
   <!-- iCheck for checkboxes and radio inputs -->
@@ -90,7 +94,7 @@
     <!-- Brand Logo -->
     <a class="brand-link text-center text-sm">
         <img src=" <?php echo base_url() . 'assets/dist/img/e_cuti.png'; ?>" style="height:38px;width:100;">
-      </a>
+    </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -119,6 +123,53 @@
                       <p>Dashboard</p>
                   </a>
                  </li>
+                 <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                      Master Data Kepegawaian
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_agama'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Agama</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_golongan_ruang'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Golongan Ruang</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_jabatan'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Jabatan</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_jenis_pegawai'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Jenis Pegawai</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_unit_kerja'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Unit Kerja</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_user'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data User</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
                <?php } ?>
                <?php if ($session == "2") { ?>
                  <li class="nav-header">Kepegawaian</li>
