@@ -42,7 +42,7 @@
                 </div>
                 <div class="card-footer">
                   <a href="<?php echo base_url().'data_jabatan'; ?>"  class="btn btn-default"><i class="fas fa-times fa-fw"></i>Cancel</a>
-                  <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save fa-fw"></i> Save</button>
+                  <button type="submit" class="btn btn-primary float-right" onclick="return confirm('Are you sure you want to save it');"><i class="fas fa-save fa-fw"></i> Save</button>
                 </form>
                 </div>
               </div>

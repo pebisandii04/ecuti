@@ -48,7 +48,7 @@
                           <td><?php echo $jenis_pegawai['nama_jenis_pegawai']; ?></td>
                           <td class="text-center">
                             <a href="<?php echo base_url() . 'data_jenis_pegawai/edit_data/' . $jenis_pegawai['id_jenis_pegawai']; ?>" class="btn btn-warning btn-sm" title="Edit"> <i class="fas fa-edit fa-fw"></i> </a>
-                            <a href="<?php echo base_url() . 'data_jenis_pegawai/delete_data/' . $jenis_pegawai['id_jenis_pegawai']; ?>" class="btn btn-danger btn-sm" title="Delete"> <i class="fas fa-trash fa-fw"></i></a>
+                            <a href="<?php echo base_url() . 'data_jenis_pegawai/delete_data/' . $jenis_pegawai['id_jenis_pegawai']; ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete');"> <i class="fas fa-trash fa-fw"></i></a>
                           </td>
                         </tr>
                       <?php } ?>

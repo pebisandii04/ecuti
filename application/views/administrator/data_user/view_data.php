@@ -64,7 +64,7 @@
                           <td class="text-center">
                               <a href="<?php echo base_url().'data_user/detail_data/'. $user['id_user']; ?>" class="btn btn-success btn-sm" title="Detail"> <i class="fas fa-eye fa-fw"></i> </a>
                               <a href="<?php echo base_url().'data_user/edit_data/'. $user['id_user']; ?>" class="btn btn-warning btn-sm" title="Edit" > <i class="fas fa-edit fa-fw"></i> </a>
-                              <a href="<?php echo base_url().'data_user/delete_data/'. $user['id_user']; ?>" class="btn btn-danger btn-sm" title="Delete" > <i class="fas fa-trash fa-fw"></i></a>
+                              <a href="<?php echo base_url().'data_user/delete_data/'. $user['id_user']; ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete');"> <i class="fas fa-trash fa-fw"></i></a>
                           </td>
                         </tr>
                       <?php } ?>

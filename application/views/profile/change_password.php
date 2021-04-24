@@ -48,7 +48,7 @@
                                 <a href="<?php echo base_url().'profile'; ?>"  class="btn btn-default"><i class="fas fa-arrow-left fa-fw"></i>Back</a>
                                 </div>
                                 <div class="float-left">
-                                <button type="submit" class="btn btn-primary"> <i class="fas fa-key fa-fw"></i> Change Password</button>
+                                <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to change the password');"> <i class="fas fa-key fa-fw"></i> Change Password</button>
                                 </div>
                             </div>
                         </form>

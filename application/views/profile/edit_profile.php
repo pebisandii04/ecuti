@@ -160,7 +160,7 @@
                 </div>
                 <div class="card-footer">
                     <a href="<?php echo base_url().'profile'; ?>"  class="btn btn-default"><i class="fas fa-arrow-left fa-fw"></i> Back</a>
-                    <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save fa-fw"></i> Save</button>
+                    <button type="submit" class="btn btn-primary float-right" onclick="return confirm('Are you sure you want to change profile');"><i class="fas fa-save fa-fw"></i> Save</button>
                 </form>
                 </div>
                 </div>

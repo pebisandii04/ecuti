@@ -52,7 +52,7 @@
                             </td>
                             <td class="text-center">
                               <a href="<?php echo base_url() . 'data_agama/edit_data/' . $da['id_agama']; ?>" class="btn btn-warning btn-sm" title="Edit"> <i class="fas fa-edit fa-fw"></i> </a>
-                              <a href="<?php echo base_url() . 'data_agama/delete_data/' . $da['id_agama']; ?>" class="btn btn-danger btn-sm" title="Delete"> <i class="fas fa-trash fa-fw"></i></a>
+                              <a href="<?php echo base_url() . 'data_agama/delete_data/' . $da['id_agama']; ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete');"> <i class="fas fa-trash fa-fw"></i></a>
                             </td>
                           </tr>
                         <?php } ?>

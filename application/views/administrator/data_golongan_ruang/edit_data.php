@@ -43,7 +43,7 @@
                 </div>
                 <div class="card-footer">
                   <a href="<?php echo base_url().'data_golongan_ruang'; ?>"  class="btn btn-default"><i class="fas fa-times fa-fw"></i>Cancel</a>
-                  <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save fa-fw"></i> Update</button>
+                  <button type="submit" class="btn btn-primary float-right" onclick="return confirm('Are you sure you want to change');"><i class="fas fa-save fa-fw"></i> Update</button>
                 </form>
                 </div>
               </div>

@@ -48,7 +48,7 @@
                             <td><?php echo $dgr['nama_golongan']; ?></td>
                             <td class="text-center">
                                 <a href="<?php echo base_url().'data_golongan_ruang/edit_data/'. $dgr['id_gol_ruang']; ?>" class="btn btn-warning btn-sm" title="Edit" > <i class="fas fa-edit fa-fw"></i> </a>
-                                <a href="<?php echo base_url().'data_golongan_ruang/delete_data/'. $dgr['id_gol_ruang']; ?>" class="btn btn-danger btn-sm" title="Delete"> <i class="fas fa-trash fa-fw"></i></a>
+                                <a href="<?php echo base_url().'data_golongan_ruang/delete_data/'. $dgr['id_gol_ruang']; ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete');"> <i class="fas fa-trash fa-fw"></i></a>
                             </td>
                           </tr>
                         <?php } ?>
