@@ -25,7 +25,7 @@
               <div class="col-md-3">
               </div>
               <div class="col-md-6">
-                <form action="<?php echo base_url() . 'data_agama/update_data'; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo base_url() . 'data_agama/edit_data'; ?>" method="post" enctype="multipart/form-data">
                   <div class="card">
                     <div class="card-body">
                       <div class="tab-content">

@@ -41,7 +41,8 @@ class Data_agama extends CI_Controller {
     }
   }
 
-  public function edit_data($id) {
+  public function edit_data() {
+    $id = $this->uri->segment(3);
     $where = array('id_agama' => $id);
     $this->form_validation->set_rules('nama_agama', 'Nama Agama', 'required|trim');
     if ($this->form_validation->run() == false) {
@@ -50,8 +51,22 @@ class Data_agama extends CI_Controller {
       $data['data_agama'] = $this->agama_model->edit($where,'tbl_agama')->row_array();
   		$this->template->load('templates/template','administrator/data_agama/edit_data', $data);
     } else {
-      redirect('data_agama');
-    }
+        $id_agama   = $this->input->post('id_agama');
+        $nama_agama = $this->input->post('nama_agama');
+        $data = [
+          'nama_agama' => $nama_agama
+        ];
+        $where = array('id_agama' => $id_agama);
+        $this->agama_model->update($where,$data,'tbl_agama');
+        $this->session->set_flashdata('message','
+          <div class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle fa-fw"></i> Congrats! religious data updated successfully!
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>');
+        redirect('data_agama');
+        }
   }
 
   public function update_data() {
