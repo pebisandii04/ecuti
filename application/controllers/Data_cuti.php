@@ -29,11 +29,17 @@ class Data_cuti extends CI_Controller {
         $this->template->load('templates/template','administrator/data_cuti/view_data', $data);
 	}
 
+    // function untuk menampilkan form tambah data cuti
     public function Tambah_cuti_tahunan()
     {
-        $id_unit = $this->session->userdata('id_unit_kerja');
-        $data['option1'] = $this->M_cuti->get_option()->result();
-        $data['option2'] = $this->M_cuti->get_option2($id_unit)->result();
-        $this->template->load('templates/template','administrator/data_cuti/view_data', $data);
+        $data['title']      = "E-Cuti | Tambah Data Cuti Tahunan";
+        $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['option2'] = $this->Model_cuti_tahunan->get_option2()->result();
+        $this->template->load('templates/template','administrator/data_cuti/tambah_cuti_tahunan', $data);
+    }
+    // funtion untuk proses simpan
+    public function proses_simpan()
+    {
+        $this->Model_cuti_tahunan->Tambah_data();
     }
 }
