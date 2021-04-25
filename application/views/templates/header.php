@@ -210,52 +210,28 @@
                     </a>
                  </li>
                  <li class="nav-item">
-                   <a href="#" class="nav-link">
-                     <i class="nav-icon fas fa-calendar-plus"></i>
-                     <p>
-                       Form Pengajuan Cuti
-                       <i class="right fas fa-angle-left"></i>
-                     </p>
-                   </a>
-                   <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . 'pengajuan_cuti'; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Cuti Tahunan</p>
-                       </a>
-                     </li>
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . ''; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Cuti Besar</p>
-                       </a>
-                     </li>
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . ''; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Cuti Sakit</p>
-                       </a>
-                     </li>
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . ''; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Cuti Melahirkan</p>
-                       </a>
-                     </li>
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . ''; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Cuti Alasan Penting</p>
-                       </a>
-                     </li>
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . ''; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Cuti Tanggungan Negara</p>
-                       </a>
-                     </li>
-                   </ul>
-                 </li>
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p>
+                      Form Pengajuan Cuti
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_cuti'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cuti Tahunan</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_golongan_ruang'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cuti Umum</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
                  <li class="nav-item">
                    <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-calendar-plus"></i>
@@ -285,29 +261,7 @@
                         <p>Kontak Kami</p>
                     </a>
                  </li>
-                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-calendar-plus"></i>
-                    <p>
-                      Form Pengajuan Cuti
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                      <a href="<?php echo base_url().'data_cuti'; ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Cuti Tahunan</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?php echo base_url().'data_golongan_ruang'; ?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Cuti Umum</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+                 
                <?php } ?>
                <li class="nav-header">Account</li>
                <li class="nav-item">

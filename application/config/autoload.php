@@ -139,12 +139,6 @@ $autoload['model'] = array(
     'jabatan_model',
     'jenispegawai_model',
     'unitkerja_model',
-<<<<<<< HEAD
     'Model_cuti_tahunan',
     'datauser_model'
-=======
-    'datauser_model',
-    'user_model',
-    'datahakcuti_model'
->>>>>>> 60b8d961675730a1bcabbf6bbda739408de3cf8c
 );
