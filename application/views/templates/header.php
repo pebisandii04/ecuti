@@ -171,6 +171,7 @@
                   </ul>
                 </li>
                <?php } ?>
+               <!-- Jika Login sebagai Kepegawaian -->
                <?php if ($session == "2") { ?>
                  <li class="nav-header">Kepegawaian</li>
                  <li class="nav-item">
@@ -180,6 +181,8 @@
                   </a>
                  </li>
                <?php } ?>
+
+               <!-- jika login sebagai User -->
                <?php if ($session == "3") { ?>
                  <li class="nav-header">User</li>
                  <li class="nav-item">
@@ -188,6 +191,29 @@
                       <p>Home</p>
                   </a>
                  </li>
+                 <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p>
+                      Form Pengajuan Cuti
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_cuti'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cuti Tahunan</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_golongan_ruang'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cuti Umum</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
                <?php } ?>
                <li class="nav-header">Account</li>
                <li class="nav-item">

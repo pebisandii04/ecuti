@@ -54,7 +54,7 @@ class Authentication extends CI_Controller {
 					if ($user['role_id'] == 2) {
 						redirect('monitoring');
 					} else {
-						redirect('user');
+						redirect('profile');
 					}
 				} else {
 					$this->session->set_flashdata('message', '
