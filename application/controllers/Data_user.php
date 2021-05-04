@@ -164,7 +164,7 @@ class Data_user extends CI_Controller {
         'status_id' => $this->input->post('status_id', true),
         'photo' => $photo
       ];
-      $where = array('id_user' => $id_user);
+      $where = array('id_user' => $id);
       $this->datauser_model->update($where, $data, 'tbl_user');
       $this->session->set_flashdata('message', '
         <div class="alert alert-success" role="alert">
