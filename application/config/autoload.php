@@ -140,5 +140,6 @@ $autoload['model'] = array(
     'jenispegawai_model',
     'unitkerja_model',
     'Model_cuti_tahunan',
+    'Model_cuti_umum',
     'datauser_model'
 );

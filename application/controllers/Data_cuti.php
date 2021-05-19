@@ -20,16 +20,6 @@ class Data_cuti extends CI_Controller {
         $this->template->load('templates/template','user/data_cuti/view_data', $data);
 	}
 
-    // function Cuti umum menampilkan list data cuti umum
-    public function Cuti_umum()	{
-        $nip = $this->session->userdata('nip');
-        $data['title']      = "E-Cuti | Data Cuti Umum";
-        $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
-        $data['data_cuti'] = $this->Model_cuti_umum->select_by_nip($nip)->result();
-        $this->template->load('templates/template','user/data_cuti/view_data', $data);
-	}
-
-
     // function untuk menampilkan form tambah data cuti
     public function tambah_cuti_tahunan()
     {

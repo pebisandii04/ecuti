@@ -225,7 +225,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="<?php echo base_url().'data_golongan_ruang'; ?>" class="nav-link">
+                      <a href="<?php echo base_url().'data_cuti_umum'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Cuti Umum</p>
                       </a>
