@@ -20,6 +20,12 @@ class Model_cuti_umum extends CI_Model {
         return $this->db->get();
     }
 
+    function get_jenis_cuti(){
+        $this->db->select('*');
+        $this->db->from('tbl_jenis_cuti');
+        return $this->db->get();
+    }
+
     public function delete($where,$table) {
         $this->db->where($where);
         $this->db->delete($table);

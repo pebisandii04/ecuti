@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">List Data</h3>
-                        <div class="card-tools"><a href="<?php echo base_url() ?>Data_cuti/tambah_cuti_tahunan" class="btn btn-sm btn-primary">
+                        <div class="card-tools"><a href="<?php echo base_url() ?>data_cuti_umum/tambah_cuti_umum" class="btn btn-sm btn-primary">
                                 <i class="fas fa-plus">
                                 </i> Tambah data</a>
                         </div>
