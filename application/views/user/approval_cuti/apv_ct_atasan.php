@@ -53,10 +53,10 @@
                                         <td> <?php echo $row->tgl_mulai; ?><b>s/d</b><?php echo $row->tgl_selesai; ?></td>
                                         <td> <?php echo $row->alasan; ?></td>
                                         <td>
-                                            <a href="<?php echo base_url() . 'C_cuti/approve_cuti_atasan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
+                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/approve_atasan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a href="<?php echo base_url() . 'C_cuti/tolak_pengajuan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
+                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/tolak_pengajuan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
                                                 <i class="fas fa-times-circle"></i>
                                             </a>
                                         </td>

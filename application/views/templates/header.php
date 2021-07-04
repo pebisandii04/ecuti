@@ -223,6 +223,8 @@
                   </ul>
                 </li>
 
+                
+
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-calendar-plus"></i>
@@ -257,7 +259,7 @@
                       </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                      <a href="#" class="nav-link">
+                      <a href="" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
                           Cuti Umum
@@ -266,18 +268,36 @@
                       </a>
                       <ul class="nav nav-treeview">
                       <li class="nav-item">
-                          <a href="#" class="nav-link">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_atasan'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
                             <p>Atasan Langsung</p>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a href="#" class="nav-link">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_pejabat'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
                             <p>Pejabat Berwenang</p>
                           </a>
                         </li>
                       </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p>
+                      Laporan
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_cuti_tahunan'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Ter Approve</p>
+                      </a>
                     </li>
                   </ul>
                 </li>
@@ -288,7 +308,7 @@
                <?php if ($session == "3") { ?>
                  <li class="nav-header">User</li>
                  <li class="nav-item">
-                    <a href="<?php echo base_url() . ''; ?>" class="nav-link">
+                    <a href="<?php echo base_url() . '/Dashboard'; ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Home</p>
                     </a>

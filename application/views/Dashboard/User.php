@@ -29,14 +29,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Tahunan</span>
                                 <span class="info-box-number">
-                                    <?php
-                                    $nip = $this->session->userdata('nip');
-                                    $query = $this->db->select('jenis_cuti_id');
-                                    $query = $this->db->from('tbl_cuti_tahunan');
-                                    $query = $this->db->where('tbl_cuti_tahunan.nip',$nip);
-                                    $query = $this->db->get();
-                                    echo $query->num_rows();
-                                    ?>
+                                    0
                                     <small>Hari</small>
                                 </span>
                             </div>
@@ -52,15 +45,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Besar</span>
                                 <span class="info-box-number">
-                                <?php
-                                    $nip = $this->session->userdata('nip');
-                                    $query = $this->db->select('jenis_cuti_id');
-                                    $query = $this->db->from('tbl_cuti_umum');
-                                    $query = $this->db->where('tbl_cuti_umum.nip',$nip);
-                                    $query = $this->db->where('tbl_cuti_umum.jenis_cuti_id',2);
-                                    $query = $this->db->get();
-                                    echo $query->num_rows();
-                                    ?>
+                                    0
                                     <small>Hari</small>
                                 </span>
                             </div>

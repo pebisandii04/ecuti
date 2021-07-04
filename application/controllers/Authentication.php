@@ -18,10 +18,10 @@ class Authentication extends CI_Controller {
 				redirect('Dashboard');
 			}
 			if ($role['role_id'] == 3) {
-				redirect('Dashboard');
+				redirect('Dashboard/user');
 			}
 			else {
-				redirect('user');
+				redirect('Dashboard');
 			}
 		}
 
@@ -58,7 +58,7 @@ class Authentication extends CI_Controller {
 					if ($user['role_id'] == 2) {
 						redirect('Dashboard');
 					} else {
-						redirect('Daashboard/user');
+						redirect('Dashboard/user');
 					}
 				} else {
 					$this->session->set_flashdata('message', '

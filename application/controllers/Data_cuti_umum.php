@@ -191,4 +191,29 @@ class Data_cuti_umum extends CI_Controller {
       </div>');
     redirect('data_cuti_umum');
   }
+
+  public function Apv_cu_pejabat(){
+    $id = $this->session->userdata('id_user');
+    $nip = $this->session->userdata('nip');
+    $data['title']      = "E-Cuti | Approval Cuti Umum";
+    $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+    $data['list_data']  = $this->Model_cuti_umum->select_data_pengajuan($id)->result();
+    $this->template->load('templates/template','user/approval_cuti/apv_cu_pejabat', $data);
+  }
+  public function approve_pejabat(){
+    $this->Model_cuti_umum->approve_pejabat();
+  }
+
+
+  public function Apv_cu_atasan(){
+    $id = $this->session->userdata('id_user');
+    $nip = $this->session->userdata('nip');
+    $data['title']      = "E-Cuti | Approval Cuti Umum";
+    $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+    $data['list_data']  = $this->Model_cuti_umum->select_data_pengajuan_atsn($id)->result();
+    $this->template->load('templates/template','user/approval_cuti/apv_cu_atasan', $data);
+  }
+    public function approve_atasan(){
+      $this->Model_cuti_umum->approve_atasan();
+    }
 }

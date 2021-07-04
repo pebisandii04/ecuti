@@ -18,4 +18,10 @@ class Public_model extends CI_Model {
     $this->db->where('nip', $nip);
     return $this->db->get_where();
   }
+
+  public function get_data_dash(){
+    $nip = $this->session->userdata('nip');
+    $this->db->select('jenis_cuti_id');
+    $this->db->from('tbl_cuti_tahunan');
+  }
 }

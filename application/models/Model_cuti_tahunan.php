@@ -96,12 +96,12 @@ class Model_cuti_tahunan extends CI_Model {
             $data = array(
                 "sts_apv_1" => '0',
             );
-            $this->db->where('id_cuti', $id);
+            $this->db->where('id_cuti_tahunan', $id);
             $this->db->update($this->table, $data);
     
             //pesan berhasil
             $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
             $this->session->set_flashdata("pesan", $msg);
-            redirect(base_url() . 'C_cuti/Approval_cuti_atasan');
+            redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_atasan');
         }
 }

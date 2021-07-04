@@ -29,7 +29,7 @@
                         <div class="card-tools">
                             <a href="<?php echo base_url() ?>data_mahasiswa" class="btn btn-tool"><i class="fas fa-times"></i></a></div>
                     </div>
-                    <form class="" action="<?php echo base_url() ?>data_cuti/edit_cuti_tahunan" method="POST">
+                    <form class="" action="<?php echo base_url() ?>data_cuti_tahunan/edit_cuti_tahunan" method="POST">
                         <!--/.card-header -->
                         <div class="card-body">
                                     <div class="row">
@@ -37,7 +37,7 @@
                                             <!-- Form Edit -->
                                             <label for="alasan">Alasan</label>
                                             <br>
-                                            <input type="hidden" name="id_cuti" value="<?php echo $data_cuti['id_cuti']; ?>">
+                                            <input type="hidden" name="id_cuti_tahunan" value="<?php echo $data_cuti['id_cuti_tahunan']; ?>">
                                             <?php echo form_error('alasan', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                             <input class="form-control mb-4" type="text" name="alasan" value="<?php echo $data_cuti['alasan']; ?>">
                                             <label for="tgl_pengajuan">Tanggal Pengajuan</label>
@@ -84,7 +84,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                              <a href="<?php echo base_url() . 'Data_cuti'; ?>" class="btn btn-default"><i class="fas fa-arrow-left fa-fw"></i> Back</a>
+                              <a href="<?php echo base_url() . 'Data_cuti_tahunan'; ?>" class="btn btn-default"><i class="fas fa-arrow-left fa-fw"></i> Back</a>
                               <input type="submit" value="Proses" onclick="return confirm('Are you sure you want to save it');" class="btn btn-primary float-right">
                           </div>
                                 </div>

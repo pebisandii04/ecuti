@@ -83,7 +83,7 @@ class Data_cuti_tahunan extends CI_Controller {
     {
         // ambil data id dari uri segement 3
         $id = $this->uri->segment(3);
-        $where = array('id_cuti' => $id);
+        $where = array('id_cuti_tahunan' => $id);
           // form validation
         $this->form_validation->set_rules('alasan', 'Alasan', 'required|trim');
         $this->form_validation->set_rules('tgl_pengajuan', 'tgl_pengajuan', 'required|trim');
@@ -94,7 +94,7 @@ class Data_cuti_tahunan extends CI_Controller {
         $this->form_validation->set_rules('no_telp', 'no_telp', 'required|trim');
         $this->form_validation->set_rules('id_atasan', 'id_atasan', 'required|trim');
         
-        $data['title']      = "E-Cuti | Tambah Data Cuti Tahunan";
+        $data['title']      = "E-Cuti | Edit Data Cuti Tahunan";
         $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
         $data['option2'] = $this->Model_cuti_tahunan->get_option2()->result();
         $data['data_cuti'] = $this->Model_cuti_tahunan->edit($where,'tbl_cuti_tahunan')->row_array();
@@ -102,7 +102,7 @@ class Data_cuti_tahunan extends CI_Controller {
         if ($isvalidasi) {
             $this->template->load('templates/template','user/data_cuti/edit_cuti_tahunan', $data);
         }else {
-          $id_cuti = $this->input->post('id_cuti');
+          $id_cuti_tahunan = $this->input->post('id_cuti_tahunan');
           $data = [
             'nip' => htmlspecialchars($this->session->userdata('nip',true)),
             'jenis_cuti_id' => htmlspecialchars('1'),
@@ -118,7 +118,7 @@ class Data_cuti_tahunan extends CI_Controller {
             'sts_apv_2' => htmlspecialchars('1'),
           ];
               //proses query
-            $where = array('id_cuti' => $id_cuti);
+            $where = array('id_cuti_tahunan' => $id_cuti_tahunan);
             $this->Model_cuti_tahunan->update($where,$data,'tbl_cuti_tahunan');
             //pesan berhasil
             $this->session->set_flashdata('message', '
@@ -128,7 +128,7 @@ class Data_cuti_tahunan extends CI_Controller {
                 <span aria-hidden="true">×</span>
               </button>
             </div>');
-          redirect('Data_cuti');
+          redirect('Data_cuti_tahunan');
         }
     }
 
