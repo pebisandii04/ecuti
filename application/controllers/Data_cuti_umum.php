@@ -5,7 +5,7 @@ class Data_cuti_umum extends CI_Controller {
     public function __construct() {
         parent::__construct();
             is_logged_in();
-            if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3') {
+            if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2') {
               redirect('blocked');
           }
         $this->load->library('form_validation');
@@ -24,6 +24,13 @@ class Data_cuti_umum extends CI_Controller {
   // function untuk menampilkan form tambah data cuti umum
   public function tambah_cuti_umum()
   {
+      //untuk membuat id secara automatis
+      $kode = 'T-CU-' . date('ymd').'-';
+      $kode_terakhir = $this->Model_cuti_umum->getMax('tbl_cuti_umum', 'id_cuti_umum', $kode);
+      $kode_tambah = substr($kode_terakhir, -5, 5);
+      $kode_tambah++;
+      $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
+      $data['id_cuti_umum'] = $kode . $number;
         // form validation
       $this->form_validation->set_rules('alasan', 'Alasan', 'required|trim');
       $this->form_validation->set_rules('tgl_pengajuan', 'tgl_pengajuan', 'required|trim');
@@ -61,11 +68,12 @@ class Data_cuti_umum extends CI_Controller {
              $new_file = $this->upload->data('file_name');
              $this->db->set('upload_file', $new_file);
            } else {
-             echo $this->upload->dispay_errors();
+             echo $this->upload->display_errors();
            }
          }
 
         $data = [
+          'id_cuti_umum' => htmlspecialchars($this->input->post('id_cuti_umum',true)),
           'nip' => htmlspecialchars($this->session->userdata('nip',true)),
           'jenis_cuti_id' => htmlspecialchars($this->input->post('id_jenis_cuti',true)),
           'alasan' => htmlspecialchars($this->input->post('alasan',true)),

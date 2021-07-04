@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Data_cuti extends CI_Controller {
+class Data_cuti_tahunan extends CI_Controller {
   public $table = 'tbl_cuti_tahunan';
   public function __construct() {
     parent::__construct();
 		is_logged_in();
-		if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3') {
+		if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2') {
 	      redirect('blocked');
 	  }
     $this->load->library('form_validation');
@@ -23,6 +23,13 @@ class Data_cuti extends CI_Controller {
     // function untuk menampilkan form tambah data cuti
     public function tambah_cuti_tahunan()
     {
+          //untuk membuat id secara automatis
+        $kode = 'T-CT-' . date('ymd').'-';
+        $kode_terakhir = $this->Model_cuti_tahunan->getMax('tbl_cuti_tahunan', 'id_cuti_tahunan', $kode);
+        $kode_tambah = substr($kode_terakhir, -5, 5);
+        $kode_tambah++;
+        $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
+        $data['id_cuti_tahunan'] = $kode . $number;
           // form validation
         $this->form_validation->set_rules('alasan', 'Alasan', 'required|trim');
         $this->form_validation->set_rules('tgl_pengajuan', 'tgl_pengajuan', 'required|trim');
@@ -40,7 +47,11 @@ class Data_cuti extends CI_Controller {
         if ($isvalidasi) {
             $this->template->load('templates/template','user/data_cuti/tambah_cuti_tahunan', $data);
         }else {
+          //untuk membuat id
+          $cekid = $this->Model_cuti_tahunan->cekidbarang();
+          
           $data = [
+            'id_cuti_tahunan' => htmlspecialchars($this->input->post('id_cuti_tahunan',true)),
             'nip' => htmlspecialchars($this->session->userdata('nip',true)),
             'jenis_cuti_id' => htmlspecialchars('1'),
             'alasan' => htmlspecialchars($this->input->post('alasan',true)),
@@ -64,7 +75,7 @@ class Data_cuti extends CI_Controller {
                 <span aria-hidden="true">×</span>
               </button>
             </div>');
-          redirect('Data_cuti');
+          redirect('Data_cuti_tahunan');
         }
     }
 
@@ -119,7 +130,32 @@ class Data_cuti extends CI_Controller {
             </div>');
           redirect('Data_cuti');
         }
-    } 
+    }
+
+    public function Apv_ct_pejabat(){
+      $id = $this->session->userdata('id_user');
+      $nip = $this->session->userdata('nip');
+      $data['title']      = "E-Cuti | Approval Cuti Tahunan";
+      $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+      $data['list_data'] = $this->Model_cuti_tahunan->select_data_pengajuan($id)->result();
+      $this->template->load('templates/template','user/approval_cuti/apv_ct_pejabat', $data);
+    }
+      public function approve_pejabat(){
+        $this->Model_cuti_tahunan->approve_pejabat();
+      }
+
+
+      public function Apv_ct_atasan(){
+        $id = $this->session->userdata('id_user');
+        $nip = $this->session->userdata('nip');
+        $data['title']      = "E-Cuti | Approval Cuti Tahunan";
+        $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['list_data'] = $this->Model_cuti_tahunan->select_data_pengajuan_atsn($id)->result();
+        $this->template->load('templates/template','user/approval_cuti/apv_ct_atasan', $data);
+      }
+      public function approve_atasan(){
+        $this->Model_cuti_tahunan->approve_atasan();
+      }
 
     public function delete_data() {
       $id = $this->uri->segment(3);

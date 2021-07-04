@@ -15,8 +15,12 @@ class Authentication extends CI_Controller {
 				redirect('administrator');
 			}
 			if ($role['role_id'] == 2) {
-				redirect('monitoring');
-			} else {
+				redirect('Dashboard');
+			}
+			if ($role['role_id'] == 3) {
+				redirect('Dashboard');
+			}
+			else {
 				redirect('user');
 			}
 		}
@@ -52,9 +56,9 @@ class Authentication extends CI_Controller {
 						redirect('administrator');
 					}
 					if ($user['role_id'] == 2) {
-						redirect('monitoring');
+						redirect('Dashboard');
 					} else {
-						redirect('profile');
+						redirect('Daashboard/user');
 					}
 				} else {
 					$this->session->set_flashdata('message', '

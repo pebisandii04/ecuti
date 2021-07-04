@@ -29,12 +29,16 @@
                         <div class="card-tools">
                             <a href="<?php echo base_url() ?>data_mahasiswa" class="btn btn-tool"><i class="fas fa-times"></i></a></div>
                     </div>
-                    <form class="" action="<?php echo base_url() ?>data_cuti/tambah_cuti_tahunan" method="POST">
+                    <form class="" action="<?php echo base_url() ?>data_cuti_tahunan/tambah_cuti_tahunan" method="POST">
                         <!--/.card-header -->
                         <div class="card-body">
                                     <div class="row">
                                         <div class="col-5 offset-1">
                                             <!-- FORM TAMBAH DATA PEGAWAI -->
+
+                                            <input class="form-control" readonly type="hidden" name="id_cuti_tahunan" value="<?php echo $id_cuti_tahunan; ?>" />
+                                            <?php echo form_error('id_cuti_tahunan', '<small class="text-danger pl-3">', '</small>'); ?> 
+
                                             <label for="alasan">Alasan</label>
                                             <br>
                                             <?php echo form_error('alasan', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>

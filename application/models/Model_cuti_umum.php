@@ -42,4 +42,14 @@ class Model_cuti_umum extends CI_Model {
         $this->db->where($where);
         $this->db->update($table,$data);
       }
+
+      public function getMax($table, $field, $kode = null) {
+        $this->db->select_max($field);
+        if ($kode != null) {
+            $this->db->like($field, $kode, 'after');
+        }
+        return $this->db->get($table)->row_array()[$field];
+        }
+
+        
 }

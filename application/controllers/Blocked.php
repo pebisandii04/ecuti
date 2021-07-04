@@ -10,7 +10,7 @@ class Blocked extends CI_Controller {
           redirect('administrator');
       }
       if ($role['role_id'] == 2) {
-          redirect('monitoring');
+          redirect('');
       } else {
         redirect('user');
       }

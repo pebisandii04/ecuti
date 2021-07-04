@@ -6,9 +6,9 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1> <i class="fas fa-building fa-fw"></i> Data Pengajuan Cuti Tahunan</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
+                </div>
+                <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
                 <li class="breadcrumb-item active">Data Pengajuan Cuti Tahunan</li>
               </ol>
@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">List Data</h3>
-                        <div class="card-tools"><a href="<?php echo base_url() ?>Data_cuti/tambah_cuti_tahunan" class="btn btn-sm btn-primary">
+                        <div class="card-tools"><a href="<?php echo base_url() ?>Data_cuti_tahunan/tambah_cuti_tahunan" class="btn btn-sm btn-primary">
                                 <i class="fas fa-plus">
                                 </i> Tambah data</a>
                         </div>
@@ -66,10 +66,10 @@
                                         </td>
                                         <td>
                                         <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'Data_cuti/edit_cuti_tahunan/' . $row->id_cuti; ?>" class="btn btn-sm btn-secondary">
+                                            <a href="<?php echo base_url() . 'Data_cuti/edit_cuti_tahunan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="<?php echo base_url() . 'Data_cuti/delete_data/' . $row->id_cuti; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
+                                            <a href="<?php echo base_url() . 'Data_cuti/delete_data/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                             <?php } ?>

@@ -32,20 +32,15 @@
         </div>
         <div class="row">
           <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember" class="text-gray">
-                Remember Me
-              </label>
-            </div>
+            <p class="mb-1">
+            <a href="<?php echo base_url() . 'authentication/forgot_password'; ?>">I forgot my password</a>
+            </p>
           </div>
           <div class="col-4">
             <button type="submit" class="btn btn-primary btn-block"> <i class="fas fa-sign-in-alt fa-fw"></i> Login</button>
           </div>
         </div>
-        <p class="mb-1">
-          <a href="<?php echo base_url() . 'authentication/forgot_password'; ?>">I forgot my password</a>
-        </p>
+        
       </form>
     </div>
   </div>
