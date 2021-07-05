@@ -222,9 +222,6 @@
                     </li>
                   </ul>
                 </li>
-
-                
-
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-calendar-plus"></i>
@@ -292,12 +289,195 @@
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
+                  <ul class="nav nav-treeview">
+              
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Cuti Tahunan
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'laporan/all_ct_apv'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Data Pengajuan Cuti</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_tahunan/Apv_ct_pejabat'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Data Cuti Pending</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                      <a href="" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Cuti Umum
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_atasan'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Atasan Langsung</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_pejabat'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Pejabat Berwenang</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+               <?php } ?>
+
+               <!-- Jika Login sebagai Atasan langsung-->
+               <?php if ($session == "4") { ?>
+                 <li class="nav-header">Atasan</li>
+                 <li class="nav-item">
+                  <a href="<?php echo base_url() . ''; ?>" class="nav-link">
+                      <i class="nav-icon fas fa-tachometer-alt"></i>
+                      <p>Home</p>
+                  </a>
+                 </li>
+
+                 <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p>
+                      Form Pengajuan Cuti
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
                       <a href="<?php echo base_url().'data_cuti_tahunan'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Data Ter Approve</p>
+                        <p>Cuti Tahunan</p>
                       </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_cuti_umum'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Cuti Umum</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p>
+                      Approval Cuti
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+              
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Cuti Tahunan
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_tahunan/Apv_ct_atasan'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Atasan Langsung</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                      <a href="" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Cuti Umum
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_atasan'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Atasan Langsung</p>
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p>
+                      Laporan
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+              
+                    <li class="nav-item has-treeview">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Cuti Tahunan
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'laporan/all_ct_apv'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Data Ter Approve</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_tahunan/Apv_ct_pejabat'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Data Cuti Pending</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                      <a href="" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                          Cuti Umum
+                          <i class="right fas fa-angle-left"></i>
+                        </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_atasan'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Atasan Langsung</p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_pejabat'; ?>" class="nav-link">
+                            <i class="far fa-dot-circle nav-icon"></i>
+                            <p>Pejabat Berwenang</p>
+                          </a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </li>
@@ -336,36 +516,13 @@
                     </li>
                   </ul>
                 </li>
-                 <li class="nav-item">
-                   <a href="#" class="nav-link">
-                     <i class="nav-icon fas fa-calendar-plus"></i>
-                     <p>
-                       Form Pengajuan Izin
-                       <i class="right fas fa-angle-left"></i>
-                     </p>
-                   </a>
-                   <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . 'pengajuan_cuti'; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Izin Tidak Masuk Kantor</p>
-                       </a>
-                     </li>
-                     <li class="nav-item">
-                       <a href="<?php echo base_url() . ''; ?>" class="nav-link">
-                         <i class="far fa-circle nav-icon"></i>
-                         <p>Izin Tidak Keluar Kantor</p>
-                       </a>
-                     </li>
-                   </ul>
-                 </li>
+                 
                  <li class="nav-item">
                     <a href="<?php echo base_url() . 'user/contact'; ?>" class="nav-link">
                         <i class="nav-icon fas fa-phone-square-alt"></i>
                         <p>Kontak Kami</p>
                     </a>
                  </li>
-                 
                <?php } ?>
                <li class="nav-header">Account</li>
                <li class="nav-item">

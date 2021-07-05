@@ -6,7 +6,7 @@ class Data_cuti_tahunan extends CI_Controller {
   public function __construct() {
     parent::__construct();
 		is_logged_in();
-		if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2') {
+		if ($this->session->userdata('nip') == '' && $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2' && $this->session->userdata('role_id') != '4' ) {
 	      redirect('blocked');
 	  }
     $this->load->library('form_validation');
@@ -43,6 +43,7 @@ class Data_cuti_tahunan extends CI_Controller {
         $data['title']      = "E-Cuti | Tambah Data Cuti Tahunan";
         $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
         $data['option2'] = $this->Model_cuti_tahunan->get_option2()->result();
+			  $data['hak_cuti'] = $this->public_model->sisa_hak_cuti()->row();
         $isvalidasi = $this->form_validation->run() == FALSE;
         if ($isvalidasi) {
             $this->template->load('templates/template','user/data_cuti/tambah_cuti_tahunan', $data);
@@ -65,8 +66,19 @@ class Data_cuti_tahunan extends CI_Controller {
             'sts_apv_1' => htmlspecialchars('1'),
             'sts_apv_2' => htmlspecialchars('1'),
           ];
+
               //proses query
             $this->db->insert('tbl_cuti_tahunan', $data);
+
+            //update data hak cuti
+            $id_user = $this->session->userdata('id_user');
+            $hak_cuti = $this->input->post('jml_hak');
+
+            $data1 = [
+              'n' => htmlspecialchars($this->input->post('hasil',true)),
+            ];
+            $where = array('user_id' => $id_user);
+            $this->public_model->update($where,$data1,'tbl_hak_cuti_tahunan');
             //pesan berhasil
             $this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
@@ -159,7 +171,7 @@ class Data_cuti_tahunan extends CI_Controller {
 
     public function delete_data() {
       $id = $this->uri->segment(3);
-      $where = array('id_cuti' => $id);
+      $where = array('id_cuti_tahunan' => $id);
       $this->Model_cuti_tahunan->delete($where,'tbl_cuti_tahunan');
       $this->session->set_flashdata('message', '
         <div class="alert alert-success" role="alert">
@@ -168,6 +180,6 @@ class Data_cuti_tahunan extends CI_Controller {
             <span aria-hidden="true">×</span>
           </button>
         </div>');
-      redirect('data_cuti');
+      redirect('data_cuti_tahunan');
     }
 }

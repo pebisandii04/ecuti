@@ -19,9 +19,17 @@ class Public_model extends CI_Model {
     return $this->db->get_where();
   }
 
-  public function get_data_dash(){
-    $nip = $this->session->userdata('nip');
-    $this->db->select('jenis_cuti_id');
-    $this->db->from('tbl_cuti_tahunan');
-  }
+  public function sisa_hak_cuti(){
+      $nip = $this->session->userdata('nip');
+      $this->db->select('*');
+      $this->db->from('tbl_hak_cuti_tahunan');
+      $this->db->join('tbl_user', 'tbl_user.id_user = tbl_hak_cuti_tahunan.user_id');
+      $this->db->where('tbl_user.nip',$nip);
+      return $this->db->get();
+      }
+
+      public function update($where,$data,$table) {
+        $this->db->where($where);
+        $this->db->update($table,$data);
+      }
 }

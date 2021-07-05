@@ -19,7 +19,7 @@
     <!-- /.content-header -->
 <!-- Main content -->
             <section class="content">
-
+                <h4>Hak Cuti</h4>
                 <!-- Default box -->
                 <div class="row">
                     <div class="col-4">
@@ -30,12 +30,11 @@
                                 <span class="info-box-text">Cuti Tahunan</span>
                                 <span class="info-box-number">
                                     <?php
-                                    $nip = $this->session->userdata('nip');
-                                    $query = $this->db->select('jenis_cuti_id');
-                                    $query = $this->db->from('tbl_cuti_tahunan');
-                                    $query = $this->db->where('tbl_cuti_tahunan.nip',$nip);
-                                    $query = $this->db->get();
-                                    echo $query->num_rows();
+                                        $n = $hak_cuti->n;
+                                        $n1 = $hak_cuti->n_1;
+                                        $n2 = $hak_cuti->n_2;
+                                        $jumlah = $n + $n1 + $n2;
+                                        echo $jumlah;
                                     ?>
                                     <small>Hari</small>
                                 </span>
@@ -52,15 +51,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Besar</span>
                                 <span class="info-box-number">
-                                <?php
-                                    $nip = $this->session->userdata('nip');
-                                    $query = $this->db->select('jenis_cuti_id');
-                                    $query = $this->db->from('tbl_cuti_umum');
-                                    $query = $this->db->where('tbl_cuti_umum.nip',$nip);
-                                    $query = $this->db->where('tbl_cuti_umum.jenis_cuti_id',2);
-                                    $query = $this->db->get();
-                                    echo $query->num_rows();
-                                    ?>
+                                    90
                                     <small>Hari</small>
                                 </span>
                             </div>
@@ -80,8 +71,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Sakit</span>
                                 <span class="info-box-number">
-                                    0
-                                    <small>Hari</small>
+                                    Menyesuaikan
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -99,7 +89,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Melahirkan</span>
                                 <span class="info-box-number">
-                                    0
+                                90
                                     <small>Hari</small>
                                 </span>
                             </div>
@@ -115,7 +105,7 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Alasan Penting</span>
                                 <span class="info-box-number">
-                                    0
+                                    2-3
                                     <small>Hari</small>
                                 </span>
                             </div>
@@ -127,12 +117,11 @@
                     <div class="col-4">
                         <div class="info-box mb-3">
                             <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-flag"></i></span>
-
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Luar Tanggungan</span>
                                 <span class="info-box-number">
-                                    0
-                                    <small>Hari</small>
+                                    Max 3
+                                    <small>Taun</small>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -155,19 +144,19 @@
                                 <div class="table-responsive">
                                     <table class="table m-0">
                                         <thead>
-                                            <tr>
-                                                <th>Tanggal</th>
-                                                <th>Lama</th>
-                                                <th>Jenis Cuti</th>
-                                            </tr>
+                                        <?php
+                                            foreach ($cuti_terakhir as $row) { ; ?>
+                                                <tbody>
+                                                    <tr>
+                                                    <td><?php echo $row->tanggal_mulai?></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            <?php } ?>
+                                            
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
+                                        
                                     </table>
                                 </div>
                                 <!-- /.table-responsive -->

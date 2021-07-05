@@ -20,7 +20,7 @@ class Authentication extends CI_Controller {
 			if ($role['role_id'] == 3) {
 				redirect('Dashboard/user');
 			}
-			else {
+			if ($role['role_id'] == 4){
 				redirect('Dashboard');
 			}
 		}
@@ -57,7 +57,11 @@ class Authentication extends CI_Controller {
 					}
 					if ($user['role_id'] == 2) {
 						redirect('Dashboard');
-					} else {
+					}
+					if ($user['role_id'] == 4) {
+						redirect('Dashboard');
+					}
+					if ($user['role_id'] == 3) {
 						redirect('Dashboard/user');
 					}
 				} else {

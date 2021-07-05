@@ -56,13 +56,20 @@
                                         <td> <?php echo $row->tgl_mulai; ?><b>s/d</b><?php echo $row->tgl_selesai; ?></td>
                                         <td> <?php echo $row->alasan; ?></td>
                                         <td>
-                                            <?php if ($row->sts_apv_1 OR $row->sts_apv_2 == 1) {
-                                                echo '<span class="badge badge-danger">Menunggu Approve</span>';
-                                            } elseif ($row->sts_apv_2 == 3) {
-                                                echo '<span class="badge badge-danger">Ditolak</span>';
-                                            } else {
+                                        <?php
+                                            if ($row->sts_apv_1 == 0 && $row->sts_apv_2 == 1) {
+                                                echo '<span class="badge badge-danger">Menunggu Apv Pejabat</span>';
+                                            }
+                                            if ($row->sts_apv_1 == 1 && $row->sts_apv_2 == 1) {
+                                                echo '<span class="badge badge-danger">Menunggu Apvrove</span>';
+                                            }
+                                            if ($row->sts_apv_1 == 0 && $row->sts_apv_2 == 0) {
                                                 echo '<span class="badge badge-success">Sudah Approve</span>';
-                                            } ?>          
+                                            } 
+                                            if ($row->sts_apv_2 == 3) {
+                                                echo '<span class="badge badge-danger">Ditolak</span>';
+                                            }
+                                            ?>         
                                         </td>
                                         <td>
                                         <?php if ($row->sts_apv_2 == 1) { ?>
