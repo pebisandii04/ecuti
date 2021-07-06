@@ -64,7 +64,7 @@ class Data_user extends CI_Controller {
       $data['data_status']         = $this->db->get('tbl_status')->result_array();
       $this->template->load('templates/template', 'administrator/data_user/add_data', $data);
     } else {
-      $password = 12345;
+      $password = 'pn-jakut';
       $email = $this->input->post('email', true);
       $no_telp = $this->input->post('no_telp', true);
       if ($this->upload->do_upload('photo')) {
@@ -175,6 +175,24 @@ class Data_user extends CI_Controller {
         </div>');
       redirect('data_user');
     }
+  }
+
+  public function reset_password(){
+    $pass = 'pn-jakut';
+    $id = $this->uri->segment(3);
+    $data = [
+      'password' => password_hash(($pass), PASSWORD_DEFAULT),
+    ];
+    $where = array('id_user' => $id);
+    $this->datauser_model->update($where, $data, 'tbl_user');
+    $this->session->set_flashdata('message', '
+        <div class="alert alert-success" role="alert">
+          <i class="fas fa-check-circle fa-fw"></i> Data user has been updated!
+          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>');
+      redirect('data_user');
   }
 
   public function delete_data() {

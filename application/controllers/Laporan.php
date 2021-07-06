@@ -19,11 +19,20 @@ class Laporan extends CI_Controller {
 	}
 
     public function All_ct_apv(){
-        $data['title'] = "E-Cuti | Laporan Cuti Unit Kerja";
+        $data['title'] = "E-Cuti | Laporan Cuti ";
         $data['user']   = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
 		$nip = $this->session->userdata('nip');
-		$data['listdata'] = $this->Model_laporan->get_ct_avp($nip)->result();
+		$id_user = $this->session->userdata('id_user');
+		if ($id_user == 1) {
+			$data['listdata'] = $this->Model_laporan->get_ct_all($nip)->result();
+		}
+		else {
+			$data['listdata'] = $this->Model_laporan->get_ct_avp($nip)->result();
+		}
 		$this->template->load('templates/template','Laporan/Laporan_ct_apv', $data); 
     }
 	
+	public function Cetak_lampiran(){
+		$this->load->view('Laporan/Cetak_surat');
+	}
 }
