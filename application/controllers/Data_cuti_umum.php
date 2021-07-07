@@ -5,7 +5,7 @@ class Data_cuti_umum extends CI_Controller {
     public function __construct() {
         parent::__construct();
             is_logged_in();
-            if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2') {
+            if ($this->session->userdata('nip') == '' && $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2' && $this->session->userdata('role_id') != '4' ) {
               redirect('blocked');
           }
         $this->load->library('form_validation');
@@ -20,6 +20,13 @@ class Data_cuti_umum extends CI_Controller {
         $this->template->load('templates/template','user/data_cuti/view_cuti_umum', $data);
 	}
 
+  public function Rekap_data_cu(){
+    $nip = $this->session->userdata('nip');
+    $data['title']      = "E-Cuti | Rekap Data Cuti Umum";
+    $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+    $data['data_cuti'] = $this->Model_cuti_umum->select_data_all()->result();
+    $this->template->load('templates/template','administrator/data_cuti/view_data_cu', $data);
+}
 
   // function untuk menampilkan form tambah data cuti umum
   public function tambah_cuti_umum()

@@ -5,12 +5,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1> <i class="fas fa-file-signature fa-fw"></i> Data Pengajuan Cuti Umum</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
+              <h1> <i class="fas fa-file-signature fa-fw"></i> Rekap Data Cuti Tahunan</h1>
+                </div>
+                <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
-                <li class="breadcrumb-item active">Data Pengajuan Cuti Umum</li>
+                <li class="breadcrumb-item active">Rekap Data Cuti Tahunan</li>
               </ol>
             </div>
           </div>
@@ -26,23 +26,20 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">List Data</h3>
-                        <div class="card-tools"><a href="<?php echo base_url() ?>data_cuti_umum/tambah_cuti_umum" class="btn btn-sm btn-primary">
-                                <i class="fas fa-plus">
-                                </i> Tambah data</a>
-                        </div>
                     </div>
                     <!--/.card-header -->
                     <div class="card-body">
+                         <?php echo $this->session->flashdata('message'); ?>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nama Lengkap</th>
                                     <th>Jenis Cuti</th>
                                     <th>Tgl Pengajuan</th>
                                     <th>Priode Cuti</th>
                                     <th>Alasan</th>
                                     <th>Status</th>
-                                    <th>Aksi </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,6 +48,7 @@
                                 foreach ($data_cuti as $row) { ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
+                                        <td> <?php echo $row->nama_lengkap; ?></td>
                                         <td> <?php echo $row->nama_jenis_cuti; ?></td>
                                         <td> <?php echo $row->tgl_pengajuan; ?></td>
                                         <td> <?php echo $row->tgl_mulai; ?><b>s/d</b><?php echo $row->tgl_selesai; ?></td>
@@ -59,6 +57,9 @@
                                         <?php
                                             if ($row->sts_apv_1 == 0 && $row->sts_apv_2 == 1) {
                                                 echo '<span class="badge badge-danger">Menunggu Apv Pejabat</span>';
+                                            }
+                                            if ($row->sts_apv_1 == 1 && $row->sts_apv_2 == 0) {
+                                                echo '<span class="badge badge-danger">Menunggu Apv Atasan</span>';
                                             }
                                             if ($row->sts_apv_1 == 1 && $row->sts_apv_2 == 1) {
                                                 echo '<span class="badge badge-danger">Menunggu Apvrove</span>';
@@ -70,26 +71,6 @@
                                                 echo '<span class="badge badge-danger">Ditolak</span>';
                                             }
                                             ?>         
-                                        </td>
-                                        <td>
-                                        <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'Data_cuti_umum/edit_cuti_tahunan/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-secondary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="<?php echo base_url() . 'Data_cuti_umum/delete_data/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
-                                            <?php } ?>
-                                            <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning disabled">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                            <?php } ?>
-                                            <?php if ($row->sts_apv_2 == 0) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning">
-                                                <i class="fas fa-print"></i>
-                                            </a>
-                                            <?php } ?>
                                         </td>
                                     </tr>
                                 <?php } ?>

@@ -13,15 +13,10 @@ class Data_hak_cuti extends CI_Controller {
     }
 
     public function index() {
-        $data['title']       = "SIAPEM BASA | Kelola Atasan";
-        $data['user']        = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
-        $data['data_hak_cuti'] = $this->datahakcuti_model->get()->result_array();
-        $this->template->load('templates/template', 'administrator/data_hak_cuti/view_data', $data);
-    }
-
-    public function add_data() {
-        $data['title']       = "SIAPEM BASA | Kelola Atasan";
-        $data['user']        = $this->public_model->session(['nip' => $this->session->userdata('nip')])->row_array();
-        $this->template->load('templates/template', 'administrator/data_hak_cuti/add_data', $data);
+        $nip = $this->session->userdata('nip');
+        $data['title']      = "E-Cuti | Data Cuti Tahunan";
+        $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+        $data['data_hak_ct'] = $this->Datahakcuti_model->select_all_data()->result();
+        $this->template->load('templates/template','administrator/data_cuti/view_data_hak_ct', $data);
     }
 }

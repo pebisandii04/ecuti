@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1> <i class="fas fa-building fa-fw"></i> Data Pengajuan Cuti Tahunan</h1>
+              <h1> <i class="fas fa-file-signature fa-fw"></i> Data Pengajuan Cuti Tahunan</h1>
                 </div>
                 <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -74,20 +74,31 @@
                                         </td>
                                         <td>
                                         <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/edit_cuti_tahunan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/delete_data/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                                <a href="<?php echo base_url() . 'Data_cuti_tahunan/edit_cuti_tahunan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="<?php echo base_url() . 'Data_cuti_tahunan/delete_data/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             <?php } ?>
-                                            <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning disabled">
+                                                <?php if ($row->sts_apv_2 == 1) { ?>
+                                                    <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning disabled">
+                                                        <i class="fas fa-print"></i>
+                                                    </a>
+                                                <?php } ?>
+                                            <?php if ($row->sts_apv_2 == 0) { ?>
+                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             <?php } ?>
+
+                                            <?php if ($row->sts_apv_2 == 1) { ?>
+                                                    <a href="<?php echo base_url() . 'Laporan/cetak_surat/' . $row->nip; ?>" class="btn btn-sm btn-primary disabled">
+                                                        <i class="fas fa-print"></i>
+                                                    </a>
+                                                <?php } ?>
                                             <?php if ($row->sts_apv_2 == 0) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning">
+                                            <a href="<?php echo base_url() . 'Laporan/cetak_surat/' . $row->nip; ?>" class="btn btn-sm btn-primary" target="_blank">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             <?php } ?>

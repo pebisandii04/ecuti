@@ -2,9 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Laporan extends CI_Controller {
-
+	
 	public function __construct() {
     parent::__construct();
+		$this->load->helper('tgl_indo');
 		is_logged_in();
 		if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2' && $this->session->userdata('role_id') != '4') {
 	      redirect('blocked');
@@ -32,7 +33,14 @@ class Laporan extends CI_Controller {
 		$this->template->load('templates/template','Laporan/Laporan_ct_apv', $data); 
     }
 	
-	public function Cetak_lampiran(){
-		$this->load->view('Laporan/Cetak_surat');
+	public function Cetak_surat(){
+		$nip = $this->session->userdata('nip');
+		$data['data'] = $this->Model_laporan->select_data_cetak_ct($nip)->row();
+		//$this->load->view('Laporan/Cetak_surat',$data);
+		$this->load->library('pdf');
+		$this->pdf->setPaper(array(0,0,609.4488,935.433), 'potrait');
+		$this->pdf->set_option('isRemoteEnabled', true);
+		$this->pdf->filename = "laporan-petanikode.pdf";
+		$this->pdf->load_view('laporan/cetak_surat', $data);
 	}
 }

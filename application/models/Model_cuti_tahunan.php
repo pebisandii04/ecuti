@@ -61,8 +61,20 @@ class Model_cuti_tahunan extends CI_Model {
             $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_tahunan.jenis_cuti_id');
             $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_tahunan.nip');
             $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_tahunan.atasan_id');
-            $this->db->where('tbl_kelola_atasan.pejabat_id',$id);
+            //$this->db->join('tbl_kelola_jabatan','tbl_kelola_pejabat.user_id = tbl_cuti_tahunan');
             $this->db->where('tbl_cuti_tahunan.sts_apv_2',1);
+            $this->db->where('tbl_kelola_atasan.pejabat_id',$id);
+            return $this->db->get();
+        }
+
+        public function select_data_all()
+        {
+            $this->db->select('*');
+            $this->db->from($this->table);
+            $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_tahunan.jenis_cuti_id');
+            $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_tahunan.nip');
+            $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_tahunan.atasan_id');
+            //$this->db->join('tbl_kelola_jabatan','tbl_kelola_pejabat.user_id = tbl_cuti_tahunan');
             return $this->db->get();
         }
 

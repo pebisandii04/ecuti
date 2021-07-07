@@ -174,7 +174,7 @@
                   <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-database"></i>
                     <p>
-                      Master Data Cuti
+                      Manajemen Pimpinan
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
@@ -182,12 +182,47 @@
                     <li class="nav-item">
                       <a href="<?php echo base_url().'data_hak_cuti'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Data Cuti Tahunan</p>
+                        <p>Kelola Atasan Langsung</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_hak_cuti'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Kelola Pejabat Berwenang</p>
                       </a>
                     </li>
                   </ul>
                  </li>
-                 <li class="nav-header">Management Pimpinan</li>
+
+                 <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-database"></i>
+                    <p>
+                      Laporan Data Cuti
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview" style="display: none;">
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_cuti_tahunan/rekap_data_ct'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Rekap Data Cuti Tahunan</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_cuti_umum/rekap_data_cu'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Rekap Data Cuti Umum</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_hak_cuti'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Rekap Hak Cuti Taunan</p>
+                      </a>
+                    </li>
+                  </ul>
+                 </li>
                <?php } ?>
                <!-- Jika Login sebagai pejabat langsung-->
                <?php if ($session == "2") { ?>

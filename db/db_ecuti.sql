@@ -1,21 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 25 Apr 2021 pada 19.22
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 7.2.34
+-- Host: localhost:8889
+-- Generation Time: Jul 07, 2021 at 02:56 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_ecuti`
@@ -24,7 +17,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_agama`
+-- Table structure for table `tbl_agama`
 --
 
 CREATE TABLE `tbl_agama` (
@@ -33,7 +26,7 @@ CREATE TABLE `tbl_agama` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_agama`
+-- Dumping data for table `tbl_agama`
 --
 
 INSERT INTO `tbl_agama` (`id_agama`, `nama_agama`) VALUES
@@ -48,11 +41,11 @@ INSERT INTO `tbl_agama` (`id_agama`, `nama_agama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_cuti_tahunan`
+-- Table structure for table `tbl_cuti_tahunan`
 --
 
 CREATE TABLE `tbl_cuti_tahunan` (
-  `id_cuti` int(11) NOT NULL,
+  `id_cuti_tahunan` varchar(20) NOT NULL,
   `nip` varchar(20) NOT NULL,
   `jenis_cuti_id` int(11) NOT NULL,
   `alasan` text NOT NULL,
@@ -68,16 +61,55 @@ CREATE TABLE `tbl_cuti_tahunan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_cuti_tahunan`
+-- Dumping data for table `tbl_cuti_tahunan`
 --
 
-INSERT INTO `tbl_cuti_tahunan` (`id_cuti`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `sts_apv_1`, `sts_apv_2`) VALUES
-(2, '1955110902201210016', 1, 'Test', '2021-04-26', '2021-04-27', '2021-04-28', 2, 'test', '08978845654', 1, 1, 1);
+INSERT INTO `tbl_cuti_tahunan` (`id_cuti_tahunan`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `sts_apv_1`, `sts_apv_2`) VALUES
+('T-CT-210703-00001', '197608272001121002', 1, 'test edited', '2021-07-05', '2021-07-05', '2021-07-06', 2, 'test', '081383062154', 2, 0, 0),
+('T-CT-210704-00001', '197608272001121002', 1, 'Menikahkan Anak', '2021-07-05', '2021-07-05', '2021-07-05', 2, 'test', '089643647347', 2, 0, 0),
+('T-CT-210705-00002', '197608272001121002', 1, 'test edited 1', '2021-07-05', '2021-07-06', '2021-07-07', 2, 'test', '081383062154', 2, 1, 0),
+('T-CT-210705-00003', '197806122006042003', 1, 'test3', '2021-07-05', '2021-07-06', '2021-07-07', 2, 'test', '089643647347', 7, 0, 0),
+('T-CT-210706-00001', '197806122006042003', 1, 'Keperluan Keluarga', '2021-06-25', '2021-06-28', '2021-06-30', 3, 'Jl. Gajah Mada No. 17', '085267031075', 7, 1, 1),
+('T-CT-210706-00002', '198405312009042010', 1, 'Keperluan Keluarga', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 10, 0, 1),
+('T-CT-210706-00003', '197806122006042003', 1, 'Keperluan Keluarga', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 7, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_golongan_ruang`
+-- Table structure for table `tbl_cuti_umum`
+--
+
+CREATE TABLE `tbl_cuti_umum` (
+  `id_cuti_umum` varchar(20) NOT NULL,
+  `nip` varchar(20) NOT NULL,
+  `jenis_cuti_id` int(11) NOT NULL,
+  `alasan` text NOT NULL,
+  `tgl_pengajuan` date NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_selesai` date NOT NULL,
+  `jml_hari` int(11) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_telp` varchar(12) NOT NULL,
+  `atasan_id` int(11) NOT NULL,
+  `upload_file` varchar(80) NOT NULL,
+  `sts_apv_1` int(11) NOT NULL,
+  `sts_apv_2` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_cuti_umum`
+--
+
+INSERT INTO `tbl_cuti_umum` (`id_cuti_umum`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `upload_file`, `sts_apv_1`, `sts_apv_2`) VALUES
+('T-CU-210704-00001', '197608272001121002', 3, 'sakit cacar', '2021-07-04', '2021-07-07', '2021-07-08', 2, 'test', '089643647347', 2, '', 1, 0),
+('T-CU-210704-00002', '197608272001121002', 2, 'test1', '2021-07-05', '2021-07-06', '2021-07-07', 2, 'test', '089643647347', 2, 'bukti-1625420440.pdf', 1, 1),
+('T-CU-210705-00001', '1955110902201210016', 2, 'test', '2021-07-06', '2021-07-07', '2021-07-08', 2, 'test', '089643647347', 1, 'bukti-1625488215.pdf', 1, 1),
+('T-CU-210706-00001', '198405312009042010', 3, 'Sakit Badan Meriang', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 10, '', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_golongan_ruang`
 --
 
 CREATE TABLE `tbl_golongan_ruang` (
@@ -86,7 +118,7 @@ CREATE TABLE `tbl_golongan_ruang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_golongan_ruang`
+-- Dumping data for table `tbl_golongan_ruang`
 --
 
 INSERT INTO `tbl_golongan_ruang` (`id_gol_ruang`, `nama_golongan`) VALUES
@@ -112,7 +144,7 @@ INSERT INTO `tbl_golongan_ruang` (`id_gol_ruang`, `nama_golongan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_hak_cuti_besar`
+-- Table structure for table `tbl_hak_cuti_besar`
 --
 
 CREATE TABLE `tbl_hak_cuti_besar` (
@@ -124,7 +156,7 @@ CREATE TABLE `tbl_hak_cuti_besar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_hak_cuti_besar`
+-- Dumping data for table `tbl_hak_cuti_besar`
 --
 
 INSERT INTO `tbl_hak_cuti_besar` (`id_hak_cuti_besar`, `user_id`, `n`, `keterangan`, `file_name`) VALUES
@@ -133,28 +165,7 @@ INSERT INTO `tbl_hak_cuti_besar` (`id_hak_cuti_besar`, `user_id`, `n`, `keterang
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_hak_cuti_sakit`
---
-
-CREATE TABLE `tbl_hak_cuti_sakit` (
-  `id_hak_cuti_sakit` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `n` int(11) NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
-  `file_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tbl_hak_cuti_sakit`
---
-
-INSERT INTO `tbl_hak_cuti_sakit` (`id_hak_cuti_sakit`, `user_id`, `n`, `keterangan`, `file_name`) VALUES
-(1, 1, 2, '', '-');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tbl_hak_cuti_tahunan`
+-- Table structure for table `tbl_hak_cuti_tahunan`
 --
 
 CREATE TABLE `tbl_hak_cuti_tahunan` (
@@ -166,11 +177,11 @@ CREATE TABLE `tbl_hak_cuti_tahunan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_hak_cuti_tahunan`
+-- Dumping data for table `tbl_hak_cuti_tahunan`
 --
 
 INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`, `n_2`) VALUES
-(1, 1, 12, 0, 0),
+(1, 1, 12, 1, 2),
 (2, 2, 12, 0, 0),
 (3, 3, 12, 0, 0),
 (4, 4, 12, 0, 0),
@@ -201,11 +212,11 @@ INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`
 (29, 29, 12, 0, 0),
 (30, 30, 12, 0, 0),
 (31, 31, 12, 0, 0),
-(32, 32, 12, 0, 0),
-(33, 33, 12, 0, 0),
+(32, 32, 10, 10, 1),
+(33, 33, 10, 0, 0),
 (34, 34, 12, 0, 0),
 (35, 35, 12, 0, 0),
-(36, 36, 12, 0, 0),
+(36, 36, 6, 0, 0),
 (37, 37, 12, 0, 0),
 (38, 38, 12, 0, 0),
 (39, 39, 12, 0, 0),
@@ -263,7 +274,7 @@ INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`
 (92, 92, 12, 0, 0),
 (93, 93, 12, 0, 0),
 (94, 94, 12, 0, 0),
-(95, 95, 12, 0, 0),
+(95, 95, 11, 0, 0),
 (96, 96, 12, 0, 0),
 (97, 97, 12, 0, 0),
 (98, 98, 12, 0, 0),
@@ -280,7 +291,7 @@ INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_jabatan`
+-- Table structure for table `tbl_jabatan`
 --
 
 CREATE TABLE `tbl_jabatan` (
@@ -289,7 +300,7 @@ CREATE TABLE `tbl_jabatan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_jabatan`
+-- Dumping data for table `tbl_jabatan`
 --
 
 INSERT INTO `tbl_jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
@@ -330,7 +341,7 @@ INSERT INTO `tbl_jabatan` (`id_jabatan`, `nama_jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_jenis_cuti`
+-- Table structure for table `tbl_jenis_cuti`
 --
 
 CREATE TABLE `tbl_jenis_cuti` (
@@ -340,7 +351,7 @@ CREATE TABLE `tbl_jenis_cuti` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_jenis_cuti`
+-- Dumping data for table `tbl_jenis_cuti`
 --
 
 INSERT INTO `tbl_jenis_cuti` (`id_jenis_cuti`, `nama_jenis_cuti`, `jml_kuota_cuti`) VALUES
@@ -354,7 +365,7 @@ INSERT INTO `tbl_jenis_cuti` (`id_jenis_cuti`, `nama_jenis_cuti`, `jml_kuota_cut
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_jenis_kelamin`
+-- Table structure for table `tbl_jenis_kelamin`
 --
 
 CREATE TABLE `tbl_jenis_kelamin` (
@@ -363,7 +374,7 @@ CREATE TABLE `tbl_jenis_kelamin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_jenis_kelamin`
+-- Dumping data for table `tbl_jenis_kelamin`
 --
 
 INSERT INTO `tbl_jenis_kelamin` (`id_jenis_kelamin`, `nama_jenis_kelamin`) VALUES
@@ -373,7 +384,7 @@ INSERT INTO `tbl_jenis_kelamin` (`id_jenis_kelamin`, `nama_jenis_kelamin`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_jenis_pegawai`
+-- Table structure for table `tbl_jenis_pegawai`
 --
 
 CREATE TABLE `tbl_jenis_pegawai` (
@@ -382,7 +393,7 @@ CREATE TABLE `tbl_jenis_pegawai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_jenis_pegawai`
+-- Dumping data for table `tbl_jenis_pegawai`
 --
 
 INSERT INTO `tbl_jenis_pegawai` (`id_jenis_pegawai`, `nama_jenis_pegawai`) VALUES
@@ -397,7 +408,7 @@ INSERT INTO `tbl_jenis_pegawai` (`id_jenis_pegawai`, `nama_jenis_pegawai`) VALUE
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_kelola_atasan`
+-- Table structure for table `tbl_kelola_atasan`
 --
 
 CREATE TABLE `tbl_kelola_atasan` (
@@ -408,7 +419,7 @@ CREATE TABLE `tbl_kelola_atasan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_kelola_atasan`
+-- Dumping data for table `tbl_kelola_atasan`
 --
 
 INSERT INTO `tbl_kelola_atasan` (`id_atasan`, `unit_kerja_id`, `user_id`, `pejabat_id`) VALUES
@@ -430,7 +441,7 @@ INSERT INTO `tbl_kelola_atasan` (`id_atasan`, `unit_kerja_id`, `user_id`, `pejab
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_kelola_pejabat`
+-- Table structure for table `tbl_kelola_pejabat`
 --
 
 CREATE TABLE `tbl_kelola_pejabat` (
@@ -439,7 +450,7 @@ CREATE TABLE `tbl_kelola_pejabat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_kelola_pejabat`
+-- Dumping data for table `tbl_kelola_pejabat`
 --
 
 INSERT INTO `tbl_kelola_pejabat` (`id_pejabat`, `user_id`) VALUES
@@ -459,7 +470,7 @@ INSERT INTO `tbl_kelola_pejabat` (`id_pejabat`, `user_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_status`
+-- Table structure for table `tbl_status`
 --
 
 CREATE TABLE `tbl_status` (
@@ -468,7 +479,7 @@ CREATE TABLE `tbl_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_status`
+-- Dumping data for table `tbl_status`
 --
 
 INSERT INTO `tbl_status` (`id_status`, `status`) VALUES
@@ -479,7 +490,7 @@ INSERT INTO `tbl_status` (`id_status`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_unit_kerja`
+-- Table structure for table `tbl_unit_kerja`
 --
 
 CREATE TABLE `tbl_unit_kerja` (
@@ -488,7 +499,7 @@ CREATE TABLE `tbl_unit_kerja` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_unit_kerja`
+-- Dumping data for table `tbl_unit_kerja`
 --
 
 INSERT INTO `tbl_unit_kerja` (`id_unit_kerja`, `nama_unit_kerja`) VALUES
@@ -513,7 +524,7 @@ INSERT INTO `tbl_unit_kerja` (`id_unit_kerja`, `nama_unit_kerja`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -537,13 +548,13 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id_user`, `nip`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_pegawai_id`, `agama_id`, `jenis_kelamin_id`, `gol_ruang_id`, `no_telp`, `unit_kerja_id`, `jabatan_id`, `photo`, `email`, `password`, `role_id`, `status_id`) VALUES
-(1, '196501151992121001', 'PUJI HARIAN, S.H, M.Hum.', 'Blitar, Kabupaten (Kanigoro)', '1965-01-15', 1, 1, 1, 16, '082232051166', 1, 1, 'pnju-1618940184.jpg', 'topanmeuren@gmail.com', '$2y$10$RaOgtkmMoPdVg6Zb1cDVueiVJRgRLiVB8bmk.58XaJqdHRAQm2aOW', 1, 1),
-(2, '196410081986032001', 'ROSNI, S.Sos., M.Pd.', 'Jakarta Pusat, Kota (Jakarta Pusat)', '1964-10-08', 2, 1, 2, 15, '081383062154', 5, 5, '22638.jpg', 'rosni0810@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
-(3, '196201251983031003', 'YANWITRA, S.H., M.H.', 'Bukittinggi, Kota (Bukittinggi)', '1962-01-25', 2, 1, 1, 14, '08128115440', 6, 6, '17413.jpg', 'yanwitra@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
+(1, '196501151992121001', 'PUJI HARIAN, S.H, M.Hum.', 'Blitar, Kabupaten (Kanigoro)', '1965-01-15', 1, 1, 1, 16, '082232051166', 1, 1, 'pnju-1625562757.jpg', 'topanmeuren@gmail.com', '$2y$10$y8rkkyjsXVSekwz1UYOFaOooAJIPDU/aIq.7KJ9yHxiVoyKhZLKpe', 2, 1),
+(2, '196410081986032001', 'ROSNI, S.Sos., M.Pd.', 'Jakarta Pusat, Kota (Jakarta Pusat)', '1964-10-08', 2, 1, 2, 15, '081383062154', 5, 5, '22638.jpg', 'rosni0810@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 2, 1),
+(3, '196201251983031003', 'YANWITRA, S.H., M.H.', 'Bukittinggi, Kota (Bukittinggi)', '1962-01-25', 2, 1, 1, 14, '08128115440', 6, 6, '17413.jpg', 'yanwitra@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 4, 1),
 (4, '196601281992121001', 'SOHE, S.H., M.H.', 'Bangka, Kabupaten (Sungai Liat)', '1966-01-28', 1, 1, 1, 15, '082167529833', 2, 2, '23877.jpeg', 'soheshmh@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (5, '196302131989031003', 'MOHAMMAD NAJIB, SH, MH', 'Jakarta Timur, Kota (Jakarta Timur)', '1963-02-13', 2, 1, 1, 13, '081388172709', 8, 8, '20766.jpg', 'mohhammadnajib@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (6, '196709041989032001', 'LINDAWATI SERIKIT, S.H., M.H.', 'Jakarta Selatan, Kota (Jakarta Selatan)', '1967-09-04', 2, 2, 2, 13, '0818793764', 9, 9, '25048.jpeg', 'lindawatiseri77@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
@@ -554,7 +565,7 @@ INSERT INTO `tbl_user` (`id_user`, `nip`, `nama_lengkap`, `tempat_lahir`, `tangg
 (11, '196107091988031002', 'R RUDI KINDARTO, S.H.', 'Klaten, Kabupaten (Klaten)', '1961-07-09', 1, 1, 1, 16, '081341173535', 3, 3, '14506_14506.jpg', 'rudikindarto@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (12, '195804061982031003', 'Drs. TUGIYANTO, Bc.Ip., S.H., M.H.', 'Yogyakarta, Kota (Yogyakarta)', '1958-04-06', 1, 1, 1, 16, '081329628880', 3, 3, '14911.jpg', 'tugiyanto1958@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (13, '195901011986121001', 'LEBANUS SINURAT, S.H., M.H.', 'Asahan, Kabupaten (Kisaran)', '1959-01-01', 1, 1, 1, 16, '081357694608', 3, 3, '30866.jpg', 'lebanussinurat@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
-(14, '196410151992121001', 'AGUNG PURBANTORO, S.H., M.H.', 'Surakarta, Kota (Surakarta)', '1964-10-15', 1, 2, 1, 15, '081369231729', 3, 3, '3051.jpg', 'agung.wididharma@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
+(14, '196410151992121001', 'AGUNG PURBANTORO, S.H., M.H.', 'Surakarta, Kota (Surakarta)', '1964-10-15', 1, 2, 1, 15, '081369231729', 3, 3, '3051.jpg', 'agung.wididharma@gmail.com', '$2y$10$CIMJZ87TTvfmyeROnSS7WuouDkuPTmg3KPC9xUFKEoD8Y1nrM3qhu', 3, 1),
 (15, '196305231992121001', 'BOKO, S.H., M.H.', 'Surakarta, Kota (Surakarta)', '1963-05-23', 1, 2, 1, 15, '081335635688', 3, 3, '5860_5860.jpg', 'boko@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (16, '196605151996031004', 'SRUTOPO MULYONO, SH', 'Magelang, Kota (Magelang)', '1966-05-05', 1, 1, 1, 15, '081274513418', 3, 3, '8712.jpg', 'srutopo_mulyono@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (17, '196803251996031003', 'AGUS DARWANTA, S.H.', 'Sukoharjo, Kabupaten (Sukoharjo)', '1968-03-25', 1, 1, 1, 15, '081391357725', 3, 3, '9030.jpg', 'agusdarwanta@yahoo.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
@@ -572,13 +583,13 @@ INSERT INTO `tbl_user` (`id_user`, `nip`, `nama_lengkap`, `tempat_lahir`, `tangg
 (29, '196811181992121001', 'RIANTO ADAM PONTOH, S.H., M.Hum.', 'Manado, Kota (Manado)', '1968-11-18', 1, 1, 1, 15, '081232783212', 3, 3, '25883.jpg', 'riantoadampontoh1@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (30, '197305022000031002', 'R HENDY NURCAHYO SAPUTRO, SH.,M.Hum', 'Yogyakarta, Kota (Yogyakarta)', '1973-05-02', 1, 1, 1, 14, '085249306242', 3, 3, '11860_11860.jpg', 'hendy.nurcahyo@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (31, '197410122000031001', 'BENNY OCTAVIANUS, SH.,MH.', 'Jakarta Timur, Kota (Jakarta Timur)', '1974-10-12', 1, 2, 1, 14, '081293962030', 3, 3, '28557_28557.jpg', 'benny.octavianus@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
-(32, '197608272001121002', 'AGUS ARDIANSYAH, S.Sos., MH.', 'Palembang, Kota (Palembang)', '1976-08-27', 2, 1, 1, 13, '085267031075', 7, 7, '6620.jpg', 'ayahe_nra@yahoo.co.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
+(32, '197608272001121002', 'AGUS ARDIANSYAH, S.Sos., MH.', 'Palembang, Kota (Palembang)', '1976-08-27', 2, 1, 1, 13, '085267031075', 7, 7, 'pnju-1625564292.jpg', 'ayahe_nra@yahoo.co.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 2, 1),
 (33, '1955110902201210016', 'Drs SUTARDJO, MSi,', '-', '1955-11-09', 3, 1, 1, 18, '-', 4, 4, 'pnju-1616582754.png', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (34, '1957062502201210007', 'GANJIL SUNARTO, SH, MM', '-', '1957-06-25', 3, 1, 1, 18, '085773320009', 4, 4, 'pnju-1616582739.png', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (35, '1976100802202002014', 'HENDRA ADI PRAMONO, SH, MH', '-', '1976-10-08', 3, 1, 1, 18, '081398621845', 4, 4, 'pnju-1618049383.png', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
-(36, '197806122006042003', 'YUNIASIH WINDADI, S.E.', 'Jakarta Utara, Kota (Jakarta Utara)', '1978-06-12', 2, 1, 2, 12, '081284923373', 14, 14, 'pnju-1618925623.jpg', 'yuniasih_windadi@yahoo.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 1, 1),
+(36, '197806122006042003', 'YUNIASIH WINDADI, S.E.', 'Jakarta Utara, Kota (Jakarta Utara)', '1978-06-12', 2, 1, 2, 12, '081284923373', 14, 14, 'pnju-1625565859.jpg', 'yuniasih_windadi@yahoo.com', '$2y$10$tix3Svuxzp6tMCZ5uBTgTuVubugp6CX6E2HE5dZ6cP9yZYRsjFMAu', 4, 1),
 (37, '198904062012121002', 'IRHAM HANIF, SH.,MH', 'Cirebon, Kota (Cirebon)', '1989-04-06', 2, 1, 1, 11, '081288532650', 13, 13, '13720.jpg', 'irhamhanif@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 3),
-(38, '198411262012121002', 'H. ABDUL HADI, SH., MH', 'Palembang, Kota (Palembang)', '1984-11-26', 2, 1, 1, 11, '085267004545', 12, 12, '32824.jpg', 'dul_trihatmojo@yahoo.co.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 2, 1),
+(38, '198411262012121002', 'H. ABDUL HADI, SH., MH', 'Palembang, Kota (Palembang)', '1984-11-26', 2, 1, 1, 11, '085267004545', 12, 12, '32824.jpg', 'dul_trihatmojo@yahoo.co.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 4, 1),
 (39, '196102061982031002', 'BAMBANG SETYAWAN, SH., MH.', 'Sleman, Kabupaten (Sleman)', '1961-02-06', 2, 2, 1, 13, '08128102201', 6, 15, '14241.jpg', 'bamsetya61@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 3),
 (40, '196509271994031005', 'HULMAN PANGGABEAN, S.H., M.H.', 'Tapanuli Tengah, Kabupaten (Pandan)', '1965-09-27', 2, 3, 1, 13, '08119578027', 6, 15, '19769.jpg', 'hulman27gabe@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (41, '196212071985031007', 'PARMIN, S.H., M.H', 'Bantul, Kabupaten (Bantul)', '1962-12-07', 2, 1, 1, 13, '085100835847', 15, 15, '20556.jpg', 'parminsh38@yahoo.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
@@ -635,7 +646,7 @@ INSERT INTO `tbl_user` (`id_user`, `nip`, `nama_lengkap`, `tempat_lahir`, `tangg
 (92, '196309091985031006', 'SUNARTO, S.H.', 'Jakarta Pusat, Kota (Jakarta Pusat)', '1963-09-09', 2, 1, 1, 12, '081291744161', 9, 17, '21352.jpg', 'utarasunarto@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (93, '198401042009122004', 'WIDDY HASTUTI, S.H.,M.H.', 'Purbalingga, Kabupaten (Purbalingga)', '1984-01-04', 2, 1, 2, 11, '08788888500', 1, 17, '15846.jpg', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (94, '196502081984111001', 'LEGITO, SH', 'Jakarta Pusat, Kota (Jakarta Pusat)', '1965-02-08', 2, 1, 1, 11, '0888877788', 8, 17, '23080.jpg', 'legito.utara@gmail.com', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
-(95, '198405312009042010', 'DWI PUTRI WIJAYANTHI, S.E.', 'Jakarta Utara, Kota (Jakarta Utara)', '1984-05-31', 2, 1, 2, 11, '082122333484', 14, 17, '32576.jpg', 'dwi.putri@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
+(95, '198405312009042010', 'DWI PUTRI WIJAYANTHI, S.E.', 'Jakarta Utara, Kota (Jakarta Utara)', '1984-05-31', 2, 1, 2, 11, '082122333484', 14, 17, 'pnju-1625563154.jpg', 'dwi.putri@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (96, '198602032006041002', 'MICHAEL DANANG DWI HENDRA, S.H.', 'Sleman, Kabupaten (Sleman)', '1986-02-03', 2, 2, 1, 11, '085312359559', 10, 17, '33409.jpg', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (97, '197607111999031002', 'JULI GUNAWAN', 'Jakarta Utara, Kota (Jakarta Utara)', '1976-07-11', 2, 1, 1, 10, '08135789505', 8, 28, '29156.jpg', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (98, '196702121988031002', 'SUPAR', 'Boyolali, Kabupaten (Boyolali)', '1967-02-12', 2, 1, 1, 10, '08121334621', 10, 17, '24594.jpg', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
@@ -646,12 +657,13 @@ INSERT INTO `tbl_user` (`id_user`, `nip`, `nama_lengkap`, `tempat_lahir`, `tangg
 (103, '196812022012121002', 'DONGO SABAR SUTRISNO', 'Wonogiri, Kabupaten (Wonogiri)', '1968-12-02', 2, 1, 1, 6, '087888607666', 8, 17, '25897.jpg', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (104, '195912211987031007', 'TOGI PARDEDE, S.H., M.H.', 'Toba Samosir, Kabupaten (Balige)', '1959-12-21', 1, 2, 1, 16, '081355229696', 3, 3, '8902.jpg', 'togipardede@mahkamahagung.go.id', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
 (105, '196308061994031005', 'MARYONO, S.H., M.Hum.', 'Kulon Progo, Kabupaten (Wates)', '1963-08-06', 1, 1, 1, 15, '081253093974', 3, 3, '21224.jpg', '-', '$2y$10$VwMFTcAo1AzUY3nzqqy.zeBkEQkrcavKEokUGyWlCzDgACW0Al7.y', 3, 1),
-(109, '197612182006042002', 'YUYUN RUSMULIANTY, SE, M.M.', 'Dompu, Kabupaten (Dompu)', '1976-12-18', 2, 1, 2, 12, '081932857000', 13, 13, 'pnju-1618048884.jpg', 'yuyunrusmulianty@gmail.com', '$2y$10$E81oNgRsfsfO7xMaoymTx.UT09XwcVsBfgadgcG1NWW.J04/aYEq.', 3, 1);
+(109, '197612182006042002', 'YUYUN RUSMULIANTY, SE, M.M.', 'Dompu, Kabupaten (Dompu)', '1976-12-18', 2, 1, 2, 12, '081932857000', 13, 13, 'pnju-1618048884.jpg', 'yuyunrusmulianty@gmail.com', '$2y$10$E81oNgRsfsfO7xMaoymTx.UT09XwcVsBfgadgcG1NWW.J04/aYEq.', 4, 1),
+(110, '3213070410000002', 'Fikri Oktaviano', 'Bandung', '2000-10-04', 5, 1, 1, 18, '085934955407', 17, 29, 'pnju-1625570104.png', 'fikrioktaviano7@gmail.com', '$2y$10$E81oNgRsfsfO7xMaoymTx.UT09XwcVsBfgadgcG1NWW.J04/aYEq.', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user_role`
+-- Table structure for table `tbl_user_role`
 --
 
 CREATE TABLE `tbl_user_role` (
@@ -660,18 +672,19 @@ CREATE TABLE `tbl_user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_user_role`
+-- Dumping data for table `tbl_user_role`
 --
 
 INSERT INTO `tbl_user_role` (`id_role`, `role`) VALUES
 (1, 'Administrator'),
-(2, 'Superuser'),
-(3, 'User');
+(2, 'Pejabat'),
+(3, 'User'),
+(4, 'Atasan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_user_token`
+-- Table structure for table `tbl_user_token`
 --
 
 CREATE TABLE `tbl_user_token` (
@@ -682,114 +695,115 @@ CREATE TABLE `tbl_user_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_user_token`
+-- Dumping data for table `tbl_user_token`
 --
 
 INSERT INTO `tbl_user_token` (`id_user_token`, `email`, `token`, `date_created`) VALUES
 (9, 'fikrioktaviano7@gmail.com', 'tLHGVTdL3mjBH3BJfHTIw+o/euAO1oGacOiAabbCGiA=', 1618921332),
 (10, 'fikrioktaviano7@gmail.com', 'LfzzOi2ZyRbUvXl08PSrnzu9QM3KZ4EFX229yFsSs1I=', 1618921354),
-(11, 'fikri.oktaviano@yahoo.com', 'ZsT39tCr+NFZ08qM+xLm4AEs+Yv0w+cbPFfAzi86drI=', 1618929331);
+(11, 'fikri.oktaviano@yahoo.com', 'ZsT39tCr+NFZ08qM+xLm4AEs+Yv0w+cbPFfAzi86drI=', 1618929331),
+(12, 'fikrioktaviano7@gmail.com', '9BUmJpaReaEKRoN85ESreQRQj9l65l4PhGPWIAFBAKQ=', 1625578416);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tbl_agama`
+-- Indexes for table `tbl_agama`
 --
 ALTER TABLE `tbl_agama`
   ADD PRIMARY KEY (`id_agama`);
 
 --
--- Indeks untuk tabel `tbl_cuti_tahunan`
+-- Indexes for table `tbl_cuti_tahunan`
 --
 ALTER TABLE `tbl_cuti_tahunan`
-  ADD PRIMARY KEY (`id_cuti`),
+  ADD PRIMARY KEY (`id_cuti_tahunan`),
   ADD KEY `atasan_id` (`atasan_id`),
-  ADD KEY `jenis_cuti_id` (`jenis_cuti_id`),
-  ADD KEY `jenis_cuti_id_2` (`jenis_cuti_id`);
+  ADD KEY `jenis_cuti_id` (`jenis_cuti_id`);
 
 --
--- Indeks untuk tabel `tbl_golongan_ruang`
+-- Indexes for table `tbl_cuti_umum`
+--
+ALTER TABLE `tbl_cuti_umum`
+  ADD PRIMARY KEY (`id_cuti_umum`),
+  ADD KEY `jenis_cuti_id` (`jenis_cuti_id`),
+  ADD KEY `atasan_id` (`atasan_id`);
+
+--
+-- Indexes for table `tbl_golongan_ruang`
 --
 ALTER TABLE `tbl_golongan_ruang`
   ADD PRIMARY KEY (`id_gol_ruang`);
 
 --
--- Indeks untuk tabel `tbl_hak_cuti_besar`
+-- Indexes for table `tbl_hak_cuti_besar`
 --
 ALTER TABLE `tbl_hak_cuti_besar`
   ADD PRIMARY KEY (`id_hak_cuti_besar`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `tbl_hak_cuti_sakit`
---
-ALTER TABLE `tbl_hak_cuti_sakit`
-  ADD PRIMARY KEY (`id_hak_cuti_sakit`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indeks untuk tabel `tbl_hak_cuti_tahunan`
+-- Indexes for table `tbl_hak_cuti_tahunan`
 --
 ALTER TABLE `tbl_hak_cuti_tahunan`
   ADD PRIMARY KEY (`id_hak_cuti_tahunan`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `tbl_jabatan`
+-- Indexes for table `tbl_jabatan`
 --
 ALTER TABLE `tbl_jabatan`
   ADD PRIMARY KEY (`id_jabatan`);
 
 --
--- Indeks untuk tabel `tbl_jenis_cuti`
+-- Indexes for table `tbl_jenis_cuti`
 --
 ALTER TABLE `tbl_jenis_cuti`
   ADD PRIMARY KEY (`id_jenis_cuti`);
 
 --
--- Indeks untuk tabel `tbl_jenis_kelamin`
+-- Indexes for table `tbl_jenis_kelamin`
 --
 ALTER TABLE `tbl_jenis_kelamin`
   ADD PRIMARY KEY (`id_jenis_kelamin`);
 
 --
--- Indeks untuk tabel `tbl_jenis_pegawai`
+-- Indexes for table `tbl_jenis_pegawai`
 --
 ALTER TABLE `tbl_jenis_pegawai`
   ADD PRIMARY KEY (`id_jenis_pegawai`);
 
 --
--- Indeks untuk tabel `tbl_kelola_atasan`
+-- Indexes for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
   ADD PRIMARY KEY (`id_atasan`),
   ADD KEY `unit_kerja_id` (`unit_kerja_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `id_pejabat` (`pejabat_id`);
+  ADD KEY `id_pejabat` (`pejabat_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `tbl_kelola_pejabat`
+-- Indexes for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
   ADD PRIMARY KEY (`id_pejabat`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `tbl_status`
+-- Indexes for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
   ADD PRIMARY KEY (`id_status`);
 
 --
--- Indeks untuk tabel `tbl_unit_kerja`
+-- Indexes for table `tbl_unit_kerja`
 --
 ALTER TABLE `tbl_unit_kerja`
   ADD PRIMARY KEY (`id_unit_kerja`);
 
 --
--- Indeks untuk tabel `tbl_user`
+-- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id_user`),
@@ -803,154 +817,142 @@ ALTER TABLE `tbl_user`
   ADD KEY `status_id` (`status_id`);
 
 --
--- Indeks untuk tabel `tbl_user_role`
+-- Indexes for table `tbl_user_role`
 --
 ALTER TABLE `tbl_user_role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indeks untuk tabel `tbl_user_token`
+-- Indexes for table `tbl_user_token`
 --
 ALTER TABLE `tbl_user_token`
   ADD PRIMARY KEY (`id_user_token`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_agama`
+-- AUTO_INCREMENT for table `tbl_agama`
 --
 ALTER TABLE `tbl_agama`
   MODIFY `id_agama` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_cuti_tahunan`
---
-ALTER TABLE `tbl_cuti_tahunan`
-  MODIFY `id_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT untuk tabel `tbl_golongan_ruang`
+-- AUTO_INCREMENT for table `tbl_golongan_ruang`
 --
 ALTER TABLE `tbl_golongan_ruang`
   MODIFY `id_gol_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_hak_cuti_besar`
+-- AUTO_INCREMENT for table `tbl_hak_cuti_besar`
 --
 ALTER TABLE `tbl_hak_cuti_besar`
   MODIFY `id_hak_cuti_besar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_hak_cuti_sakit`
---
-ALTER TABLE `tbl_hak_cuti_sakit`
-  MODIFY `id_hak_cuti_sakit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `tbl_hak_cuti_tahunan`
+-- AUTO_INCREMENT for table `tbl_hak_cuti_tahunan`
 --
 ALTER TABLE `tbl_hak_cuti_tahunan`
   MODIFY `id_hak_cuti_tahunan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_jabatan`
+-- AUTO_INCREMENT for table `tbl_jabatan`
 --
 ALTER TABLE `tbl_jabatan`
   MODIFY `id_jabatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_jenis_cuti`
+-- AUTO_INCREMENT for table `tbl_jenis_cuti`
 --
 ALTER TABLE `tbl_jenis_cuti`
   MODIFY `id_jenis_cuti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_jenis_kelamin`
+-- AUTO_INCREMENT for table `tbl_jenis_kelamin`
 --
 ALTER TABLE `tbl_jenis_kelamin`
   MODIFY `id_jenis_kelamin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_jenis_pegawai`
+-- AUTO_INCREMENT for table `tbl_jenis_pegawai`
 --
 ALTER TABLE `tbl_jenis_pegawai`
   MODIFY `id_jenis_pegawai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_kelola_atasan`
+-- AUTO_INCREMENT for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
   MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_kelola_pejabat`
+-- AUTO_INCREMENT for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
   MODIFY `id_pejabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_status`
+-- AUTO_INCREMENT for table `tbl_status`
 --
 ALTER TABLE `tbl_status`
   MODIFY `id_status` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_unit_kerja`
+-- AUTO_INCREMENT for table `tbl_unit_kerja`
 --
 ALTER TABLE `tbl_unit_kerja`
   MODIFY `id_unit_kerja` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_user`
+-- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_user_role`
+-- AUTO_INCREMENT for table `tbl_user_role`
 --
 ALTER TABLE `tbl_user_role`
-  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_user_token`
+-- AUTO_INCREMENT for table `tbl_user_token`
 --
 ALTER TABLE `tbl_user_token`
   MODIFY `id_user_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tbl_cuti_tahunan`
+-- Constraints for table `tbl_cuti_tahunan`
 --
 ALTER TABLE `tbl_cuti_tahunan`
   ADD CONSTRAINT `tbl_cuti_tahunan_ibfk_2` FOREIGN KEY (`atasan_id`) REFERENCES `tbl_kelola_atasan` (`id_atasan`),
   ADD CONSTRAINT `tbl_cuti_tahunan_ibfk_3` FOREIGN KEY (`jenis_cuti_id`) REFERENCES `tbl_jenis_cuti` (`id_jenis_cuti`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_hak_cuti_besar`
+-- Constraints for table `tbl_cuti_umum`
+--
+ALTER TABLE `tbl_cuti_umum`
+  ADD CONSTRAINT `tbl_cuti_umum_ibfk_1` FOREIGN KEY (`atasan_id`) REFERENCES `tbl_kelola_atasan` (`id_atasan`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tbl_hak_cuti_besar`
 --
 ALTER TABLE `tbl_hak_cuti_besar`
   ADD CONSTRAINT `tbl_hak_cuti_besar_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_hak_cuti_sakit`
---
-ALTER TABLE `tbl_hak_cuti_sakit`
-  ADD CONSTRAINT `tbl_hak_cuti_sakit_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`);
-
---
--- Ketidakleluasaan untuk tabel `tbl_hak_cuti_tahunan`
+-- Constraints for table `tbl_hak_cuti_tahunan`
 --
 ALTER TABLE `tbl_hak_cuti_tahunan`
   ADD CONSTRAINT `tbl_hak_cuti_tahunan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_kelola_atasan`
+-- Constraints for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
   ADD CONSTRAINT `tbl_kelola_atasan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`),
@@ -958,13 +960,13 @@ ALTER TABLE `tbl_kelola_atasan`
   ADD CONSTRAINT `tbl_kelola_atasan_ibfk_3` FOREIGN KEY (`pejabat_id`) REFERENCES `tbl_kelola_pejabat` (`id_pejabat`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_kelola_pejabat`
+-- Constraints for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
   ADD CONSTRAINT `tbl_kelola_pejabat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`);
 
 --
--- Ketidakleluasaan untuk tabel `tbl_user`
+-- Constraints for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD CONSTRAINT `tbl_user_ibfk_1` FOREIGN KEY (`jabatan_id`) REFERENCES `tbl_jabatan` (`id_jabatan`),
@@ -975,8 +977,3 @@ ALTER TABLE `tbl_user`
   ADD CONSTRAINT `tbl_user_ibfk_6` FOREIGN KEY (`agama_id`) REFERENCES `tbl_agama` (`id_agama`),
   ADD CONSTRAINT `tbl_user_ibfk_7` FOREIGN KEY (`jenis_kelamin_id`) REFERENCES `tbl_jenis_kelamin` (`id_jenis_kelamin`),
   ADD CONSTRAINT `tbl_user_ibfk_8` FOREIGN KEY (`status_id`) REFERENCES `tbl_status` (`id_status`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -142,5 +142,6 @@ $autoload['model'] = array(
     'Model_cuti_tahunan',
     'Model_cuti_umum',
     'datauser_model',
-    'Model_laporan'
+    'Model_laporan',
+    'Datahakcuti_model',
 );

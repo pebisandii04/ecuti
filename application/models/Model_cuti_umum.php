@@ -51,6 +51,17 @@ class Model_cuti_umum extends CI_Model {
         return $this->db->get($table)->row_array()[$field];
         }
 
+        public function select_data_all()
+        {
+            $this->db->select('*');
+            $this->db->from($this->table);
+            $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_umum.jenis_cuti_id');
+            $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_umum.nip');
+            $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_umum.atasan_id');
+            //$this->db->join('tbl_kelola_jabatan','tbl_kelola_pejabat.user_id = tbl_cuti_tahunan');
+            return $this->db->get();
+        }
+
      //ambildata pengajuan cuti
      function select_data_pengajuan($id){
         $this->db->select('*');
