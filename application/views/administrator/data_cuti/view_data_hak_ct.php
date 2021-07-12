@@ -26,7 +26,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Data Hak Cuti Tahunan</h3>
-                                    <div class="float-right"><a href="<?php echo base_url() . 'kelola_atasan_langsung/add_data'; ?>" class="btn btn-primary btn-sm"> <i class="fas fa-plus fa-fw"></i> Create Hak Cuti Tahunan</a></div>
                                 </div>
                                 <div class="card-body">
                                     <?php echo $this->session->flashdata('message'); ?>
@@ -35,10 +34,10 @@
                                             <tr class="text-center">
                                                 <th width="8">#</th>
                                                 <th>Nama Lengkap</th>
+                                                <th>Nip</th>
                                                 <th>N</th>
                                                 <th>N-1</th>
                                                 <th>N-2</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -51,20 +50,19 @@
                                                         <?php echo $no++; ?>
                                                     </td>
                                                     <td>
-                                                        <a href=""><?php echo $dhct->nama_lengkap; ?></a>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dhct->n; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dhct->n_1; ?>
-                                                    </td>
-                                                    <td>
-                                                        <?php echo $dhct->n_2; ?>
+                                                        <a href="<?php echo base_url() . 'Data_cuti_tahunan/data_pengajuan/' . $dhct->nip; ?>"><?php echo $dhct->nama_lengkap; ?></a>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="<?php echo base_url() . 'kelola_atasan_langsung/edit_data/' . $dhct->id_hak_cuti_tahunan;?>" class="btn btn-warning btn-sm" title="Edit"> <i class="fas fa-edit fa-fw"></i> </a>
-                                                        <a href="<?php echo base_url() . 'kelola_atasan_langsung/delete_data/' . $dhct->id_hak_cuti_tahunan;?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete');"> <i class="fas fa-trash fa-fw"></i></a>
+                                                        <?php echo $dhct->nip; ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?php echo $dhct->n; ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?php echo $dhct->n_1; ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?php echo $dhct->n_2; ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

@@ -20,6 +20,14 @@ class Data_cuti_tahunan extends CI_Controller {
         $this->template->load('templates/template','user/data_cuti/view_data', $data);
 	}
 
+  public function data_pengajuan(){
+    $nip = $this->uri->segment('3');
+    $data['title']      = "E-Cuti | Data Cuti Tahunan";
+    $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+    $data['data_cuti'] = $this->Model_cuti_tahunan->select_by_nip($nip)->result();
+    $this->template->load('templates/template','administrator/data_cuti/view_ct_pernip', $data);
+}
+
     // function untuk menampilkan form tambah data cuti
     public function tambah_cuti_tahunan()
     {

@@ -144,4 +144,5 @@ $autoload['model'] = array(
     'datauser_model',
     'Model_laporan',
     'Datahakcuti_model',
+    'Model_manajemen_pimpinan',
 );

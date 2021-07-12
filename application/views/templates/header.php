@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/fontawesome-free/css/all.min.css'; ?>">
+  
+  <!-- jQuery -->
+<script src="<?php echo base_url().'assets/'; ?>plugins/jquery/jquery.min.js"></script>
+
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'; ?>">
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'; ?>">
@@ -180,13 +184,13 @@
                   </a>
                   <ul class="nav nav-treeview" style="display: none;">
                     <li class="nav-item">
-                      <a href="<?php echo base_url().'data_hak_cuti'; ?>" class="nav-link">
+                      <a href="<?php echo base_url().'manajemen_pimpinan/Kelola_atasan_langsung'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Kelola Atasan Langsung</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="<?php echo base_url().'data_hak_cuti'; ?>" class="nav-link">
+                      <a href="<?php echo base_url().'manajemen_pimpinan/Kelola_pejabat'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Kelola Pejabat Berwenang</p>
                       </a>
