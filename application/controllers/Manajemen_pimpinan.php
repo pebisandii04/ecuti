@@ -31,7 +31,7 @@ class Manajemen_pimpinan extends CI_Controller {
     function get_atasan(){
         $id = $this->input->post('id');
         $data = $this->Model_manajemen_pimpinan->select_data_atasan($id);
-        $output = '<option value="">--Pilih ahh--</option>';
+        $output = '<option value="">--Pilih Atasan--</option>';
         foreach($data as $row){
             $output .= '<option value="'.$row->id_user.'">'.$row->nama_lengkap.'</option>'; 
         }
@@ -48,9 +48,14 @@ class Manajemen_pimpinan extends CI_Controller {
         $data['title'] = "E-Cuti | Edit Data Atasan Langsung";
 		$data['user']   = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
         $data['option1'] = $this->Model_manajemen_pimpinan->get_option_unker()->result();
-        $data['option2'] = $this->Model_manajemen_pimpinan->select_by_id()->row();
-        $data['option3'] = $this->Model_manajemen_pimpinan->get_option()->result();
-		$this->template->load('templates/template','administrator/kelola_pimpinan/add_data_atasan', $data);
+        $data['option2'] = $this->Model_manajemen_pimpinan->select_atasan_id()->row_array();
+        $data['option3'] = $this->Model_manajemen_pimpinan->select_all_pejabat()->result();
+        $data['option4'] = $this->Model_manajemen_pimpinan->select_data_pejabat()->row_array();
+		$this->template->load('templates/template','administrator/kelola_pimpinan/edit_data_atasan', $data);
+    }
+
+    function proses_update_atasan(){
+        $this->Model_manajemen_pimpinan->update();
     }
 
     public function delete_atasan($id)

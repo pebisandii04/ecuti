@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 07, 2021 at 02:56 PM
+-- Generation Time: Jul 13, 2021 at 02:17 AM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -60,19 +60,6 @@ CREATE TABLE `tbl_cuti_tahunan` (
   `sts_apv_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_cuti_tahunan`
---
-
-INSERT INTO `tbl_cuti_tahunan` (`id_cuti_tahunan`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `sts_apv_1`, `sts_apv_2`) VALUES
-('T-CT-210703-00001', '197608272001121002', 1, 'test edited', '2021-07-05', '2021-07-05', '2021-07-06', 2, 'test', '081383062154', 2, 0, 0),
-('T-CT-210704-00001', '197608272001121002', 1, 'Menikahkan Anak', '2021-07-05', '2021-07-05', '2021-07-05', 2, 'test', '089643647347', 2, 0, 0),
-('T-CT-210705-00002', '197608272001121002', 1, 'test edited 1', '2021-07-05', '2021-07-06', '2021-07-07', 2, 'test', '081383062154', 2, 1, 0),
-('T-CT-210705-00003', '197806122006042003', 1, 'test3', '2021-07-05', '2021-07-06', '2021-07-07', 2, 'test', '089643647347', 7, 0, 0),
-('T-CT-210706-00001', '197806122006042003', 1, 'Keperluan Keluarga', '2021-06-25', '2021-06-28', '2021-06-30', 3, 'Jl. Gajah Mada No. 17', '085267031075', 7, 1, 1),
-('T-CT-210706-00002', '198405312009042010', 1, 'Keperluan Keluarga', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 10, 0, 1),
-('T-CT-210706-00003', '197806122006042003', 1, 'Keperluan Keluarga', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 7, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -101,9 +88,6 @@ CREATE TABLE `tbl_cuti_umum` (
 --
 
 INSERT INTO `tbl_cuti_umum` (`id_cuti_umum`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `upload_file`, `sts_apv_1`, `sts_apv_2`) VALUES
-('T-CU-210704-00001', '197608272001121002', 3, 'sakit cacar', '2021-07-04', '2021-07-07', '2021-07-08', 2, 'test', '089643647347', 2, '', 1, 0),
-('T-CU-210704-00002', '197608272001121002', 2, 'test1', '2021-07-05', '2021-07-06', '2021-07-07', 2, 'test', '089643647347', 2, 'bukti-1625420440.pdf', 1, 1),
-('T-CU-210705-00001', '1955110902201210016', 2, 'test', '2021-07-06', '2021-07-07', '2021-07-08', 2, 'test', '089643647347', 1, 'bukti-1625488215.pdf', 1, 1),
 ('T-CU-210706-00001', '198405312009042010', 3, 'Sakit Badan Meriang', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 10, '', 1, 1);
 
 -- --------------------------------------------------------
@@ -414,7 +398,8 @@ INSERT INTO `tbl_jenis_pegawai` (`id_jenis_pegawai`, `nama_jenis_pegawai`) VALUE
 CREATE TABLE `tbl_kelola_atasan` (
   `id_atasan` int(11) NOT NULL,
   `unit_kerja_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id_atasan` int(11) NOT NULL,
+  `user_nip` varchar(20) NOT NULL,
   `pejabat_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -422,21 +407,20 @@ CREATE TABLE `tbl_kelola_atasan` (
 -- Dumping data for table `tbl_kelola_atasan`
 --
 
-INSERT INTO `tbl_kelola_atasan` (`id_atasan`, `unit_kerja_id`, `user_id`, `pejabat_id`) VALUES
-(1, 1, 1, 1),
-(2, 2, 2, 1),
-(3, 6, 3, 1),
-(6, 5, 2, 1),
-(7, 7, 32, 1),
-(8, 12, 38, 9),
-(9, 13, 109, 9),
-(10, 14, 36, 9),
-(11, 8, 5, 3),
-(12, 9, 6, 3),
-(13, 10, 8, 8),
-(14, 11, 7, 3),
-(15, 17, 32, 2),
-(16, 17, 3, 1);
+INSERT INTO `tbl_kelola_atasan` (`id_atasan`, `unit_kerja_id`, `user_id_atasan`, `user_nip`, `pejabat_id`) VALUES
+(6, 5, 2, '', 1),
+(7, 7, 32, '', 2),
+(8, 12, 38, '', 9),
+(9, 13, 109, '', 9),
+(10, 14, 36, '', 9),
+(11, 8, 5, '', 3),
+(12, 9, 6, '', 3),
+(13, 10, 8, '', 3),
+(14, 11, 7, '', 3),
+(15, 17, 32, '', 2),
+(16, 17, 3, '', 1),
+(18, 1, 1, '', 1),
+(20, 2, 4, '', 1);
 
 -- --------------------------------------------------------
 
@@ -446,14 +430,14 @@ INSERT INTO `tbl_kelola_atasan` (`id_atasan`, `unit_kerja_id`, `user_id`, `pejab
 
 CREATE TABLE `tbl_kelola_pejabat` (
   `id_pejabat` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id_pejabat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_kelola_pejabat`
 --
 
-INSERT INTO `tbl_kelola_pejabat` (`id_pejabat`, `user_id`) VALUES
+INSERT INTO `tbl_kelola_pejabat` (`id_pejabat`, `user_id_pejabat`) VALUES
 (1, 1),
 (2, 2),
 (3, 3),
@@ -781,14 +765,14 @@ ALTER TABLE `tbl_kelola_atasan`
   ADD PRIMARY KEY (`id_atasan`),
   ADD KEY `unit_kerja_id` (`unit_kerja_id`),
   ADD KEY `id_pejabat` (`pejabat_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id_atasan`);
 
 --
 -- Indexes for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
   ADD PRIMARY KEY (`id_pejabat`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id_pejabat`);
 
 --
 -- Indexes for table `tbl_status`
@@ -884,7 +868,7 @@ ALTER TABLE `tbl_jenis_pegawai`
 -- AUTO_INCREMENT for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
-  MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_kelola_pejabat`
@@ -930,8 +914,8 @@ ALTER TABLE `tbl_user_token`
 -- Constraints for table `tbl_cuti_tahunan`
 --
 ALTER TABLE `tbl_cuti_tahunan`
-  ADD CONSTRAINT `tbl_cuti_tahunan_ibfk_2` FOREIGN KEY (`atasan_id`) REFERENCES `tbl_kelola_atasan` (`id_atasan`),
-  ADD CONSTRAINT `tbl_cuti_tahunan_ibfk_3` FOREIGN KEY (`jenis_cuti_id`) REFERENCES `tbl_jenis_cuti` (`id_jenis_cuti`);
+  ADD CONSTRAINT `tbl_cuti_tahunan_ibfk_3` FOREIGN KEY (`jenis_cuti_id`) REFERENCES `tbl_jenis_cuti` (`id_jenis_cuti`),
+  ADD CONSTRAINT `tbl_cuti_tahunan_ibfk_4` FOREIGN KEY (`atasan_id`) REFERENCES `tbl_kelola_atasan` (`id_atasan`);
 
 --
 -- Constraints for table `tbl_cuti_umum`
@@ -955,7 +939,7 @@ ALTER TABLE `tbl_hak_cuti_tahunan`
 -- Constraints for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
-  ADD CONSTRAINT `tbl_kelola_atasan_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`),
+  ADD CONSTRAINT `tbl_kelola_atasan_ibfk_1` FOREIGN KEY (`user_id_atasan`) REFERENCES `tbl_user` (`id_user`),
   ADD CONSTRAINT `tbl_kelola_atasan_ibfk_2` FOREIGN KEY (`unit_kerja_id`) REFERENCES `tbl_unit_kerja` (`id_unit_kerja`),
   ADD CONSTRAINT `tbl_kelola_atasan_ibfk_3` FOREIGN KEY (`pejabat_id`) REFERENCES `tbl_kelola_pejabat` (`id_pejabat`);
 
@@ -963,7 +947,7 @@ ALTER TABLE `tbl_kelola_atasan`
 -- Constraints for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
-  ADD CONSTRAINT `tbl_kelola_pejabat_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`);
+  ADD CONSTRAINT `tbl_kelola_pejabat_ibfk_1` FOREIGN KEY (`user_id_pejabat`) REFERENCES `tbl_user` (`id_user`);
 
 --
 -- Constraints for table `tbl_user`
