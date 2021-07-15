@@ -15,7 +15,9 @@
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/fontawesome-free/css/all.min.css'; ?>">
   
   <!-- jQuery -->
-<script src="<?php echo base_url().'assets/'; ?>plugins/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url().'assets/'; ?>plugins/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url().'assets/'; ?>plugins/jquery-ui/jquery-ui.min.js"></script>
+
 
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'; ?>">
@@ -42,6 +44,8 @@
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'; ?>">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/adminlte.css'; ?>">
+  <!-- jquery ui css -->
+  <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/jquery-ui/jquery-ui.min.css'; ?>">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed text-sm">
 <div class="wrapper">
@@ -172,6 +176,12 @@
                         <p>Data User</p>
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'data_hak_cuti/kelola_hak_cuti'; ?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Hak Cuti</p>
+                      </a>
+                    </li>
                   </ul>
                  </li>
                  <li class="nav-item">
@@ -190,7 +200,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="<?php echo base_url().'manajemen_pimpinan/Kelola_pejabat'; ?>" class="nav-link">
+                      <a href="<?php echo base_url().'manajemen_pimpinan/Kelola_pejabat_berwenang'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Kelola Pejabat Berwenang</p>
                       </a>
@@ -220,7 +230,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="<?php echo base_url().'data_hak_cuti'; ?>" class="nav-link">
+                      <a href="<?php echo base_url().'data_hak_cuti/rekap_hak_cuti'; ?>" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Rekap Hak Cuti Taunan</p>
                       </a>

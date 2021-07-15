@@ -1,6 +1,8 @@
 <?php class Model_manajemen_pimpinan extends CI_Model
 {
         private $table = 'tbl_kelola_atasan';
+        private $table2 = 'tbl_kelola_pejabat';
+
             function __construct()
             {
                 parent::__construct();
@@ -26,6 +28,7 @@
             $this->db->select('*');
             $this->db->from('tbl_kelola_pejabat');
             $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_pejabat.user_id_pejabat');
+            $this->db->join('tbl_jabatan','tbl_jabatan.id_jabatan = tbl_user.jabatan_id');
             return $this->db->get();
         }
 
@@ -87,7 +90,7 @@
             </div>
             ';
             $this->session->set_flashdata("pesan", $msg);
-            redirect(base_url() . 'Manajemen_pimpinan/add_data_atasan');
+            redirect(base_url() . 'Manajemen_pimpinan/kelola_atasan_langsung');
         }
 
         function update()
@@ -122,11 +125,57 @@
             redirect(base_url() . 'Manajemen_pimpinan/kelola_atasan_langsung');
         }
 
-    function delete_atasan($id)
-    {
-        $this->db->where('id_atasan', $id);
-        $this->db->delete($this->table);
-    }
-    // akhir dari code kelola atasan
+        function delete_atasan($id)
+        {
+            $this->db->where('id_atasan', $id);
+            $this->db->delete($this->table);
+        }
+        // akhir dari code kelola atasan
 
+        //model untuk kelola pejabat
+        function search_user($nama){
+            $this->db->like('nama_lengkap', $nama , 'both');
+            $this->db->order_by('nama_lengkap', 'ASC');
+            $this->db->limit(10);
+            return $this->db->get('tbl_user')->result();
+        }
+
+        function insert_pejabat()
+        {
+            //tangkap parameter
+            $user_id_pejabat = $this->input->post('id_user');
+            //cek redudan data
+            $this->db->where("user_id_pejabat", $id_pejabat);
+            $cek = $this->db->get($this->table2)->num_rows();
+            if ($cek == true) {
+                //pesan gagal
+                $msg = "<script>alert('Unit Kerja ini Sudah ada')</script>";
+                $this->session->set_flashdata("pesan", $msg);
+                redirect(base_url() . 'Manajemen_pimpinan/add_data_pejabat');
+                return false;
+            }
+            $data = array(
+                "user_id_pejabat" => $user_id_pejabat,
+            );
+            //proses query
+            $this->db->insert($this->table2, $data);
+            //pesan berhasil
+            $msg = '
+            <div class="alert alert-success" role="alert">
+            <i class="fas fa-check-circle fa-fw"></i> Congrats! Pejabat Berwenang data added successfully!
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            ';
+            $this->session->set_flashdata("pesan", $msg);
+            redirect(base_url() . 'Manajemen_pimpinan/kelola_pejabat_berwenang');
+        }
+
+        function delete_pejabat($id)
+        {
+            $this->db->where('id_pejabat', $id);
+            $this->db->delete($this->table2);
+        }
+        
 }

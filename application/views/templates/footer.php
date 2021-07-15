@@ -31,7 +31,7 @@
 <!-- REQUIRED SCRIPTS -->
 
 <!-- Bootstrap -->
-<script src="<?php echo base_url().'assets/'; ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url().'assets/'; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="<?php echo base_url().'assets/'; ?>plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url().'assets/'; ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
