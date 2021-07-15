@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jul 13, 2021 at 02:17 AM
+-- Generation Time: Jul 15, 2021 at 04:35 AM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -128,27 +128,6 @@ INSERT INTO `tbl_golongan_ruang` (`id_gol_ruang`, `nama_golongan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_hak_cuti_besar`
---
-
-CREATE TABLE `tbl_hak_cuti_besar` (
-  `id_hak_cuti_besar` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `n` int(11) NOT NULL,
-  `keterangan` varchar(50) NOT NULL,
-  `file_name` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_hak_cuti_besar`
---
-
-INSERT INTO `tbl_hak_cuti_besar` (`id_hak_cuti_besar`, `user_id`, `n`, `keterangan`, `file_name`) VALUES
-(1, 1, 1, '', '-');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_hak_cuti_tahunan`
 --
 
@@ -165,7 +144,7 @@ CREATE TABLE `tbl_hak_cuti_tahunan` (
 --
 
 INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`, `n_2`) VALUES
-(1, 1, 12, 1, 2),
+(1, 1, 12, 2, 2),
 (2, 2, 12, 0, 0),
 (3, 3, 12, 0, 0),
 (4, 4, 12, 0, 0),
@@ -417,8 +396,6 @@ INSERT INTO `tbl_kelola_atasan` (`id_atasan`, `unit_kerja_id`, `user_id_atasan`,
 (12, 9, 6, '', 3),
 (13, 10, 8, '', 3),
 (14, 11, 7, '', 3),
-(15, 17, 32, '', 2),
-(16, 17, 3, '', 1),
 (18, 1, 1, '', 1),
 (20, 2, 4, '', 1);
 
@@ -721,13 +698,6 @@ ALTER TABLE `tbl_golongan_ruang`
   ADD PRIMARY KEY (`id_gol_ruang`);
 
 --
--- Indexes for table `tbl_hak_cuti_besar`
---
-ALTER TABLE `tbl_hak_cuti_besar`
-  ADD PRIMARY KEY (`id_hak_cuti_besar`),
-  ADD KEY `user_id` (`user_id`);
-
---
 -- Indexes for table `tbl_hak_cuti_tahunan`
 --
 ALTER TABLE `tbl_hak_cuti_tahunan`
@@ -829,16 +799,10 @@ ALTER TABLE `tbl_golongan_ruang`
   MODIFY `id_gol_ruang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT for table `tbl_hak_cuti_besar`
---
-ALTER TABLE `tbl_hak_cuti_besar`
-  MODIFY `id_hak_cuti_besar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `tbl_hak_cuti_tahunan`
 --
 ALTER TABLE `tbl_hak_cuti_tahunan`
-  MODIFY `id_hak_cuti_tahunan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id_hak_cuti_tahunan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `tbl_jabatan`
@@ -868,13 +832,13 @@ ALTER TABLE `tbl_jenis_pegawai`
 -- AUTO_INCREMENT for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
-  MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
-  MODIFY `id_pejabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_pejabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_status`
@@ -922,12 +886,6 @@ ALTER TABLE `tbl_cuti_tahunan`
 --
 ALTER TABLE `tbl_cuti_umum`
   ADD CONSTRAINT `tbl_cuti_umum_ibfk_1` FOREIGN KEY (`atasan_id`) REFERENCES `tbl_kelola_atasan` (`id_atasan`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tbl_hak_cuti_besar`
---
-ALTER TABLE `tbl_hak_cuti_besar`
-  ADD CONSTRAINT `tbl_hak_cuti_besar_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`id_user`);
 
 --
 -- Constraints for table `tbl_hak_cuti_tahunan`
