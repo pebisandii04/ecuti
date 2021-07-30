@@ -10,7 +10,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Administrator</li>
+              <li class="breadcrumb-item active">Dashboard Atasan dan Pejabat</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -137,25 +137,32 @@
                     <div class="col-12 col-sm-6 col-md-7">
                         <div class="card">
                             <div class="card-header border-transparent">
-                                <h3 class="card-title">Cuti Terakhir</h3>
+                                <h3 class="card-title">Cuti Tahunan Terakhir</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table m-0">
                                         <thead>
+                                        <tr>
+                                                <th>Nama</th>
+                                                <th>Tanggal</th>
+                                                <th>Lama</th>
+                                                <th>Jenis Cuti</th>
+                                            </tr>
+                                        </thead>
                                         <?php
-                                            foreach ($cuti_terakhir as $row) { ; ?>
+                                            foreach ($ct as $row) { ; ?>
                                                 <tbody>
                                                     <tr>
-                                                    <td><?php echo $row->tanggal_mulai?></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                    <td><?php echo $row->nama_lengkap?></td>
+                                                    <td><?php echo $row->tgl_pengajuan?></td>
+                                                    <td><?php echo $row->jml_hari?> Hari</td>
+                                                    <td><?php echo $row->nama_jenis_cuti?></td>
                                                     </tr>
                                                 </tbody>
                                             <?php } ?>
                                             
-                                        </thead>
                                         
                                     </table>
                                 </div>
@@ -169,26 +176,31 @@
                     <div class="col-12 col-sm-6 col-md-5">
                         <div class="card">
                             <div class="card-header border-transparent">
-                                <h3 class="card-title">Pengajuan Terakhir</h3>
+                                <h3 class="card-title">Cuti Umum Terakhir</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <div class="table-responsive">
                                     <table class="table m-0">
                                         <thead>
-                                            <tr>
+                                        <tr>
                                                 <th>Tanggal</th>
                                                 <th>Lama</th>
                                                 <th>Jenis Cuti</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
+                                        <?php
+                                            foreach ($cu as $row) { ; ?>
+                                                <tbody>
+                                                    <tr>
+                                                    <td><?php echo $row->tgl_pengajuan?></td>
+                                                    <td><?php echo $row->jml_hari?> Hari</td>
+                                                    <td><?php echo $row->nama_jenis_cuti?></td>
+                                                    </tr>
+                                                </tbody>
+                                            <?php } ?>
+                                            
+                                        
                                     </table>
                                 </div>
                                 <!-- /.table-responsive -->

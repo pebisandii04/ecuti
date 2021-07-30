@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/plugins/fontawesome-free/css/all.min.css'; ?>">
-  
+
   <!-- jQuery -->
   <script src="<?php echo base_url().'assets/'; ?>plugins/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url().'assets/'; ?>plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -238,11 +238,10 @@
                   </ul>
                  </li>
                <?php } ?>
-               <!-- Jika Login sebagai pejabat langsung-->
+               <!-- Jika Login sebagai pejabat-->
                <?php if ($session == "2") { ?>
-                 <li class="nav-header">Kepegawaian</li>
                  <li class="nav-item">
-                  <a href="<?php echo base_url() . ''; ?>" class="nav-link">
+                  <a href="<?php echo base_url() . 'Dashboard'; ?>" class="nav-link">
                       <i class="nav-icon fas fa-tachometer-alt"></i>
                       <p>Home</p>
                   </a>
@@ -273,14 +272,14 @@
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-calendar-plus"></i>
+                  <i class="nav-icon fas fa-file-signature"></i>
                     <p>
                       Approval Cuti
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-              
+
                     <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -332,14 +331,14 @@
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-calendar-plus"></i>
+                  <i class="nav-icon fas fa-file-export"></i>
                     <p>
-                      Laporan
+                      Laporan Pengajuan Cuti
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-              
+
                     <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -356,7 +355,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a href="<?php echo base_url().'data_cuti_tahunan/Apv_ct_pejabat'; ?>" class="nav-link">
+                          <a href="<?php echo base_url().'laporan/All_pending_ct'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
                             <p>Data Cuti Pending</p>
                           </a>
@@ -372,16 +371,16 @@
                         </p>
                       </a>
                       <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_atasan'; ?>" class="nav-link">
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'laporan/all_cu_apv'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Atasan Langsung</p>
+                            <p>Data Pengajuan Cuti</p>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_pejabat'; ?>" class="nav-link">
+                          <a href="<?php echo base_url().'laporan/All_pending_cu'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Pejabat Berwenang</p>
+                            <p>Data Cuti Pending</p>
                           </a>
                         </li>
                       </ul>
@@ -433,7 +432,7 @@
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-              
+
                     <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -466,7 +465,7 @@
                             <p>Atasan Langsung</p>
                           </a>
                         </li>
-                        
+
                       </ul>
                     </li>
                   </ul>
@@ -474,14 +473,14 @@
 
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-calendar-plus"></i>
+                  <i class="nav-icon fas fa-file-export"></i>
                     <p>
-                      Laporan
+                      Laporan Pengajuan Cuti
                       <i class="right fas fa-angle-left"></i>
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-              
+
                     <li class="nav-item has-treeview">
                       <a href="#" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
@@ -494,11 +493,11 @@
                         <li class="nav-item">
                           <a href="<?php echo base_url().'laporan/all_ct_apv'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Data Ter Approve</p>
+                            <p>Data Pengajuan Cuti</p>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a href="<?php echo base_url().'data_cuti_tahunan/Apv_ct_pejabat'; ?>" class="nav-link">
+                          <a href="<?php echo base_url().'laporan/All_pending_ct'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
                             <p>Data Cuti Pending</p>
                           </a>
@@ -514,30 +513,30 @@
                         </p>
                       </a>
                       <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_atasan'; ?>" class="nav-link">
+                        <li class="nav-item">
+                          <a href="<?php echo base_url().'laporan/all_cu_apv'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Atasan Langsung</p>
+                            <p>Data Pengajuan Cuti</p>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a href="<?php echo base_url().'data_cuti_umum/Apv_cu_pejabat'; ?>" class="nav-link">
+                          <a href="<?php echo base_url().'laporan/All_pending_cu'; ?>" class="nav-link">
                             <i class="far fa-dot-circle nav-icon"></i>
-                            <p>Pejabat Berwenang</p>
+                            <p>Data Cuti Pending</p>
                           </a>
                         </li>
                       </ul>
                     </li>
                   </ul>
                 </li>
-                
+
                <?php } ?>
 
                <!-- jika login sebagai User -->
                <?php if ($session == "3") { ?>
                  <li class="nav-header">User</li>
                  <li class="nav-item">
-                    <a href="<?php echo base_url() . '/Dashboard'; ?>" class="nav-link">
+                    <a href="<?php echo base_url() . 'Dashboard/user'; ?>" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Home</p>
                     </a>
@@ -565,7 +564,7 @@
                     </li>
                   </ul>
                 </li>
-                 
+
                  <li class="nav-item">
                     <a href="<?php echo base_url() . 'user/contact'; ?>" class="nav-link">
                         <i class="nav-icon fas fa-phone-square-alt"></i>

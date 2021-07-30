@@ -90,7 +90,7 @@ class Data_cuti_tahunan extends CI_Controller {
             //pesan berhasil
             $this->session->set_flashdata('message', '
             <div class="alert alert-success" role="alert">
-              <i class="fas fa-check-circle fa-fw"></i> Congratulations! Your account has been created!
+              <i class="fas fa-check-circle fa-fw"></i> Congratulations! Data Cuti Tahunan has been added!
               <button class="close" type="button" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -168,10 +168,37 @@ class Data_cuti_tahunan extends CI_Controller {
       $data['list_data'] = $this->Model_cuti_tahunan->select_data_pengajuan($id)->result();
       $this->template->load('templates/template','user/approval_cuti/apv_ct_pejabat', $data);
     }
-      public function approve_pejabat(){
-        $this->Model_cuti_tahunan->approve_pejabat();
-      }
+    public function approve_pejabat(){
+      $this->Model_cuti_tahunan->approve_pejabat();
+    }
 
+    public function tolak_ct_pejabat(){
+      $id_user = $this->uri->segment(3);
+      $id_ct = $this->uri->segment(4);
+      $jml_hari = $this->Model_cuti_tahunan->get($id_ct)->row()->jml_hari;
+      $data = ['jml_hari' =>$jml_hari, 'user_id' => $id_user];
+      $this->Model_cuti_tahunan->update_hak($data);
+      $this->Model_cuti_tahunan->tolak_ct_atasan($id_ct);
+      if($this->db->affected_rows()>0){
+        $msg = "<script>alert('Pengajuan Sudah DiTolak')</script>";
+        $this->session->set_flashdata('message', $msg);
+      }
+      redirect('Data_cuti_tahunan/Apv_ct_pejabat','refresh');
+    }
+
+    public function tolak_ct_atasan(){
+      $id_user = $this->uri->segment(3);
+      $id_ct = $this->uri->segment(4);
+      $jml_hari = $this->Model_cuti_tahunan->get($id_ct)->row()->jml_hari;
+      $data = ['jml_hari' =>$jml_hari, 'user_id' => $id_user];
+      $this->Model_cuti_tahunan->update_hak($data);
+      $this->Model_cuti_tahunan->tolak_ct_atasan($id_ct);
+      if($this->db->affected_rows()>0){
+        $msg = "<script>alert('Pengajuan Sudah DiTolak')</script>";
+        $this->session->set_flashdata('message', $msg);
+      }
+      redirect('Data_cuti_tahunan/Apv_ct_atasan','refresh');
+    }
 
       public function Apv_ct_atasan(){
         $id = $this->session->userdata('id_user');

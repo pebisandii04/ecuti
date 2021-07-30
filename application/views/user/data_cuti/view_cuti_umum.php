@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Jenis Cuti</th>
                                     <th>Tgl Pengajuan</th>
@@ -49,7 +49,7 @@
                                 <?php
                                 $no = 1;
                                 foreach ($data_cuti as $row) { ?>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td><?= $no++ ?></td>
                                         <td> <?php echo $row->nama_jenis_cuti; ?></td>
                                         <td> <?php echo $row->tgl_pengajuan; ?></td>
@@ -73,21 +73,27 @@
                                         </td>
                                         <td>
                                         <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'Data_cuti_umum/edit_cuti_tahunan/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-secondary">
+                                            <a href="<?php echo base_url() . 'Data_cuti_umum/edit_cuti_umum/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a href="<?php echo base_url() . 'Data_cuti_umum/delete_data/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
                                                 <i class="fas fa-trash"></i>
                                             </a>
+                                            <a href="<?php echo base_url() . 'uploads/buktifile/' . $row->upload_file; ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat File Bukti" target="blank">
+                                                <i class="fas fa-file"></i>
+                                            </a>
                                             <?php } ?>
                                             <?php if ($row->sts_apv_2 == 1) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning disabled">
+                                            <a href="<?php echo base_url() . '' . $row->nip; ?>" class="btn btn-sm btn-warning disabled">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             <?php } ?>
                                             <?php if ($row->sts_apv_2 == 0) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning">
+                                            <a href="<?php echo base_url() . 'Laporan/Cetak_lampiran_cu/' . $row->nip; ?>" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Cetak Lampiran" target="blank">
                                                 <i class="fas fa-print"></i>
+                                            </a>
+                                            <a href="<?php echo base_url() . 'uploads/buktifile/' . $row->upload_file; ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Lihat File Bukti" target="blank">
+                                                <i class="fas fa-file"></i>
                                             </a>
                                             <?php } ?>
                                         </td>

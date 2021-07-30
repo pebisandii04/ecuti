@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"> <i class="fas fa-user-shield fa-fw"></i> Data Cuti Approve</h1>
+            <h1 class="m-0"> <i class="fas fa-user-shield fa-fw"></i> Laporan Data Cuti Tahunan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Administrator</li>
+              <li class="breadcrumb-item active">Laporan Data Cuti Tahunan Approve</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->

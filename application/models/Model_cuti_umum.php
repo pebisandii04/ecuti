@@ -16,7 +16,7 @@ class Model_cuti_umum extends CI_Model {
     function get_option2(){
         $this->db->select('*');
         $this->db->from('tbl_kelola_atasan');
-        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id');
+        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id_atasan');
         return $this->db->get();
     }
 
@@ -33,7 +33,8 @@ class Model_cuti_umum extends CI_Model {
 
     public function edit($where,$table) {
         $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_umum.atasan_id');
-        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id');
+        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id_atasan');
+        $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_umum.jenis_cuti_id');
         $this->db->where($where);
         return $this->db->get_where($table);
     }
@@ -69,7 +70,8 @@ class Model_cuti_umum extends CI_Model {
         $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_umum.jenis_cuti_id');
         $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_umum.nip');
         $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_umum.atasan_id');
-        $this->db->where('tbl_kelola_atasan.pejabat_id',$id);
+        $this->db->join('tbl_kelola_pejabat','tbl_kelola_pejabat.id_pejabat = tbl_kelola_atasan.pejabat_id');
+        $this->db->where('tbl_kelola_pejabat.user_id_pejabat',$id);
         $this->db->where('tbl_cuti_umum.sts_apv_2',1);
         return $this->db->get();
     }
@@ -81,7 +83,7 @@ class Model_cuti_umum extends CI_Model {
         $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_umum.nip');
         $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_umum.atasan_id');
         $this->db->where('tbl_cuti_umum.sts_apv_1',1);
-        $this->db->where('tbl_kelola_atasan.user_id',$id);
+        $this->db->where('tbl_kelola_atasan.user_id_atasan',$id);
         return $this->db->get();
     }
 
@@ -95,7 +97,7 @@ class Model_cuti_umum extends CI_Model {
 
         //pesan berhasil
         $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
-        $this->session->set_flashdata("pesan", $msg);
+        $this->session->set_flashdata("message", $msg);
         redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_pejabat');
     }
 
@@ -109,7 +111,7 @@ class Model_cuti_umum extends CI_Model {
 
         //pesan berhasil
         $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
-        $this->session->set_flashdata("pesan", $msg);
-        redirect(base_url() . 'C_cuti/Approval_cuti_atasan');
-    }   
+        $this->session->set_flashdata("message", $msg);
+        redirect(base_url() . 'Data_cuti_umum/Apv_cu_atasan');
+    }
 }

@@ -17,7 +17,7 @@
         </div>
       </section>
     <!-- /.content-header -->
-
+    <?php echo $this->session->flashdata('message'); ?>
     <!--Main content -->
 <div class="content">
     <div class="container-fluid">

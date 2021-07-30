@@ -113,7 +113,7 @@ class Data_cuti_umum extends CI_Controller {
   {
       // ambil data id dari uri segement 3
       $id = $this->uri->segment(3);
-      $where = array('id_cuti' => $id);
+      $where = array('id_cuti_umum' => $id);
         // form validation
       $this->form_validation->set_rules('alasan', 'Alasan', 'required|trim');
       $this->form_validation->set_rules('tgl_pengajuan', 'tgl_pengajuan', 'required|trim');
@@ -125,14 +125,14 @@ class Data_cuti_umum extends CI_Controller {
       $this->form_validation->set_rules('id_jenis_cuti', 'id_jenis_cuti', 'required|trim');
       $this->form_validation->set_rules('id_atasan', 'id_atasan', 'required|trim');
       
-      $data['title']      = "E-Cuti | Tambah Data Cuti Tahunan";
+      $data['title']      = "E-Cuti | Edit Data Cuti Tahunan";
       $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
       $data['jenis_cuti'] = $this->Model_cuti_umum->get_jenis_cuti()->result();
-      $data['option2'] = $this->Model_cuti_tahunan->get_option2()->result();
-      $data['data_cuti'] = $this->Model_cuti_tahunan->edit($where,'tbl_cuti_tahunan')->row_array();
+      $data['option2'] = $this->Model_cuti_umum->get_option2()->result();
+      $data['data_cuti'] = $this->Model_cuti_umum->edit($where,'tbl_cuti_umum')->row();
       $isvalidasi = $this->form_validation->run() == FALSE;
       if ($isvalidasi) {
-          $this->template->load('templates/template','user/data_cuti/edit_cuti_tahunan', $data);
+          $this->template->load('templates/template','user/data_cuti/edit_cuti_umum', $data);
       }else {
         // cek jika ada gambar yang akan diupload
         $upload_image = $_FILES['file']['name'];
@@ -155,9 +155,8 @@ class Data_cuti_umum extends CI_Controller {
             echo $this->upload->dispay_errors();
           }
         }
-        $id_cuti = $this->input->post('id_cuti');
+        $id_cuti = $this->input->post('id_cuti_umum');
         $data = [
-          'nip' => htmlspecialchars($this->session->userdata('nip',true)),
           'jenis_cuti_id' => htmlspecialchars($this->input->post('id_jenis_cuti',true)),
           'alasan' => htmlspecialchars($this->input->post('alasan',true)),
           'tgl_pengajuan' => htmlspecialchars($this->input->post('tgl_pengajuan',true)),
@@ -167,11 +166,9 @@ class Data_cuti_umum extends CI_Controller {
           'alamat' => htmlspecialchars($this->input->post('alamat',true)),
           'no_telp' => htmlspecialchars($this->input->post('no_telp',true)),
           'atasan_id' => htmlspecialchars($this->input->post('id_atasan',true)),
-          'sts_apv_1' => htmlspecialchars('1'),
-          'sts_apv_2' => htmlspecialchars('1'),
         ];
             //proses query
-          $where = array('id_cuti' => $id_cuti);
+          $where = array('id_cuti_umum' => $id_cuti);
           $this->Model_cuti_umum->update($where,$data,'tbl_cuti_umum');
           //pesan berhasil
           $this->session->set_flashdata('message', '
@@ -181,7 +178,7 @@ class Data_cuti_umum extends CI_Controller {
               <span aria-hidden="true">×</span>
             </button>
           </div>');
-        redirect('Data_cuti');
+        redirect('Data_cuti_umum');
       }
   } 
 

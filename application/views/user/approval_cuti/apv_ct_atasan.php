@@ -26,6 +26,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Approval Pengajuan Cuti Atasan Langsung</h3>
+                    <?php echo $this->session->flashdata('message'); ?>
                     </div>
                     <!--/.card-header -->
                     <div class="card-body">
@@ -56,7 +57,7 @@
                                             <a href="<?php echo base_url() . 'Data_cuti_tahunan/approve_atasan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/tolak_pengajuan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
+                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/tolak_ct_atasan/' .$row->id_user.'/'. $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
                                                 <i class="fas fa-times-circle"></i>
                                             </a>
                                         </td>

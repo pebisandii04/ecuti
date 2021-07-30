@@ -28,8 +28,32 @@ class Public_model extends CI_Model {
       return $this->db->get();
       }
 
-      public function update($where,$data,$table) {
-        $this->db->where($where);
-        $this->db->update($table,$data);
-      }
+  public function update($where,$data,$table) {
+      $this->db->where($where);
+      $this->db->update($table,$data);
+  }
+
+  public function get_ct_terakhir(){
+    $nip = $this->session->userdata('nip');
+    $this->db->select('*');
+    $this->db->from('tbl_cuti_tahunan');
+    $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_tahunan.jenis_cuti_id');
+    $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_tahunan.nip');
+    $this->db->where('tbl_user.nip',$nip);
+    $this->db->order_by('tgl_pengajuan', 'DESC');
+    $this->db->limit(3);
+    return $this->db->get();
+  }
+
+  public function get_cu_terakhir(){
+    $nip = $this->session->userdata('nip');
+    $this->db->select('*');
+    $this->db->from('tbl_cuti_umum');
+    $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_umum.jenis_cuti_id');
+    $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_umum.nip');
+    $this->db->where('tbl_user.nip',$nip);
+    $this->db->order_by('tgl_pengajuan', 'DESC');
+    $this->db->limit(3);
+    return $this->db->get();
+  }
 }

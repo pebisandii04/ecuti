@@ -1,14 +1,22 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jul 15, 2021 at 04:35 AM
--- Server version: 5.7.32
--- PHP Version: 7.4.12
+-- Host: localhost:3306
+-- Generation Time: Jul 29, 2021 at 02:10 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `db_ecuti`
@@ -60,6 +68,15 @@ CREATE TABLE `tbl_cuti_tahunan` (
   `sts_apv_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_cuti_tahunan`
+--
+
+INSERT INTO `tbl_cuti_tahunan` (`id_cuti_tahunan`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `sts_apv_1`, `sts_apv_2`) VALUES
+('T-CT-210716-00001', '1955110902201210016', 1, 'Test', '2021-07-16', '2021-07-19', '2021-07-20', 2, 'TEST', '08997768987', 18, 0, 0),
+('T-CT-210722-00001', '197608272001121002', 1, 'test tambah', '2021-07-22', '2021-07-23', '2021-07-26', 2, 'ciruluk', '09889784564', 6, 0, 0),
+('T-CT-210725-00001', '196501042014081001', 1, 'test edited', '2021-07-25', '2021-07-26', '2021-07-29', 4, 'test', '078877665588', 8, 3, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -88,7 +105,9 @@ CREATE TABLE `tbl_cuti_umum` (
 --
 
 INSERT INTO `tbl_cuti_umum` (`id_cuti_umum`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `upload_file`, `sts_apv_1`, `sts_apv_2`) VALUES
-('T-CU-210706-00001', '198405312009042010', 3, 'Sakit Badan Meriang', '2021-06-25', '2021-06-28', '2021-06-29', 1, 'Jl. Gajah Mada No.17', '081284923373', 10, '', 1, 1);
+('T-CU-210716-00001', '1955110902201210016', 3, 'cacar', '2021-07-19', '2021-07-19', '2021-07-20', 1, 'test', '08997768987', 18, 'bukti-1626454905.pdf', 0, 0),
+('T-CU-210720-00001', '196410081986032001', 5, 'Menikah kan anak ke 3', '2021-07-20', '2021-07-20', '2021-07-21', 2, 'Rumah', '078877665588', 18, '', 0, 0),
+('T-CU-210722-00001', '199512162020122009', 4, 'Melahirkan anak ke 2', '2021-07-22', '2021-07-23', '2021-09-23', 90, 'Kalijati', '089977887655', 8, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -175,8 +194,8 @@ INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`
 (29, 29, 12, 0, 0),
 (30, 30, 12, 0, 0),
 (31, 31, 12, 0, 0),
-(32, 32, 10, 10, 1),
-(33, 33, 10, 0, 0),
+(32, 32, 8, 10, 1),
+(33, 33, 8, 0, 0),
 (34, 34, 12, 0, 0),
 (35, 35, 12, 0, 0),
 (36, 36, 6, 0, 0),
@@ -232,7 +251,7 @@ INSERT INTO `tbl_hak_cuti_tahunan` (`id_hak_cuti_tahunan`, `user_id`, `n`, `n_1`
 (87, 87, 12, 0, 0),
 (88, 88, 12, 0, 0),
 (89, 89, 12, 0, 0),
-(90, 90, 12, 0, 0),
+(90, 90, 10, 0, 0),
 (91, 91, 12, 0, 0),
 (92, 92, 12, 0, 0),
 (93, 93, 12, 0, 0),
@@ -802,7 +821,7 @@ ALTER TABLE `tbl_golongan_ruang`
 -- AUTO_INCREMENT for table `tbl_hak_cuti_tahunan`
 --
 ALTER TABLE `tbl_hak_cuti_tahunan`
-  MODIFY `id_hak_cuti_tahunan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id_hak_cuti_tahunan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `tbl_jabatan`
@@ -832,13 +851,13 @@ ALTER TABLE `tbl_jenis_pegawai`
 -- AUTO_INCREMENT for table `tbl_kelola_atasan`
 --
 ALTER TABLE `tbl_kelola_atasan`
-  MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_atasan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_kelola_pejabat`
 --
 ALTER TABLE `tbl_kelola_pejabat`
-  MODIFY `id_pejabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pejabat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_status`
@@ -919,3 +938,8 @@ ALTER TABLE `tbl_user`
   ADD CONSTRAINT `tbl_user_ibfk_6` FOREIGN KEY (`agama_id`) REFERENCES `tbl_agama` (`id_agama`),
   ADD CONSTRAINT `tbl_user_ibfk_7` FOREIGN KEY (`jenis_kelamin_id`) REFERENCES `tbl_jenis_kelamin` (`id_jenis_kelamin`),
   ADD CONSTRAINT `tbl_user_ibfk_8` FOREIGN KEY (`status_id`) REFERENCES `tbl_status` (`id_status`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

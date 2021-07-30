@@ -18,7 +18,7 @@ class Authentication extends CI_Controller {
 				redirect('Dashboard');
 			}
 			if ($role['role_id'] == 3) {
-				redirect('Dashboard');
+				redirect('Dashboard/user');
 			}
 			if ($role['role_id'] == 4){
 				redirect('Dashboard');

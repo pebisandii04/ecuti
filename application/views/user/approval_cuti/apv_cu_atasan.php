@@ -26,6 +26,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Approval Pengajuan Cuti Atasan Langsung</h3>
+                    <?php echo $this->session->flashdata('message'); ?>
                     </div>
                     <!--/.card-header -->
                     <div class="card-body">
@@ -47,16 +48,16 @@
                                 foreach ($list_data as $row) { ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
-                                        <td><?php echo $row->nama_lengkap; ?></td>
+                                        <td><?php echo  $row->nama_lengkap; ?></td>
                                         <td> <?php echo $row->nama_jenis_cuti; ?></td>
                                         <td> <?php echo $row->tgl_pengajuan; ?></td>
                                         <td> <?php echo $row->tgl_mulai; ?><b>s/d</b><?php echo $row->tgl_selesai; ?></td>
                                         <td> <?php echo $row->alasan; ?></td>
                                         <td>
-                                            <a href="<?php echo base_url() . 'Data_cuti_umum/approve_atasan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
+                                            <a href="<?php echo base_url() . 'Data_cuti_umum/approve_atasan/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a href="<?php echo base_url() . 'Data_cuti_umum/tolak_pengajuan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
+                                            <a href="<?php echo base_url() . 'Data_cuti_umum/tolak_pengajuan/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah data ini akan di hapus ?')">
                                                 <i class="fas fa-times-circle"></i>
                                             </a>
                                         </td>

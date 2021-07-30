@@ -18,7 +18,7 @@ class Model_cuti_tahunan extends CI_Model {
     function get_option2(){
         $this->db->select('*');
         $this->db->from('tbl_kelola_atasan');
-        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id');
+        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id_atasan');
         return $this->db->get();
     }
 
@@ -29,7 +29,7 @@ class Model_cuti_tahunan extends CI_Model {
 
     public function edit($where,$table) {
         $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_tahunan.atasan_id');
-        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id');
+        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id_atasan');
         $this->db->where($where);
         return $this->db->get_where($table);
     }
@@ -61,9 +61,9 @@ class Model_cuti_tahunan extends CI_Model {
             $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_tahunan.jenis_cuti_id');
             $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_tahunan.nip');
             $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_tahunan.atasan_id');
-            //$this->db->join('tbl_kelola_jabatan','tbl_kelola_pejabat.user_id = tbl_cuti_tahunan');
+            $this->db->join('tbl_kelola_pejabat','tbl_kelola_pejabat.id_pejabat = tbl_kelola_atasan.pejabat_id');
+            $this->db->where('tbl_kelola_pejabat.user_id_pejabat',$id);
             $this->db->where('tbl_cuti_tahunan.sts_apv_2',1);
-            $this->db->where('tbl_kelola_atasan.pejabat_id',$id);
             return $this->db->get();
         }
 
@@ -85,7 +85,7 @@ class Model_cuti_tahunan extends CI_Model {
             $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_tahunan.nip');
             $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_tahunan.atasan_id');
             $this->db->where('tbl_cuti_tahunan.sts_apv_1',1);
-            $this->db->where('tbl_kelola_atasan.user_id',$id);
+            $this->db->where('tbl_kelola_atasan.user_id_atasan',$id);
             return $this->db->get();
         }
 
@@ -96,13 +96,38 @@ class Model_cuti_tahunan extends CI_Model {
             );
             $this->db->where('id_cuti_tahunan', $id);
             $this->db->update($this->table, $data);
-    
+
             //pesan berhasil
             $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
-            $this->session->set_flashdata("pesan", $msg);
+            $this->session->set_flashdata("message", $msg);
             redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_pejabat');
         }
-    
+
+        public function get($id_ct = null){
+            $this->db->from('tbl_cuti_tahunan');
+            if($id_ct != null){
+                $this->db->where('id_cuti_tahunan',$id_ct);
+            }
+            $query = $this->db->get();
+            return $query;
+        }
+
+        public function tolak_ct_atasan($id_ct){
+            $data = array(
+                "sts_apv_1" => '3',
+                "sts_apv_2" => '3',
+            );
+            $this->db->where('id_cuti_tahunan', $id_ct);
+            $this->db->update($this->table, $data);
+        }
+
+        function update_hak($data){
+            $jml_hari = $data['jml_hari'];
+            $user_id = $data['user_id'];
+            $sql = "UPDATE tbl_hak_cuti_tahunan SET n = n + '$jml_hari' where user_id = '$user_id'";
+            $this->db->query($sql);
+        }
+
         public function approve_atasan(){
             $id = $this->uri->segment('3');
             $data = array(
@@ -110,10 +135,10 @@ class Model_cuti_tahunan extends CI_Model {
             );
             $this->db->where('id_cuti_tahunan', $id);
             $this->db->update($this->table, $data);
-    
+
             //pesan berhasil
             $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
-            $this->session->set_flashdata("pesan", $msg);
+            $this->session->set_flashdata("message", $msg);
             redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_atasan');
         }
 }

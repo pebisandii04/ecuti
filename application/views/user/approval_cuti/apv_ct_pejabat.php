@@ -17,7 +17,7 @@
         </div>
       </section>
     <!-- /.content-header -->
-
+    <?php echo $this->session->flashdata('message'); ?>
     <!--Main content -->
 <div class="content">
     <div class="container-fluid">
@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Jenis Cuti</th>
@@ -45,7 +45,7 @@
                                 <?php
                                 $no = 1;
                                 foreach ($list_data as $row) { ?>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td><?= $no++ ?></td>
                                         <td><?php echo $row->nama_lengkap; ?></td>
                                         <td> <?php echo $row->nama_jenis_cuti; ?></td>
@@ -56,7 +56,7 @@
                                             <a href="<?php echo base_url() . 'Data_cuti_tahunan/approve_pejabat/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/tolak_pengajuan/' . $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin!! Menolak Pengajuan Ini?')">
+                                            <a href="<?php echo base_url() . 'Data_cuti_tahunan/tolak_ct_pejabat/' .$row->id_user.'/'. $row->id_cuti_tahunan; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin!! Menolak Pengajuan Ini?')">
                                                 <i class="fas fa-times-circle"></i>
                                             </a>
                                         </td>

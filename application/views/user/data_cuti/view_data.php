@@ -36,7 +36,7 @@
                          <?php echo $this->session->flashdata('message'); ?>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>No</th>
                                     <th>Jenis Cuti</th>
                                     <th>Tgl Pengajuan</th>
@@ -50,7 +50,7 @@
                                 <?php
                                 $no = 1;
                                 foreach ($data_cuti as $row) { ?>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td><?= $no++ ?></td>
                                         <td> <?php echo $row->nama_jenis_cuti; ?></td>
                                         <td> <?php echo $row->tgl_pengajuan; ?></td>
@@ -87,7 +87,7 @@
                                                     </a>
                                                 <?php } ?>
                                             <?php if ($row->sts_apv_2 == 0) { ?>
-                                            <a href="<?php echo base_url() . 'C_cetak/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning">
+                                            <a href="<?php echo base_url() . 'Laporan/cetak_lampiran/' . $row->nip; ?>" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Cetak Lampiran" target="_blank">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             <?php } ?>
@@ -98,7 +98,7 @@
                                                     </a>
                                                 <?php } ?>
                                             <?php if ($row->sts_apv_2 == 0) { ?>
-                                            <a href="<?php echo base_url() . 'Laporan/cetak_surat/' . $row->nip; ?>" class="btn btn-sm btn-primary" target="_blank">
+                                            <a href="<?php echo base_url() . 'Laporan/cetak_surat/' . $row->nip; ?>" class="btn btn-sm btn-primary" target="_blank" data-toggle="tooltip" data-placement="top" title="Cetak Surat">
                                                 <i class="fas fa-print"></i>
                                             </a>
                                             <?php } ?>
