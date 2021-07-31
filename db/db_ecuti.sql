@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 29, 2021 at 02:10 PM
+-- Generation Time: Jul 30, 2021 at 07:52 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -75,7 +75,8 @@ CREATE TABLE `tbl_cuti_tahunan` (
 INSERT INTO `tbl_cuti_tahunan` (`id_cuti_tahunan`, `nip`, `jenis_cuti_id`, `alasan`, `tgl_pengajuan`, `tgl_mulai`, `tgl_selesai`, `jml_hari`, `alamat`, `no_telp`, `atasan_id`, `sts_apv_1`, `sts_apv_2`) VALUES
 ('T-CT-210716-00001', '1955110902201210016', 1, 'Test', '2021-07-16', '2021-07-19', '2021-07-20', 2, 'TEST', '08997768987', 18, 0, 0),
 ('T-CT-210722-00001', '197608272001121002', 1, 'test tambah', '2021-07-22', '2021-07-23', '2021-07-26', 2, 'ciruluk', '09889784564', 6, 0, 0),
-('T-CT-210725-00001', '196501042014081001', 1, 'test edited', '2021-07-25', '2021-07-26', '2021-07-29', 4, 'test', '078877665588', 8, 3, 3);
+('T-CT-210725-00001', '196501042014081001', 1, 'test edited', '2021-07-25', '2021-07-26', '2021-07-29', 4, 'test', '078877665588', 8, 0, 0),
+('T-CT-210730-00001', '197806122006042003', 1, 'test', '2021-07-30', '2021-08-02', '2021-08-03', 2, 'testttss', '078877665588', 7, 3, 3);
 
 -- --------------------------------------------------------
 
