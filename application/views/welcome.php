@@ -5,9 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Creative - Start Bootstrap Theme</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <title><?php echo $title; ?></title>
+        <!-- Icon -->
+        <link rel="icon" type="image/x-icon" href="<?php echo base_url().'assets/dist/img/logo_ma.ico'; ?>" />
         <!-- Bootstrap Icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -36,8 +36,7 @@
                         <hr class="divider"/>
                     </div>
                     <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">Dirancang untuk mempermudah proses pengajuan cuti pegawai melalui online dengan mudah, cepat, dan waktu sebenarnya.
-                        manfaat tanpa kertas</p>
+                        <p class="text-white-75 mb-5">Dirancang untuk mempermudah proses pengajuan cuti pegawai melalui online dengan mudah, cepat, dan waktu sebenarnya.</p>
                         <a class="btn btn-primary btn-xl" href="authentication"><b>Login</b></a>
                     </div>
                 </div>

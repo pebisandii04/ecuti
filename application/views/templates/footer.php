@@ -1,7 +1,7 @@
 <!-- Main Footer -->
   <footer class="main-footer ">
     <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="">E-Cuti</a>.</strong>
-    All rights reserved.
+    All rights reserved Powered By <a href="https://www.instagram.com/fikri_oktaviano/">Fikri Oktaviano</a>
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 0.0.0
     </div>

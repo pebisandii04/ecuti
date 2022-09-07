@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
                 <li class="breadcrumb-item active">Data Golongan Ruang</li>
               </ol>
             </div>
@@ -30,9 +30,9 @@
                   </div>
                   <div class="card-body">
                     <?php echo $this->session->flashdata('message'); ?>
-                    <table id="example2" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped">
                       <thead>
-                        <tr>
+                        <tr  class="text-center">
                           <th width="8" class="text-center">#</th>
                           <th>Nama Golongan Ruang</th>
                           <th>Action</th>
@@ -53,13 +53,6 @@
                           </tr>
                         <?php } ?>
                       </tbody>
-                      <tfoot>
-                        <tr>
-                          <th width="8" class="text-center">#</th>
-                          <th>Nama Golongan Ruang</th>
-                          <th>Action</th>
-                        </tr>
-                      </tfoot>
                     </table>
                   </div>
                 </div>

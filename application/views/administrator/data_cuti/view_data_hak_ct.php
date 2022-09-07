@@ -5,12 +5,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1> <i class="fas fa-calendar-day fa-fw"></i> Data Hak Cuti Tahunan</h1>
+                            <h1> <i class="fas fa-calendar-day fa-fw"></i> Rekap Data Hak Cuti Tahunan</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right text-sm">
                                 <li class="breadcrumb-item"><a href="<?php echo base_url() . ''; ?>">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Data Hak Cuti Tahunan</li>
+                                <li class="breadcrumb-item active">Rekap Data Hak Cuti Tahunan</li>
                             </ol>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Data Hak Cuti Tahunan</h3>
+                                    <h3 class="card-title">Rekap Data Hak Cuti Tahunan</h3>
                                 </div>
                                 <div class="card-body">
                                     <?php echo $this->session->flashdata('message'); ?>
@@ -34,7 +34,7 @@
                                             <tr class="text-center">
                                                 <th width="8">#</th>
                                                 <th>Nama Lengkap</th>
-                                                <th>Nip</th>
+                                                <th>NIP</th>
                                                 <th>N</th>
                                                 <th>N-1</th>
                                                 <th>N-2</th>

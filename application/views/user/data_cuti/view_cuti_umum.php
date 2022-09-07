@@ -25,10 +25,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">List Data</h3>
+                        <h3 class="card-title">Data Pengajuan Cuti Umum</h3>
                         <div class="card-tools"><a href="<?php echo base_url() ?>data_cuti_umum/tambah_cuti_umum" class="btn btn-sm btn-primary">
                                 <i class="fas fa-plus">
-                                </i> Tambah data</a>
+                                </i> Create Pengajuan Cuti Umum</a>
                         </div>
                     </div>
                     <!--/.card-header -->
@@ -36,26 +36,26 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr class="text-center">
-                                    <th>No</th>
+                                    <th width="8">#</th>
                                     <th>Jenis Cuti</th>
                                     <th>Tgl Pengajuan</th>
                                     <th>Priode Cuti</th>
                                     <th>Alasan</th>
                                     <th>Status</th>
-                                    <th>Aksi </th>
+                                    <th>Action </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $no = 1;
                                 foreach ($data_cuti as $row) { ?>
-                                    <tr class="text-center">
-                                        <td><?= $no++ ?></td>
-                                        <td> <?php echo $row->nama_jenis_cuti; ?></td>
-                                        <td> <?php echo $row->tgl_pengajuan; ?></td>
-                                        <td> <?php echo $row->tgl_mulai; ?><b>s/d</b><?php echo $row->tgl_selesai; ?></td>
+                                    <tr>
+                                        <td  class="text-center"><?= $no++ ?></td>
+                                        <td  class="text-center"> <?php echo $row->nama_jenis_cuti; ?></td>
+                                        <td  class="text-center"> <?php echo $row->tgl_pengajuan; ?></td>
+                                        <td  class="text-center"> <?php echo $row->tgl_mulai; ?> <b>s/d</b> <?php echo $row->tgl_selesai; ?></td>
                                         <td> <?php echo $row->alasan; ?></td>
-                                        <td>
+                                        <td  class="text-center">
                                         <?php
                                             if ($row->sts_apv_1 == 0 && $row->sts_apv_2 == 1) {
                                                 echo '<span class="badge badge-danger">Menunggu Apv Pejabat</span>';
@@ -71,7 +71,7 @@
                                             }
                                             ?>         
                                         </td>
-                                        <td>
+                                        <td  class="text-center">
                                         <?php if ($row->sts_apv_2 == 1) { ?>
                                             <a href="<?php echo base_url() . 'Data_cuti_umum/edit_cuti_umum/' . $row->id_cuti_umum; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-edit"></i>

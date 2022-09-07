@@ -5,12 +5,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"> <i class="fas fa-calendar fa-fw"></i> Data Pengajuan Cuti Tahunan Pending</h1>
+            <h1 class="m-0"> <i class="fas fa-file-alt fa-fw"></i> Laporan Data Pengajuan Cuti Tahunan Approve Pending</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="">Home</a></li>
-              <li class="breadcrumb-item active">Data Pengajuan Cuti Tahunan Pending</li>
+              <li class="breadcrumb-item active">Laporan Data Pengajuan Cuti Tahunan Approve Pending</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -24,15 +24,15 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">List Data Semua Cuti</h3>
+                        <h3 class="card-title">Laporan Data Pengajuan Cuti Tahunan Approve Pending</h3>
                     </div>
                     <!--/.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
+                            <tr class="text-center">
+                                    <th width="8">#</th>
+                                    <th>Nama Lengkap</th>
                                     <th>Jenis Cuti</th>
                                     <th>Tgl Pengajuan</th>
                                     <th>Priode Cuti</th>
@@ -45,13 +45,13 @@
                                 $no = 1;
                                 foreach ($listdata as $row) { ?>
                                     <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td> <?php echo $row->nama_lengkap; ?></td>
-                                        <td> <?php echo $row->nama_jenis_cuti; ?></td>
-                                        <td> <?php echo $row->tgl_pengajuan; ?></td>
-                                        <td> <?php echo $row->tgl_mulai; ?><b>s/d</b><?php echo $row->tgl_selesai; ?></td>
+                                        <td class="text-center"><?= $no++ ?></td>
+                                        <td class="text-center"> <?php echo $row->nama_lengkap; ?></td>
+                                        <td class="text-center"> <?php echo $row->nama_jenis_cuti; ?></td>
+                                        <td class="text-center"> <?php echo $row->tgl_pengajuan; ?></td>
+                                        <td class="text-center"> <?php echo $row->tgl_mulai; ?> <b>s/d</b> <?php echo $row->tgl_selesai; ?></td>
                                         <td> <?php echo $row->alasan; ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <?php
                                             if ($row->sts_apv_1 == 0 && $row->sts_apv_2 == 1) {
                                                 echo '<span class="badge badge-danger">Menunggu Apv Pejabat</span>';

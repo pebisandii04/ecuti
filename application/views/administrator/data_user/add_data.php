@@ -9,8 +9,9 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
-                <li class="breadcrumb-item active">Data User</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Data User</a></li>
+                <li class="breadcrumb-item active">Add Data User</li>
               </ol>
             </div>
           </div>
@@ -143,7 +144,7 @@
                                 <div class="input-group">
                                   <div class="custom-file">
                                     <input type="file" name="photo" class="custom-file-input">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    <label class="custom-file-label" for="exampleInputFile">Choose file. Max 2 MB</label>
                                   </div>
                                 </div>
                               </div>

@@ -220,4 +220,24 @@ class Data_cuti_umum extends CI_Controller {
     public function approve_atasan(){
       $this->Model_cuti_umum->approve_atasan();
     }
+
+    public function tolak_cu_atasan(){
+      $id_cu = $this->uri->segment(3);
+      $this->Model_cuti_umum->tolak_cu_atasan($id_cu);
+      if($this->db->affected_rows()>0){
+        $msg = "<script>alert('Pengajuan Sudah DiTolak')</script>";
+        $this->session->set_flashdata('message', $msg);
+      }
+      redirect('Data_cuti_umum/Apv_cu_atasan','refresh');
+    }
+
+    public function tolak_cu_pejabat(){
+      $id_cu = $this->uri->segment(3);
+      $this->Model_cuti_umum->tolak_cu_atasan($id_cu);
+      if($this->db->affected_rows()>0){
+        $msg = "<script>alert('Pengajuan Sudah DiTolak')</script>";
+        $this->session->set_flashdata('message', $msg);
+      }
+      redirect('Data_cuti_umum/Apv_cu_pejabat','refresh');
+    }
 }

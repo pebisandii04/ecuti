@@ -9,8 +9,9 @@
                 </div>
                 <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
-                <li class="breadcrumb-item active">Kelola Pejabat Berwenang</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Kelola Pejabat Berwenang</a></li>
+                <li class="breadcrumb-item active">Add Pejabat Berwenang</li>
               </ol>
             </div>
           </div>
@@ -21,34 +22,37 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-3">
+            </div>
+            <div class="col-6">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Form Tambah Data Pejabat Berwenang</h3>
-                        <div class="card-tools">
-                            <a href="<?php echo base_url() ?>" class="btn btn-tool"><i class="fas fa-times"></i></a></div>
                     </div>
                     <form class="form-horiontal" action="<?php echo base_url() ?>Manajemen_pimpinan/add_data_pejabat" method="POST">
                         <!--/.card-header -->
                         <div class="card-body">
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <?php echo $this->session->flashdata('message'); ?>
                                         <!-- FORM TAMBAH DATA KELOLA ATASAN -->
-                                        <form>
                                             <div class="form-group">
                                                 <label for="id_unit_kerja">Nama Pejabat Berwenang</label>
-                                                <input type="text" name="nama_user" class="form-control" id="nama_user" placeholder="Masukan Nama Pejabat" style="width:500px;">
+                                                <input type="text" name="nama_user" class="form-control" id="nama_user" placeholder="Masukan Nama Pejabat">
                                                 <?php echo form_error('user_id_pejabat', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
-                                                <input type="hidden" name="user_id_pejabat" class="form-control" id="user_id_pejabat" placeholder="id" style="width:500px;">
+                                                <input type="hidden" name="user_id_pejabat" class="form-control" id="user_id_pejabat" placeholder="id">
                                             </div>
-                                            <button type="submit" class="btn btn-primary">Tambah Data</button>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                <a href="<?php echo base_url() . 'manajemen_pimpinan/kelola_pejabat_berwenang'; ?>" class="btn btn-default"><i class="fas fa-times fa-fw"></i>Cancel</a>
+                                <button type="submit" class="btn btn-primary float-right" onclick="return confirm('Are you sure you want to save it');"><i class="fas fa-save fa-fw"></i> Save</button>
+                                </form>
                             </div>
-                        </div>
-                    </form>
+                            </div>
+                            
+                        </div>    
                 </div>
                 <!--/.card -->
             </div>

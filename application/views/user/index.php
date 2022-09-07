@@ -80,7 +80,7 @@
                               </table>
                           </div>
                           <div class="card-footer">
-                            <p>Dirancang untuk mempermudah proses pengajuan cuti pegawai melalui online dengan mudah, cepat, dan waktu sebenarnya. manfaat tanpa kertas</p>
+                            <p>Dirancang untuk mempermudah proses pengajuan cuti pegawai melalui online dengan mudah, cepat, dan waktu sebenarnya</p>
                           </div>
                       </div>
                   </div>

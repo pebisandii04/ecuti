@@ -9,8 +9,9 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
-                <li class="breadcrumb-item active">Data Unit Kerja</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Data Unit Kerja</a></li>
+                <li class="breadcrumb-item active">Edit Data Unit Kerja</li>
               </ol>
             </div>
           </div>

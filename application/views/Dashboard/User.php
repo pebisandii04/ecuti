@@ -29,7 +29,7 @@
                             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file-signature"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Cuti Tahunan</span>
+                                <span class="info-box-text"><a href="<?php echo base_url().'user/detail_hak_cuti'; ?>"> Cuti Tahunan</a></span>
                                 <span class="info-box-number">
                                     <?php
                                         $n = $hak_cuti->n;
@@ -53,8 +53,8 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Besar</span>
                                 <span class="info-box-number">
-                                    90
-                                    <small>Hari</small>
+                                    3
+                                    <small>Bulan</small>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -73,7 +73,8 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Sakit</span>
                                 <span class="info-box-number">
-                                    Menyesuaikan
+                                    14 
+                                    <small> Hari</small>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -91,8 +92,8 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Melahirkan</span>
                                 <span class="info-box-number">
-                                90
-                                    <small>Hari</small>
+                                3
+                                    <small>Bulan</small>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -107,8 +108,8 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Alasan Penting</span>
                                 <span class="info-box-number">
-                                    2-3
-                                    <small>Hari</small>
+                                    1
+                                    <small>Bulan</small>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->
@@ -122,8 +123,8 @@
                             <div class="info-box-content">
                                 <span class="info-box-text">Cuti Luar Tanggungan</span>
                                 <span class="info-box-number">
-                                    Max 3
-                                    <small>Taun</small>
+                                     3
+                                    <small>Tahun</small>
                                 </span>
                             </div>
                             <!-- /.info-box-content -->

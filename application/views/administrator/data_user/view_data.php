@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
                 <li class="breadcrumb-item active">Data User</li>
               </ol>
             </div>
@@ -30,10 +30,10 @@
                 </div>
                 <div class="card-body">
                   <?php echo $this->session->flashdata('message'); ?>
-                  <table id="example2" class="table table-bordered table-striped">
+                  <table id="example1" class="table table-bordered table-striped">
                     <thead>
-                    <tr>
-                      <th width="8" class="text-center">#</th>
+                    <tr class="text-center">
+                      <th width="8">#</th>
                       <th>NIP</th>
                       <th>Nama Lengkap</th>
                       <th width="150px">Jabatan</th>
@@ -48,7 +48,7 @@
                       ?>
                         <tr>
                           <td class="text-center"><?php echo $no++; ?></td>
-                          <td><?php echo $user['nip']; ?></td>
+                          <td class="text-center"><?php echo $user['nip']; ?></td>
                           <td><?php echo $user['nama_lengkap']; ?></td>
                           <td><?php echo $user['nama_jabatan']; ?></td>
                           <td class="text-center">
@@ -64,22 +64,12 @@
                           <td class="text-center">
                               <a href="<?php echo base_url().'data_user/detail_data/'. $user['id_user']; ?>" class="btn btn-success btn-sm" title="Detail"> <i class="fas fa-eye fa-fw"></i> </a>
                               <a href="<?php echo base_url().'data_user/edit_data/'. $user['id_user']; ?>" class="btn btn-warning btn-sm" title="Edit" > <i class="fas fa-edit fa-fw"></i> </a>
-                              <a href="<?php echo base_url().'data_user/reset_password/'. $user['id_user']; ?>" class="btn btn-primary btn-sm" title="Reset Password" > <i class="fas fa-lock fa-fw"></i> </a>
+                              <a href="<?php echo base_url().'data_user/reset_password/'. $user['id_user']; ?>" class="btn btn-primary btn-sm" title="Reset Password" onclick="return confirm('Are you sure you want to reset this password');"> <i class="fas fa-lock fa-fw"></i> </a>
                               <a href="<?php echo base_url().'data_user/delete_data/'. $user['id_user']; ?>" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete');"> <i class="fas fa-trash fa-fw"></i></a>
                           </td>
                         </tr>
                       <?php } ?>
                     </tbody>
-                    <tfoot>
-                    <tr>
-                      <th style="width:10;">#</th>
-                      <th>NIP</th>
-                      <th>Nama Lengkap</th>
-                      <th>Jabatan</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                    </tfoot>
                   </table>
                 </div>
               </div>

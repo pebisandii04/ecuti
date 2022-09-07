@@ -147,7 +147,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
                                     <input type="file" name="photo" class="custom-file-input" id="photo">
-                                    <label class="custom-file-label">Choose file</label>
+                                    <label class="custom-file-label">Choose file. Max 2 MB</label>
                                     </div>
                                 </div>
                             </div>

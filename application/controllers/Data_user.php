@@ -48,7 +48,7 @@ class Data_user extends CI_Controller {
     $this->form_validation->set_rules('status_id', 'Status', 'required|trim');
 
     $config['upload_path'] = './uploads/profiles/';
-    $config['allowed_types'] = 'gif|jpg|jepg|png';
+    $config['allowed_types'] = 'gif|jpg|jpeg|png';
     $config['max_size']      = '5048';
     $config['file_name'] = 'pnju-' . time();
     $this->load->library('upload', $config);
@@ -122,7 +122,7 @@ class Data_user extends CI_Controller {
     $this->form_validation->set_rules('role_id', 'Role', 'required|trim');
     $this->form_validation->set_rules('status_id', 'Status', 'required|trim');
     $config['upload_path'] = './uploads/profiles/';
-    $config['allowed_types'] = 'gif|jpg|jepg|png';
+    $config['allowed_types'] = 'gif|jpg|jpeg|png';
     $config['max_size']      = '5048';
     $config['file_name'] = 'pnju-' . time();
     $this->load->library('upload', $config);
@@ -140,6 +140,12 @@ class Data_user extends CI_Controller {
       $data['data_status']         = $this->db->get('tbl_status')->result_array();
       $this->template->load('templates/template', 'administrator/data_user/edit_data', $data);
     } else {
+      $id_user   = $this->input->post('id_user');
+      $config['upload_path'] = './uploads/profiles/';
+      $config['allowed_types'] = 'gif|jpg|jpeg|png';
+      $config['max_size']      = '5048';
+      $config['file_name'] = 'pnju-' . time();
+      $this->load->library('upload', $config);
       if ($this->upload->do_upload('photo')) {
         $image = $this->upload->data();
         unlink(FCPATH . 'uploads/profiles/' . $this->input->post('photo_lama', TRUE));
@@ -164,15 +170,15 @@ class Data_user extends CI_Controller {
         'status_id' => $this->input->post('status_id', true),
         'photo' => $photo
       ];
-      $where = array('id_user' => $id);
+      $where = array('id_user' => $id_user);
       $this->datauser_model->update($where, $data, 'tbl_user');
       $this->session->set_flashdata('message', '
-        <div class="alert alert-success" role="alert">
-          <i class="fas fa-check-circle fa-fw"></i> Data user has been updated!
-          <button class="close" type="button" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>');
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check-circle fa-fw"></i> Data user has been updated!
+        <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>');
       redirect('data_user');
     }
   }

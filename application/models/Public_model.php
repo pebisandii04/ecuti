@@ -56,4 +56,31 @@ class Public_model extends CI_Model {
     $this->db->limit(3);
     return $this->db->get();
   }
+  
+  function get_jml_ct(){
+    $this->db->select('*');
+    $hasil = $this->db->get('tbl_cuti_tahunan');
+    return $hasil;
+  }
+
+  function get_jml_cu(){
+    $this->db->select('*');
+    $hasil = $this->db->get('tbl_cuti_umum');
+    return $hasil;
+  }
+
+  function get_jml_usr(){
+    $this->db->select('*');
+    $hasil = $this->db->get('tbl_user');
+    return $hasil;
+  }
+
+  public function get_jml($where){
+    $this->db->select('*');
+    $this->db->from('tbl_cuti_umum');
+    $this->db->where('tbl_cuti_umum.jenis_cuti_id',$where);
+    $hasil = $this->db->get();
+    return $hasil;
+  }
+  
 }

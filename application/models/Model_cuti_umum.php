@@ -96,7 +96,7 @@ class Model_cuti_umum extends CI_Model {
         $this->db->update($this->table, $data);
 
         //pesan berhasil
-        $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
+        $msg = "<script>alert('Congratulations, the application for public leave has been approved')</script>";
         $this->session->set_flashdata("message", $msg);
         redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_pejabat');
     }
@@ -110,8 +110,17 @@ class Model_cuti_umum extends CI_Model {
         $this->db->update($this->table, $data);
 
         //pesan berhasil
-        $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
+        $msg = "<script>alert('Congratulations, the application for public leave has been approved')</script>";
         $this->session->set_flashdata("message", $msg);
         redirect(base_url() . 'Data_cuti_umum/Apv_cu_atasan');
+    }
+
+    public function tolak_cu_atasan($id_cu){
+        $data = array(
+            "sts_apv_1" => '3',
+            "sts_apv_2" => '3',
+        );
+        $this->db->where('id_cuti_umum', $id_cu);
+        $this->db->update($this->table, $data);
     }
 }

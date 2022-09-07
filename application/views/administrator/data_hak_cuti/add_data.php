@@ -9,8 +9,9 @@
                 </div>
                 <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
-                <li class="breadcrumb-item active">Kelola Hak Cuti Tahunan</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Kelola Hak Cuti Tahunan</a></li>
+                <li class="breadcrumb-item active">Add Hak Cuti Tahunan</li>
               </ol>
             </div>
           </div>
@@ -21,12 +22,10 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-6 offset-3">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Form Tambah Tahunan</h3>
-                        <div class="card-tools">
-                            <a href="<?php echo base_url() ?>data_mahasiswa" class="btn btn-tool"><i class="fas fa-times"></i></a></div>
+                        <h3 class="card-title">Form Tambah Hak Cuti Tahunan</h3>
                     </div>
                     <form class="form-horiontal" action="<?php echo base_url() ?>/Data_hak_cuti/add_data_hak" method="post">
                         <!--/.card-header -->
@@ -35,7 +34,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label class="small mb-1">Nama Lengkap</label>
-                                    <input id="nama_user" name="nama_user" class="form-control" type="text" value="" placeholder="Masukan Nama" />
+                                    <input id="nama_user" name="nama_user" class="form-control" type="text" value="" placeholder="Nama Lengkap" />
                                     <?php echo form_error('user_id', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                     <input id="id_user" name="user_id" type="hidden">
                                 </div>
@@ -49,26 +48,25 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label class="small mb-1">N1</label>
-                                    <input class="form-control" type="text" name="n_1" value="" placeholder="N1"/>
+                                    <label class="small mb-1">N-1</label>
+                                    <input class="form-control" type="text" name="n_1" value="" placeholder="N-1"/>
                                     <?php echo form_error('n_1', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label class="small mb-1">N2</label>
-                                    <input class="form-control" type="text" name="n_2" value="" placeholder="N2"/>
+                                    <label class="small mb-1">N-2</label>
+                                    <input class="form-control" type="text" name="n_2" value="" placeholder="N-2"/>
                                     <?php echo form_error('n_2', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <button class="btn btn-primary" type="submit">Tambah Data</button>
-                                </div> 
-                            </div>
-                            
+                                         
                     </div>
-                    </form>
+                    <div class="card-footer">
+                                <a href="<?php echo base_url() . 'data_hak_cuti/kelola_hak_cuti'; ?>" class="btn btn-default"><i class="fas fa-times fa-fw"></i>Cancel</a>
+                                <button type="submit" class="btn btn-primary float-right" onclick="return confirm('Are you sure you want to save it');"><i class="fas fa-save fa-fw"></i> Save</button>
+                                </form>
+                            </div> 
                 </div>
                 <!--/.card -->
             </div>

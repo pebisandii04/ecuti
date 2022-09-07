@@ -154,8 +154,10 @@ class Data_cuti_tahunan extends CI_Controller {
 
     public function Rekap_data_ct(){
         $nip = $this->session->userdata('nip');
+        $nip2 = $this->uri->segment(3);
         $data['title']      = "E-Cuti | Rekap Data Cuti Tahunan";
         $data['user']       = $this->public_model->session( ['nip' => $this->session->userdata('nip')])->row_array();
+		    $data['datauser'] = $this->Model_laporan->select_data_cetak_ct($nip2)->row();
         $data['data_cuti'] = $this->Model_cuti_tahunan->select_data_all()->result();
         $this->template->load('templates/template','administrator/data_cuti/view_data_ct', $data);
     }

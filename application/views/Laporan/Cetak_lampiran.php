@@ -7,9 +7,12 @@
     <title>Document</title>
     <link type="text/css" media="screen" rel="stylesheet" href="<?= base_url()?>/assets/plugins/bootstrap/style.php">
     <style>
+        body{
+            margin-top: -5%;
+        }        
         table{
             border-collapse: collapse;
-            font-size:13px;
+            font-size:12px;
         }
         .check {
             display: inline-block;
@@ -33,18 +36,22 @@
         <tr style="margin-top:0">
             <td width="120"> </td>
             <td  width="180">
-            <p>Jakarta, 1 Desember 2021 <br>
+            Jakarta, <?= date_indo($datauser->tgl_pengajuan);?> <br>
             Yth. Bapak Ketua Pengadilan Negeri Jakarta Utara <br>
             Di <br>
             Jakarta
-            </p>
+            <br>
             </td>
         </tr>
     </table>
     <div class="row">
         <div class="col-12">
             <h5 class="text-center mb-0"> <u> FORMULIR PERMINTAAN DAN PEMBERIAN CUTI</u></h5>
-            <p class="text-center mt-0">Nomor : W10-U4/<small style="color:white">000000000</small>/KP.05.2/<?=date('m')?>/<?=date('Y')?></p>
+            <?php
+                $tanggal = $datauser->tgl_pengajuan;
+                $split 	 = explode('-', $tanggal);
+            ?>
+            <p class="text-center mt-0">Nomor : W10-U4/<small style="color:white">000000000</small>/KP.05.2/<?= $split[1]; ?>/<?= $split[0]; ?></p>
         </div>
     </div>
             <table border="1">
@@ -71,6 +78,7 @@
                     <td>-</td>
                 </tr>
             </table>
+            <br>
             <!-- Data Cuti Yang diambil -->
             <table border="1">
                 <!-- data Pgawai -->
@@ -95,7 +103,7 @@
                     
                     <?php } ?>
             </table>
-            
+            <br>
 
             <table border="1">
                 <tr>
@@ -105,6 +113,7 @@
                     <td><?=$datauser->alasan;?></td>
                 </tr>
             </table>
+            <br>
 
             <table border="1">
                 <tr>
@@ -119,6 +128,7 @@
                     <td><?=$datauser->tgl_selesai;?></td>
                 </tr>
             </table>
+            <br>
 
             <table border="1" width="541">
                 <tbody>
@@ -133,7 +143,7 @@
                                 <p>1. Cuti Tahunan</p>
                             </div>
                         </td>
-                        <td width="30" rowspan="2">
+                        <td width="150" rowspan="2">
                             <p style='margin-top:0in;margin-right:0in;margin-bottom:.0001pt;margin-left:0in;line-height:normal;font-size:14px;text-align:center;'>PARAF PETUGAS CUTI</p>
                         </td>
                         <td>
@@ -216,17 +226,19 @@
                     </tr>
                 </tbody>
             </table>
+            <br>
+
             <table border="1">
                 
                 <tr>
                     <td width="300" colspan="2">VI. ALAMAT SELAMA MENJALANKAN CUTI</td>
                 </tr>
                 <tr>
-                    <td width="400" rowspan="2"><?=$datauser->alamat;?></td>
+                    <td width="300" rowspan="2" style="text-align: center;"><?=$datauser->alamat;?></td>
                     <td>TELP : <?=$datauser->no_telp;?></td>
                 </tr>
                 <tr>
-                    <td class="pb-0">
+                    <td width="235">
                         <p class="pb-4">Hormat Saya,</p>
                         <br>
                         <p>(<?=$datauser->nama_lengkap;?>) <br>
@@ -234,6 +246,8 @@
                     </td>
                 </tr>
             </table>
+            <br>
+
             <table border="1" width="541">
                 <tr>
                     <td colspan="4">VII. PERTIMBANGAN ATASAN LANGSUNG</td>
@@ -254,7 +268,7 @@
                     <td style="border: 0;"></td>
                     <td style="border: 0;"></td>
                     <td style="border: 0;"></td>
-                    <td>
+                    <td >
                         <p class="pb-4"><?=$datauser2->nama_jabatan;?>,</p>
                         <br>
                         <p>(<?=$datauser2->nama_lengkap;?>) <br>
@@ -262,8 +276,9 @@
                     </td>
                 </tr>
             </table>
+            <br>
+
             <table border="1" width="541">
-                
                 <tr>
                     <td colspan="4">VIII. KEPUTUSAN PEJABAT YANG BERWENANG MEMBERIKAN CUTI</td>
                 </tr>
@@ -274,10 +289,10 @@
                     <td>TIDAK DISETUJUI</td>
                 </tr>
                 <tr>
-                        <td class="text-center"><img width="15" height="15" src="<?php echo base_url();?>uploads/pic/ceck.png"></td>
-                        <td><span style="color:white">1</span></td>
-                        <td></td>
-                        <td></td>
+                    <td class="text-center"><img width="15" height="15" src="<?php echo base_url();?>uploads/pic/ceck.png"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td style="border: 0;"></td>
@@ -291,6 +306,7 @@
                     </td>
                 </tr>
             </table>
+            
 
 </body>
 </html>

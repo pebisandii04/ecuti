@@ -9,8 +9,9 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
-                <li class="breadcrumb-item active">Data Jabatan</li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Data Jabatan</a></li>
+                <li class="breadcrumb-item active">Add Data Jabatan</li>
               </ol>
             </div>
           </div>

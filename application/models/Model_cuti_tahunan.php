@@ -11,6 +11,8 @@ class Model_cuti_tahunan extends CI_Model {
         $this->db->from($this->table);
         $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_tahunan.jenis_cuti_id');
         $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_tahunan.nip');
+        $this->db->join('tbl_kelola_atasan','tbl_kelola_atasan.id_atasan = tbl_cuti_tahunan.atasan_id');
+        $this->db->join('tbl_kelola_pejabat','tbl_kelola_pejabat.id_pejabat = tbl_kelola_atasan.pejabat_id');
         $this->db->where('tbl_cuti_tahunan.nip',$nip);
         return $this->db->get();
     }
@@ -98,7 +100,7 @@ class Model_cuti_tahunan extends CI_Model {
             $this->db->update($this->table, $data);
 
             //pesan berhasil
-            $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
+            $msg = "<script>alert('Congratulations, the annual leave application has been approved')</script>";
             $this->session->set_flashdata("message", $msg);
             redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_pejabat');
         }
@@ -137,7 +139,7 @@ class Model_cuti_tahunan extends CI_Model {
             $this->db->update($this->table, $data);
 
             //pesan berhasil
-            $msg = "<script>alert('Pengajuan Sudah DiApprove')</script>";
+            $msg = "<script>alert('Congratulations, the annual leave application has been approved')</script>";
             $this->session->set_flashdata("message", $msg);
             redirect(base_url() . 'Data_cuti_tahunan/Apv_ct_atasan');
         }

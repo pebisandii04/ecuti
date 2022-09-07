@@ -78,8 +78,8 @@ class Model_laporan extends CI_Model {
         $this->db->join('tbl_jenis_cuti','tbl_jenis_cuti.id_jenis_cuti = tbl_cuti_umum.jenis_cuti_id');
         $this->db->join('tbl_user','tbl_user.nip = tbl_cuti_umum.nip');
         //$this->db->where('tbl_kelola_atasan.user_id',$id_user);
-        $this->db->where('tbl_cuti_umum.sts_apv_1',0);
-        $this->db->where('tbl_cuti_umum.sts_apv_2',0);
+        // $this->db->where('tbl_cuti_umum.sts_apv_1',0);
+        // $this->db->where('tbl_cuti_umum.sts_apv_2',0);
         return $this->db->get();
     }
 
@@ -176,6 +176,12 @@ class Model_laporan extends CI_Model {
         $this->db->where('user_id', $id);
         return $this->db->get();
     }
+    function get_hak_ct_adm($id_user){
+        $this->db->select('*');
+        $this->db->from('tbl_hak_cuti_tahunan');
+        $this->db->where('user_id', $id_user);
+        return $this->db->get();
+    }
 
     function get_data_atasan_ct($nip){
         $this->db->select('*');
@@ -186,6 +192,16 @@ class Model_laporan extends CI_Model {
         $this->db->join('tbl_jabatan','tbl_jabatan.id_jabatan = tbl_user.jabatan_id');
         $this->db->where('tbl_cuti_tahunan.nip',$nip);
         return $this->db->get();
+    }
+    function get_data_atasan($id){
+        $this->db->select('*');
+        $this->db->from('tbl_kelola_atasan');
+        $this->db->join('tbl_kelola_pejabat','tbl_kelola_pejabat.user_id_pejabat = tbl_kelola_atasan.user_id_atasan');
+        $this->db->join('tbl_user','tbl_user.id_user = tbl_kelola_atasan.user_id_atasan');
+        $this->db->join('tbl_jabatan','tbl_jabatan.id_jabatan = tbl_user.jabatan_id');
+        $this->db->where('tbl_kelola_pejabat.id_pejabat',$id);
+        return $this->db->get();
+
     }
 
     function get_data_atasan_cu($nip){

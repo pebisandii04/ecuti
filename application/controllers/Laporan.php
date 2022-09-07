@@ -7,7 +7,7 @@ class Laporan extends CI_Controller {
     parent::__construct();
 		$this->load->helper('tgl_indo');
 		is_logged_in();
-		if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2' && $this->session->userdata('role_id') != '4') {
+		if ($this->session->userdata('nip') == '' || $this->session->userdata('role_id') != '3' && $this->session->userdata('role_id') != '2' && $this->session->userdata('role_id') != '4' && $this->session->userdata('role_id') != '1') {
 	      redirect('blocked');
 	  }
     $this->load->library('form_validation');
@@ -96,9 +96,10 @@ class Laporan extends CI_Controller {
 
 	public function Cetak_lampiran(){
 		$nip = $this->uri->segment(3);
+		$id = $this->uri->segment(4);
 		$data['datauser'] = $this->Model_laporan->select_data_cetak_ct($nip)->row();
 		$data['hak'] = $this->Model_laporan->get_hak_ct($nip)->row();
-		$data['datauser2'] = $this->Model_laporan->get_data_atasan_ct($nip)->row();
+		$data['datauser2'] = $this->Model_laporan->get_data_atasan($id)->row();
 		$data['list'] = $this->Model_laporan->get_jenis_cuti()->result_array();
 		$this->load->library('pdf');
 		$this->pdf->setPaper(array(0,0,609.4488,935.433), 'potrait');
@@ -119,4 +120,46 @@ class Laporan extends CI_Controller {
 		$this->pdf->filename = "laporan-petanikode.pdf";
 		$this->pdf->load_view('laporan/cetak_lampiran', $data);
 	}
+	//cetak oleh admin
+	public function Cetak_lampiran_adm(){
+		$nip = $this->uri->segment(3);
+		$id = $this->uri->segment(4);
+		$id_user = $this->uri->segment(5);
+		$data['datauser'] = $this->Model_laporan->select_data_cetak_ct($nip)->row();
+		$data['hak'] = $this->Model_laporan->get_hak_ct_adm($id_user)->row();
+		$data['datauser2'] = $this->Model_laporan->get_data_atasan($id)->row();
+		$data['list'] = $this->Model_laporan->get_jenis_cuti()->result_array();
+		$this->load->library('pdf');
+		$this->pdf->setPaper(array(0,0,609.4488,935.433), 'potrait');
+		$this->pdf->set_option('isRemoteEnabled', true);
+		$this->pdf->filename = "laporan-petanikode.pdf";
+		$this->pdf->load_view('laporan/cetak_lampiran', $data);
+	}
+
+	public function Cetak_surat_adm(){
+		$nip = $this->uri->segment(3);	
+		$data['data'] = $this->Model_laporan->select_data_cetak_ct($nip)->row();
+		//$this->load->view('Laporan/Cetak_surat',$data);
+		$this->load->library('pdf');
+		$this->pdf->setPaper(array(0,0,609.4488,935.433), 'potrait');
+		$this->pdf->set_option('isRemoteEnabled', true);
+		$this->pdf->filename = "laporan-petanikode.pdf";
+		$this->pdf->load_view('laporan/cetak_surat', $data);
+	}
+
+	public function Cetak_lampiran_cu_adm(){
+		$nip = $this->uri->segment(3);
+		$id = $this->uri->segment(4);
+		$id_user = $this->uri->segment(5);
+		$data['datauser'] = $this->Model_laporan->select_data_cetak_cu($nip)->row();
+		$data['hak'] = $this->Model_laporan->get_hak_ct_adm($id_user)->row();
+		$data['datauser2'] = $this->Model_laporan->get_data_atasan($id)->row();
+		$data['list'] = $this->Model_laporan->get_jenis_cuti()->result_array();
+		$this->load->library('pdf');
+		$this->pdf->setPaper(array(0,0,609.4488,935.433), 'potrait');
+		$this->pdf->set_option('isRemoteEnabled', true);
+		$this->pdf->filename = "laporan-petanikode.pdf";
+		$this->pdf->load_view('laporan/cetak_lampiran', $data);
+	}
+	
 }

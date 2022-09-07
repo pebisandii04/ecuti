@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo base_url().''; ?>">Dashboard</a></li>
                 <li class="breadcrumb-item active">Kelola Atasan Langsung</li>
               </ol>
             </div>
@@ -25,20 +25,20 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">List Data</h3>
-                        <div class="float-right"><a href="<?php echo base_url() . 'Manajemen_pimpinan/add_data_atasan'; ?>" class="btn btn-primary btn-sm"> <i class="fas fa-plus fa-fw"></i> Tambah Data</a></div>
+                        <h3 class="card-title">Kelola Atasan Langsung</h3>
+                        <div class="float-right"><a href="<?php echo base_url() . 'Manajemen_pimpinan/add_data_atasan'; ?>" class="btn btn-primary btn-sm"> <i class="fas fa-plus fa-fw"></i> Create Atasan Langsung</a></div>
                     </div>
                     <!--/.card-header -->
                     <div class="card-body">
                          <?php echo $this->session->flashdata('message'); ?>
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
-                                <tr>
-                                    <th>No</th>
+                                <tr class="text-center">
+                                    <th width="8">#</th>
                                     <th>Nama Unit Kerja</th>
                                     <th>Atasan Langsung</th>
                                     <th>Pejabat Berwenang</th>
-                                    <th>Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,11 +46,11 @@
                                 $no = 1;
                                 foreach ($data as $key => $row) { ?>
                                   <tr>
-                                        <td><?= $no++ ?></td>
+                                        <td class="text-center"><?= $no++ ?></td>
                                         <td><?php echo $row['nama_unit_kerja']; ?></td>
                                         <td><?php echo $row['nama_lengkap']; ?></td>
                                         <td><?php echo $data2[$key]['nama_lengkap']; ?></td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="<?php echo base_url() . 'Manajemen_pimpinan/edit_atasan/' . $row['id_atasan']; ?>" class="btn btn-sm btn-secondary">
                                                 <i class="fas fa-edit"></i>
                                             </a>

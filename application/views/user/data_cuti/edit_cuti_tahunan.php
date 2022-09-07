@@ -5,12 +5,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1> <i class="fas fa-file-signature fa-fw"></i> Edit Data Pengajuan Cuti</h1>
+                        <h1> <i class="fas fa-file-signature fa-fw"></i> Edit Data Pengajuan Cuti Tahunan</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="<?php echo base_url() . ''; ?>">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Data Pengajuan Cuti</li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url() . ''; ?>">Data Pengajuan Cuti Tahunan</a></li>
+                            <li class="breadcrumb-item active">Edit Data Pengajuan Cuti Tahunan</li>
                         </ol>
                     </div>
                 </div>
@@ -22,10 +23,10 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-8 offset-2">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Form Pengajuan Cuti</h3>
+                        <h3 class="card-title">Form Edit Pengajuan Cuti Tahunan</h3>
                         <div class="card-tools">
                             <a href="<?php echo base_url() ?>data_mahasiswa" class="btn btn-tool"><i class="fas fa-times"></i></a></div>
                     </div>
@@ -67,15 +68,15 @@
                                         <div class="col-5">
                                             <label for="alamat">Alamat</label><br>
                                             <?php echo form_error('alamat', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
-                                            <textarea name="alamat" value="" id="" cols="10" rows="6" class="form-control mb-2"><?php echo $data_cuti['alamat']; ?></textarea>
-                                            
+                                            <textarea name="alamat" value="" id="" cols="8" rows="5" class="form-control mb-3"><?php echo $data_cuti['alamat']; ?></textarea>
+                                            <br class="mt-1">
                                             <label for="no_tlp">No Telp</label>
                                             <?php echo form_error('no_telp', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
-                                            <input type="text" value="<?php echo $data_cuti['no_telp']; ?>" name="no_telp" class="form-control mb-4 mt-4">
+                                            <input type="text" value="<?php echo $data_cuti['no_telp']; ?>" name="no_telp" class="form-control mb-4 mt-1">
                                             
                                             <label for="id_atasan">Atasan Langsung</label><br>
                                             <?php echo form_error('id_atasan', '<small class="text-danger pl-1"><i class="fas fa-exclamation-circle fa-fw"></i> ', '</small>'); ?>
-                                            <select value="" name="id_atasan" id="" class="form-control mb-3">
+                                            <select value="" name="id_atasan" id="" class="form-control mb-2">
                                             <option value="<?php echo $data_cuti['id_atasan']; ?>"><?php echo $data_cuti['nama_lengkap']; ?></option>
                                             <?php foreach ($option2 as $row): ?>
                                                     <option value="<?= $row->id_atasan; ?>"><?= $row->nama_lengkap; ?></option>
@@ -83,14 +84,15 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                              <a href="<?php echo base_url() . 'Data_cuti_tahunan'; ?>" class="btn btn-default"><i class="fas fa-arrow-left fa-fw"></i> Back</a>
-                              <input type="submit" value="Proses" onclick="return confirm('Are you sure you want to save it');" class="btn btn-primary float-right">
-                          </div>
+                                    
                                 </div>
+                                <div class="card-footer">
+                        <a href="<?php echo base_url().'data_cuti_tahunan'; ?>"  class="btn btn-default"><i class="fas fa-times fa-fw"></i>Cancel</a>
+                        <button type="submit" class="btn btn-primary float-right" onclick="return confirm('Are you sure you want to save it');"><i class="fas fa-save fa-fw"></i> Save</button>
+                        </form>
+                        </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <!--/.card -->
             </div>
